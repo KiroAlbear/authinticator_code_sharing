@@ -111864,8 +111864,8 @@ return A.aRC(q,q,q,q,A.aOQ(B.fj,t.m),A.aVd(A.cT(3),B.q),A.aJL(new A.aLi()),q,q)}
 r($,"bmb","aQM",()=>{var q=null
 return A.b8z(q,q,q,q,10,A.aOQ(B.l,t.m),q,A.b9t(new A.aLk(),t._),q,q)})
 s($,"bj4","aQo",()=>A.b50(null,t.uK))
-s($,"bj3","b_p",()=>{var q="/registerAdminScreen",p=null,o="/profile",n="/registerUserScreen",m="/admingHome",l=A.a([],t.tc),k=$.aQo(),j=A.a([A.td(p,"/",new A.auw(),k,"/"),A.td(p,"/login",new A.aux(),k,"/login"),A.td(p,q,new A.auy(),k,q),A.td(p,o,new A.auz(),k,o),A.td(p,n,new A.auA(),k,n),A.td(p,"/code",new A.auB(),k,"/code"),A.td(p,m,new A.auC(),k,m)],t.yo)
-return A.b52(!1,p,p,p,p,q,k,l,p,!1,p,!0,p,!1,new A.a2q(new A.auD(j,A.bg5(),5)))})
+s($,"bj3","b_p",()=>{var q="/login",p=null,o="/registerAdminScreen",n="/profile",m="/registerUserScreen",l="/admingHome",k=A.a([],t.tc),j=$.aQo(),i=A.a([A.td(p,"/",new A.auw(),j,"/"),A.td(p,q,new A.aux(),j,q),A.td(p,o,new A.auy(),j,o),A.td(p,n,new A.auz(),j,n),A.td(p,m,new A.auA(),j,m),A.td(p,"/code",new A.auB(),j,"/code"),A.td(p,l,new A.auC(),j,l)],t.yo)
+return A.b52(!1,p,p,p,p,q,j,k,p,!1,p,!0,p,!1,new A.a2q(new A.auD(i,A.bg5(),5)))})
 s($,"bmk","vI",()=>$.aZH())
 r($,"bgL","aQd",()=>{var q=new A.agp(A.aPH(),new A.Ta(A.a([B.JX],A.ab("t<iP?>"))),A.aPH(),new A.ak7(51200),!1),p=A.aRn(null,null,null)
 q.Ku$=p
