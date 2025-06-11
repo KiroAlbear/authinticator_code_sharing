@@ -1,0 +1,22 @@
+{
+  "email": "Email",
+  "login": "Login",
+  "do_not_have_account": "Don't have an account?",
+  "signup": "Signup",
+  "forgot_password": "Forgot password?",
+  "reset_password": "Reset Password",
+  "password": "Password",
+  "register": "Register",
+  "name": "Name",
+  "phone": "Phone",
+  "passport_id": "Passport ID",
+  "confirm_password": "Confirm Password",
+  "this_field_is_required": "This field is required",
+  "email_is_not_correct_format": "Email is not in the correct format",
+  "passwords_do_not_match": "Passwords do not match",
+  "password_should_have": "Password should have at least 8 characters, one letter and one number, ",
+  "submit": "Submit",
+  "profile": "Profile",
+  "home": "Home",
+  "order_now": "Order Now"
+}

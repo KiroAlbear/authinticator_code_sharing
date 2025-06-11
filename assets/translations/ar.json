@@ -1,0 +1,22 @@
+{
+  "email": "البريد الإلكتروني",
+  "login": "تسجيل الدخول",
+  "do_not_have_account": "ليس لديك حساب؟",
+  "signup": "إنشاء حساب",
+  "forgot_password": "نسيت كلمة المرور؟",
+  "reset_password": "تعيين كلمة المرور",
+  "password": " كلمة المرور",
+  "register": "تسجيل",
+  "name": "الاسم",
+  "phone": "الهاتف",
+  "passport_id": "رقم جواز السفر",
+  "confirm_password": "تأكيد كلمة المرور",
+  "this_field_is_required": "هذا الحقل مطلوب",
+  "email_is_not_correct_format": " البريد الإلكتروني ليس بالتنسيق الصحيح",
+  "passwords_do_not_match": "كلمات المرور غير متطابقة",
+  "password_should_have": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، حرف واحد ورقم واحد، ",
+  "submit": "إرسال",
+  "profile": "الملف الشخصي",
+  "home": " الرئيسية",
+  "order_now": "اطلب الآن"
+}
