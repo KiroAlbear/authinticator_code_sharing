@@ -140,8 +140,6 @@ mixin BasePageMixin implements BasePage {
                                         const Text('Switch to another account'),
                                     onTap: () {
                                       showDialog(
-                                        useRootNavigator: true,
-                                        barrierDismissible: true,
                                         context: context,
                                         builder: (context) {
                                           return const SwitchAccountWidget();
@@ -184,7 +182,7 @@ mixin BasePageMixin implements BasePage {
       resizeToAvoidBottomInset: false,
       appBar: appBar(),
       bottomSheet: bottomSheet(),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: containPadding() ? AppDimensions.screenPadding : 0,

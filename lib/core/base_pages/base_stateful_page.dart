@@ -1,12 +1,13 @@
 import 'package:code_grapper/imports.dart';
 import 'package:flutter/material.dart';
+import 'package:gif/gif.dart';
 
 abstract class BaseStatefulPage extends StatefulWidget {
   const BaseStatefulPage({super.key});
 }
 
 abstract class BaseState<T extends BaseStatefulPage> extends State<T>
-    with BasePageMixin {
+    with BasePageMixin, TickerProviderStateMixin {
   @override
   Widget? bottomSheet() => null;
 
@@ -28,6 +29,8 @@ abstract class BaseState<T extends BaseStatefulPage> extends State<T>
   @override
   bool showOnlyLogout() => false;
 
+  late final GifController _controller;
+
   Future<EmailPasswordModel> getChosenAdmin() async {
     return await CommonUtils.getChosenAdminOrUser(
         SecureStorageKeys.chosenAdminKey);
@@ -43,7 +46,27 @@ abstract class BaseState<T extends BaseStatefulPage> extends State<T>
 
   @override
   Widget build(BuildContext context) {
-    return buildBody(context);
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        Gif(
+          image: AssetImage(Assets.images.gif.background.path),
+          fit: BoxFit.fill,
+          controller: _controller,
+          repeat: ImageRepeat.repeat,
+          onFetchCompleted: () {
+            _controller.reset();
+            _controller.repeat();
+          },
+        ),
+        Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: Colors.white.withOpacity(0.7),
+        ),
+        buildBody(context),
+      ],
+    );
   }
 
   @override
@@ -57,6 +80,7 @@ abstract class BaseState<T extends BaseStatefulPage> extends State<T>
         AppToast.fToast.init(context);
       },
     );
+    _controller = GifController(vsync: this);
     super.initState();
   }
 }

@@ -10,6 +10,8 @@ abstract class _$RegisterAdminStateCWProxy {
   RegisterAdminState profileResponseModel(
       ProfileResponseModel? profileResponseModel);
 
+  RegisterAdminState status(Status status);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `RegisterAdminState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -18,6 +20,7 @@ abstract class _$RegisterAdminStateCWProxy {
   /// ````
   RegisterAdminState call({
     ProfileResponseModel? profileResponseModel,
+    Status? status,
   });
 }
 
@@ -33,6 +36,9 @@ class _$RegisterAdminStateCWProxyImpl implements _$RegisterAdminStateCWProxy {
       this(profileResponseModel: profileResponseModel);
 
   @override
+  RegisterAdminState status(Status status) => this(status: status);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `RegisterAdminState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -42,12 +48,17 @@ class _$RegisterAdminStateCWProxyImpl implements _$RegisterAdminStateCWProxy {
   /// ````
   RegisterAdminState call({
     Object? profileResponseModel = const $CopyWithPlaceholder(),
+    Object? status = const $CopyWithPlaceholder(),
   }) {
     return RegisterAdminState(
       profileResponseModel: profileResponseModel == const $CopyWithPlaceholder()
           ? _value.profileResponseModel
           // ignore: cast_nullable_to_non_nullable
           : profileResponseModel as ProfileResponseModel?,
+      status: status == const $CopyWithPlaceholder() || status == null
+          ? _value.status
+          // ignore: cast_nullable_to_non_nullable
+          : status as Status,
     );
   }
 }

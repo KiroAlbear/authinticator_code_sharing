@@ -11,8 +11,7 @@ class RegisterUserPage extends BaseStatefulPage {
   State<RegisterUserPage> createState() => _RegisterUserPagePageState();
 }
 
-class _RegisterUserPagePageState extends BaseState<RegisterUserPage>
-    with SingleTickerProviderStateMixin {
+class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();

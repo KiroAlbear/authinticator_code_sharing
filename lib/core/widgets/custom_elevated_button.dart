@@ -37,8 +37,8 @@ class CustomElevatedButton extends StatelessWidget {
             text,
             style: TextStyleBlueprint.style(context,
                 color: onPressed == null ? Colors.grey : Colors.white,
-                fontSize: 16.0,
-                fontWeight: FontWeight.w500),
+                fontSize: 19.0,
+                fontWeight: FontWeight.w700),
           ),
         ));
   }

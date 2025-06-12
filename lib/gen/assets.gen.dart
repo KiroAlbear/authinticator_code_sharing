@@ -12,6 +12,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// Directory path: assets/images/gif
+  $AssetsImagesGifGen get gif => const $AssetsImagesGifGen();
+
   /// Directory path: assets/images/png
   $AssetsImagesPngGen get png => const $AssetsImagesPngGen();
 
@@ -32,6 +35,17 @@ class $AssetsTranslationsGen {
   List<String> get values => [ar, en];
 }
 
+class $AssetsImagesGifGen {
+  const $AssetsImagesGifGen();
+
+  /// File path: assets/images/gif/background.gif
+  AssetGenImage get background =>
+      const AssetGenImage('assets/images/gif/background.gif');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [background];
+}
+
 class $AssetsImagesPngGen {
   const $AssetsImagesPngGen();
 
@@ -46,8 +60,11 @@ class $AssetsImagesPngGen {
   AssetGenImage get icLauncher =>
       const AssetGenImage('assets/images/png/ic_launcher.png');
 
+  /// File path: assets/images/png/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/png/logo.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [alert, emptyList, icLauncher];
+  List<AssetGenImage> get values => [alert, emptyList, icLauncher, logo];
 }
 
 class $AssetsImagesSvgGen {
