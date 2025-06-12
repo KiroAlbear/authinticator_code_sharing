@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ScannerPage extends StatelessWidget {
   const ScannerPage({super.key});
@@ -8,14 +9,37 @@ class ScannerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        MobileScanner(
-          onDetect: (barcodes) {
-            // get the secret key from the string otpauth://totp/OpenAI:john.dill2030@gmail.com?secret=5N2YXWLSJPCRF6VLPFQMT3SIZBPCDGMO&issuer=OpenAI
-            final String barcode = barcodes.barcodes.first.rawValue ?? '';
-            Navigator.pop(
-              context,
-              extractSecretKey(barcode),
-            );
+        FutureBuilder<bool>(
+          future: _requestCameraPermission(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text('Error: ${snapshot.error}'),
+              );
+            } else if (snapshot.hasData && snapshot.data == false) {
+              return const Center(
+                child: Text(
+                    'Camera permission denied. Please allow it in settings.'),
+              );
+            }
+            // If permission is granted, show the scanner
+            else if (snapshot.data == true) {
+              return MobileScanner(
+                onDetect: (barcodes) {
+                  final String barcode = barcodes.barcodes.first.rawValue ?? '';
+                  Navigator.pop(
+                    context,
+                    extractSecretKey(barcode),
+                  );
+                },
+              );
+            } else {
+              return const Center(
+                child: Text('Camera permission is required to scan QR codes.'),
+              );
+            }
           },
         ),
         PositionedDirectional(
@@ -28,6 +52,31 @@ class ScannerPage extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Future<bool> _requestCameraPermission() async {
+    // Check the current status
+    var status = await Permission.camera.status;
+
+    if (status.isGranted) {
+      return true;
+      // setState(() => _permissionStatus = 'Camera permission granted!');
+      // Proceed to use the camera
+    } else if (status.isDenied) {
+      var requestedStatus = await Permission.camera.request();
+      if (requestedStatus.isGranted) {
+        return true;
+        // setState(() => _permissionStatus = 'Camera permission granted!');
+      } else {
+        return false;
+        // setState(() => _permissionStatus = 'Camera permission denied.');
+      }
+    } else {
+      return false;
+      // setState(() {
+      //   _permissionStatus = 'Unknown permission state. Please try again.';
+      // });
+    }
   }
 
   String extractSecretKey(String otpAuthUrl) {

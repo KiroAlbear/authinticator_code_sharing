@@ -1,1 +1,1 @@
-fvm flutter build web --release
+fvm flutter build web --release --output-dir build_web
