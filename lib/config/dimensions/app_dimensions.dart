@@ -8,7 +8,10 @@ class AppDimensions {
   static double? height;
   static double textHeight = 1.8;
   static double tabletMinimumWidth = 700;
+  static double cardMaxWidth = 400;
+
   static double get screenPadding => w(16.0);
+
   static double get buttonHeight => 50;
   static double cardBorderRadius = 5;
 
