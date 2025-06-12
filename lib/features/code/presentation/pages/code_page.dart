@@ -35,6 +35,9 @@ class _CodePagePageState extends BaseState<CodePage> {
   bool containPadding() => false;
 
   @override
+  bool showOnlyLogout() => true;
+
+  @override
   void initState() {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback((_) async {

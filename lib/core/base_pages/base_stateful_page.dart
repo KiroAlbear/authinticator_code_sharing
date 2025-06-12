@@ -25,6 +25,9 @@ abstract class BaseState<T extends BaseStatefulPage> extends State<T>
   @override
   bool hasSideMenu() => true;
 
+  @override
+  bool showOnlyLogout() => false;
+
   Future<EmailPasswordModel> getChosenAdmin() async {
     return await CommonUtils.getChosenAdminOrUser(
         SecureStorageKeys.chosenAdminKey);

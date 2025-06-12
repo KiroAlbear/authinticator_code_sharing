@@ -11,6 +11,8 @@ sealed class BasePage {
 
   bool hasSideMenu() => true;
 
+  bool showOnlyLogout() => false;
+
   Widget body(BuildContext context);
 
 // bool isMainPage();

@@ -32,107 +32,125 @@ mixin BasePageMixin implements BasePage {
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor.withAlpha(20),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Welcome Admin!",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
+                    child: showOnlyLogout() == true
+                        ? SizedBox()
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "Welcome Admin!",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  const Icon(
+                                    Icons.account_circle_outlined,
+                                    size: 20,
+                                    color: Colors.black,
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Text(Constants.chosenAdmin.email)
+                                ],
+                              )
+                            ],
                           ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.account_circle_outlined,
-                              size: 20,
-                              color: Colors.black,
-                            ),
-                            const SizedBox(width: 10),
-                            Text(Constants.chosenAdmin.email)
-                          ],
-                        )
-                      ],
-                    ),
                   ),
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            ListTile(
-                              leading: const Icon(Icons.home_outlined),
-                              title: const Text('Home'),
-                              subtitle: const Text('Go to home page'),
-                              onTap: () {
-                                Routes.navigateToScreen(Routes.adminHomeScreen,
-                                    NavigationType.goNamed, context);
+                        showOnlyLogout() == true
+                            ? SizedBox()
+                            : Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  ListTile(
+                                    leading: const Icon(Icons.home_outlined),
+                                    title: const Text('Home'),
+                                    subtitle: const Text('Go to home page'),
+                                    onTap: () {
+                                      Routes.navigateToScreen(
+                                          Routes.adminHomeScreen,
+                                          NavigationType.goNamed,
+                                          context);
 
-                                Navigator.pop(context); // Closes the drawer
-                              },
-                            ),
-                            ListTile(
-                              leading:
-                                  const Icon(Icons.app_registration_outlined),
-                              title: const Text('Register User'),
-                              subtitle: const Text('Register a new user'),
-                              onTap: () {
-                                Routes.navigateToScreen(
-                                    Routes.registerUserScreen,
-                                    NavigationType.goNamed,
-                                    context);
-                                Navigator.pop(context); // Closes the drawer
-                              },
-                            ),
-                            ListTile(
-                              leading: const Icon(Icons.perm_identity_rounded),
-                              title: const Text('Profile'),
-                              subtitle: const Text('Go to profile page'),
-                              onTap: () {
-                                Routes.navigateToScreen(Routes.profileScreen,
-                                    NavigationType.goNamed, context);
-                                Navigator.pop(context); // Closes the drawer
-                              },
-                            ),
-                            ListTile(
-                              leading: const Icon(Icons.login),
-                              title: const Text('Login'),
-                              subtitle: const Text('Login with other account'),
-                              onTap: () {
-                                Routes.navigateToScreen(Routes.loginScreen,
-                                    NavigationType.pushNamed, context,
-                                    extra: LoginPageArgs(IsLoggingAgain: true));
-                                Navigator.pop(context); // Closes the drawer
-                              },
-                            ),
-                            ListTile(
-                              leading:
-                                  const Icon(Icons.switch_account_outlined),
-                              title: const Text('Switch Account'),
-                              subtitle: const Text('Switch to another account'),
-                              onTap: () {
-                                showDialog(
-                                  useRootNavigator: true,
-                                  barrierDismissible: true,
-                                  context: context,
-                                  builder: (context) {
-                                    return const SwitchAccountWidget();
-                                  },
-                                );
-                              },
-                            ),
-                          ],
-                        ),
+                                      Navigator.pop(
+                                          context); // Closes the drawer
+                                    },
+                                  ),
+                                  ListTile(
+                                    leading: const Icon(
+                                        Icons.app_registration_outlined),
+                                    title: const Text('Register User'),
+                                    subtitle: const Text('Register a new user'),
+                                    onTap: () {
+                                      Routes.navigateToScreen(
+                                          Routes.registerUserScreen,
+                                          NavigationType.goNamed,
+                                          context);
+                                      Navigator.pop(
+                                          context); // Closes the drawer
+                                    },
+                                  ),
+                                  ListTile(
+                                    leading:
+                                        const Icon(Icons.perm_identity_rounded),
+                                    title: const Text('Profile'),
+                                    subtitle: const Text('Go to profile page'),
+                                    onTap: () {
+                                      Routes.navigateToScreen(
+                                          Routes.profileScreen,
+                                          NavigationType.goNamed,
+                                          context);
+                                      Navigator.pop(
+                                          context); // Closes the drawer
+                                    },
+                                  ),
+                                  ListTile(
+                                    leading: const Icon(Icons.login),
+                                    title: const Text('Login'),
+                                    subtitle:
+                                        const Text('Login with other account'),
+                                    onTap: () {
+                                      Routes.navigateToScreen(
+                                          Routes.loginScreen,
+                                          NavigationType.pushNamed,
+                                          context,
+                                          extra: LoginPageArgs(
+                                              IsLoggingAgain: true));
+                                      Navigator.pop(
+                                          context); // Closes the drawer
+                                    },
+                                  ),
+                                  ListTile(
+                                    leading: const Icon(
+                                        Icons.switch_account_outlined),
+                                    title: const Text('Switch Account'),
+                                    subtitle:
+                                        const Text('Switch to another account'),
+                                    onTap: () {
+                                      showDialog(
+                                        useRootNavigator: true,
+                                        barrierDismissible: true,
+                                        context: context,
+                                        builder: (context) {
+                                          return const SwitchAccountWidget();
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
                         ListTile(
                           leading: const Icon(Icons.logout_outlined),
                           title: const Text('Log Out'),

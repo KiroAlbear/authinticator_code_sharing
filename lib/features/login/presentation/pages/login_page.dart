@@ -142,6 +142,26 @@ class _LoginPagePageState extends BaseState<LoginPage> {
                   },
                 )),
 
+            const SizedBox(height: 10),
+            GestureDetector(
+              onTap: () {
+                Routes.navigateToScreen(
+                  Routes.registerAdminScreen,
+                  NavigationType.pushNamed,
+                  context,
+                );
+              },
+              child: Text(
+                "Register as admin",
+                style: AppTextStyles.bold_14_black(context).copyWith(
+                  decoration: TextDecoration.underline,
+                  decorationStyle: TextDecorationStyle.solid,
+                  decorationColor: Colors.blue,
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+
             // const SizedBox(height: 15),
             // ValueListenableBuilder<String>(
             //   valueListenable: errorNotifier,

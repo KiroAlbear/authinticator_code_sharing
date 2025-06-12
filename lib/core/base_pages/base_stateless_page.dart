@@ -23,6 +23,9 @@ abstract class BaseStatelessPage extends StatelessWidget with BasePageMixin {
   bool hasSideMenu() => true;
 
   @override
+  bool showOnlyLogout() => false;
+
+  @override
   Widget build(BuildContext context) {
     return buildBody(context);
   }
