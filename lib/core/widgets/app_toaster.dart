@@ -22,7 +22,7 @@ class AppToast {
     fToast.showToast(
       child: _toastContainer(message, color, type, context),
       gravity: ToastGravity.TOP,
-      toastDuration: const Duration(seconds: 3),
+      toastDuration: const Duration(seconds: 10),
     );
   }
 
@@ -44,6 +44,7 @@ class AppToast {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Expanded(
               child: Row(

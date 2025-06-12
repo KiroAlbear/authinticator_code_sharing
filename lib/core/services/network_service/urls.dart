@@ -1,8 +1,9 @@
 class Urls {
   Urls._();
 
-  // static const String baseUrl = "http://localhost:8000";
-  static const String baseUrl = "https://chatgpt-fastapi-391j.onrender.com";
+  static const String baseUrl = "http://localhost:8000";
+
+  // static const String baseUrl = "https://chatgpt-fastapi-391j.onrender.com";
 
   static String get requestUserCode {
     return '$baseUrl/requestUserCode';

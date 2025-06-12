@@ -1,3 +1,5 @@
+import 'package:code_grapper/core/routes/navigation_type.dart';
+import 'package:code_grapper/core/routes/routes.dart';
 import 'package:code_grapper/gen/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart'
     show StringTranslateExtension;
@@ -9,6 +11,7 @@ class CustomTextField extends StatefulWidget {
   final String labelText;
   final String? validationMessage;
   final bool isPasswordField;
+  final bool isScannerField;
   final bool isNumbersOnlyField;
   final bool isDisabled;
   final bool isRequired;
@@ -26,6 +29,7 @@ class CustomTextField extends StatefulWidget {
       this.keyboardType,
       this.isDisabled = false,
       this.isNumbersOnlyField = false,
+      this.isScannerField = false,
       this.validationMessage,
       this.onTap});
 
@@ -105,7 +109,24 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         );
                       },
                     )
-                  : const SizedBox()),
+                  : widget.isScannerField
+                      ? Padding(
+                          padding: EdgeInsetsDirectional.only(end: 0),
+                          child: IconButton(
+                            icon: const Icon(Icons.qr_code_scanner_outlined),
+                            onPressed: () async {
+                              await Routes.navigateToScreen(
+                                Routes.scannerScreen,
+                                NavigationType.pushNamed,
+                                context,
+                                onPop: (p0) {
+                                  widget.controller.text = p0;
+                                },
+                              );
+                            },
+                          ),
+                        )
+                      : SizedBox()),
         ),
         const SizedBox(height: 5),
         ValueListenableBuilder<String>(

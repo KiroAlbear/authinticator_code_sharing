@@ -19,6 +19,7 @@ class Routes {
   static const String codeScreen = '/code';
   static const String adminHomeScreen = '/admingHome';
   static const String registerUserScreen = '/registerUserScreen';
+  static const String scannerScreen = '/scannerScreen';
 
   static final GoRouter goRouter = GoRouter(
     observers: [],
@@ -103,6 +104,14 @@ class Routes {
       ),
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
+        path: scannerScreen,
+        name: scannerScreen,
+        pageBuilder: (context, state) {
+          return _fadeTransitionScreenWrapper(context, state, ScannerPage());
+        },
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
         path: adminHomeScreen,
         name: adminHomeScreen,
         pageBuilder: (context, state) {
@@ -125,17 +134,26 @@ class Routes {
     ],
   );
 
-  static void navigateToScreen(
+  static Future<void> navigateToScreen(
     String screenName,
     NavigationType navigateType,
     BuildContext context, {
     Map<String, String>? queryParameters,
     Object? extra,
+    Function(String)? onPop,
   }) async {
     switch (navigateType) {
       case NavigationType.pushNamed:
-        GoRouter.of(context).pushNamed(screenName,
-            queryParameters: queryParameters ?? {}, extra: extra);
+        await GoRouter.of(context)
+            .pushNamed(screenName,
+                queryParameters: queryParameters ?? {}, extra: extra)
+            .then(
+          (value) {
+            if (onPop != null && value != null && value is String) {
+              onPop(value);
+            }
+          },
+        );
         break;
 
       case NavigationType.goNamed:

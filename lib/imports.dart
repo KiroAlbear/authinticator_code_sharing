@@ -57,6 +57,7 @@ export 'core/widgets/custom_rounded_card.dart';
 export 'core/widgets/custom_text_field.dart';
 export 'core/widgets/line_seperator_widget.dart';
 export 'core/widgets/no_data_error_widget.dart';
+export 'core/widgets/scanner_page.dart';
 export 'core/widgets/server_error_widget.dart';
 export 'core/widgets/switch_account_widget.dart';
 export 'features/admin_home/data/models/admin_account_list.dart';

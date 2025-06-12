@@ -89,7 +89,8 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
                     // Secret Key
                     CustomTextField(
                       controller: secretKeyController,
-                      labelText: "Secret Key",
+                      labelText: "Scan or enter your secret key",
+                      isScannerField: true,
                     ),
                     SizedBox(height: 15),
 
