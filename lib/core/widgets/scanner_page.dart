@@ -9,37 +9,13 @@ class ScannerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        FutureBuilder<bool>(
-          future: gethtmlpermissions(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(
-                child: Text('Error: ${snapshot.error}'),
-              );
-            } else if (snapshot.hasData && snapshot.data == false) {
-              return const Center(
-                child: Text(
-                    'Camera permission denied. Please allow it in settings.'),
-              );
-            }
-            // If permission is granted, show the scanner
-            else if (snapshot.data == true) {
-              return MobileScanner(
-                onDetect: (barcodes) {
-                  final String barcode = barcodes.barcodes.first.rawValue ?? '';
-                  Navigator.pop(
-                    context,
-                    extractSecretKey(barcode),
-                  );
-                },
-              );
-            } else {
-              return const Center(
-                child: Text('Camera permission is required to scan QR codes.'),
-              );
-            }
+        MobileScanner(
+          onDetect: (barcodes) {
+            final String barcode = barcodes.barcodes.first.rawValue ?? '';
+            Navigator.pop(
+              context,
+              extractSecretKey(barcode),
+            );
           },
         ),
         PositionedDirectional(
