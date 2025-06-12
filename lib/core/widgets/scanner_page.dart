@@ -10,7 +10,7 @@ class ScannerPage extends StatelessWidget {
     return Stack(
       children: [
         FutureBuilder<bool>(
-          future: _requestCameraPermission(),
+          future: gethtmlpermissions(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
@@ -54,30 +54,50 @@ class ScannerPage extends StatelessWidget {
     );
   }
 
-  Future<bool> _requestCameraPermission() async {
-    // Check the current status
-    var status = await Permission.camera.status;
+  Future<bool> gethtmlpermissions() async {
+    // request web permissions for camera, microphone, gps, photolibrary, notifications
+// Requesting permissions for camera, microphone, gps, photolibrary, notifications
 
-    if (status.isGranted) {
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.camera,
+    ].request();
+
+    // Checking if permissions are granted or not
+
+    if (statuses[Permission.camera] == PermissionStatus.granted) {
+      print('Camera permissions granted');
       return true;
-      // setState(() => _permissionStatus = 'Camera permission granted!');
-      // Proceed to use the camera
-    } else if (status.isDenied) {
-      var requestedStatus = await Permission.camera.request();
-      if (requestedStatus.isGranted) {
-        return true;
-        // setState(() => _permissionStatus = 'Camera permission granted!');
-      } else {
-        return false;
-        // setState(() => _permissionStatus = 'Camera permission denied.');
-      }
     } else {
+      print('Camera permissions not granted');
       return false;
-      // setState(() {
-      //   _permissionStatus = 'Unknown permission state. Please try again.';
-      // });
     }
   }
+
+  //
+  // Future<bool> _requestCameraPermission() async {
+  //   // Check the current status
+  //   var status = await Permission.camera.status;
+  //
+  //   if (status.isGranted) {
+  //     return true;
+  //     // setState(() => _permissionStatus = 'Camera permission granted!');
+  //     // Proceed to use the camera
+  //   } else if (status.isDenied) {
+  //     var requestedStatus = await Permission.camera.request();
+  //     if (requestedStatus.isGranted) {
+  //       return true;
+  //       // setState(() => _permissionStatus = 'Camera permission granted!');
+  //     } else {
+  //       return false;
+  //       // setState(() => _permissionStatus = 'Camera permission denied.');
+  //     }
+  //   } else {
+  //     return false;
+  //     // setState(() {
+  //     //   _permissionStatus = 'Unknown permission state. Please try again.';
+  //     // });
+  //   }
+  // }
 
   String extractSecretKey(String otpAuthUrl) {
     final uri = Uri.parse(otpAuthUrl);
