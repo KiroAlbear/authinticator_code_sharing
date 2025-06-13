@@ -1,5 +1,6 @@
 import 'package:code_grapper/imports.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 part 'package:code_grapper/core/base_pages/base_page.dart';
 
@@ -37,12 +38,14 @@ mixin BasePageMixin implements BasePage {
                         : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
+                              Text(
                                 "Welcome Admin!",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily:
+                                      GoogleFonts.libreBaskerville().fontFamily,
                                 ),
                               ),
                               SizedBox(
