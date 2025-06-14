@@ -260,7 +260,7 @@ class AdminUserItem extends StatelessWidget {
         Text(
           title,
           style: AppTextStyles.regular_14_black(context)
-              .copyWith(color: Colors.grey, fontWeight: FontWeight.w500),
+              .copyWith(color: Colors.black, fontWeight: FontWeight.w700),
         ),
         widget ??
             Text(

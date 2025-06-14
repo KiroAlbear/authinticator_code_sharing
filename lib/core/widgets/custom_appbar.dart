@@ -46,8 +46,16 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                         Scaffold.of(context).openDrawer();
                       },
                     ),
-          const SizedBox(width: 10),
-          SizedBox(width: 90, child: Image.asset(Assets.images.png.logo.path)),
+          // const SizedBox(width: 10),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: 90, child: Image.asset(Assets.images.png.logo.path)),
+              ],
+            ),
+          ),
         ],
       ),
     );
