@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../../../imports.dart';
 
@@ -20,7 +21,7 @@ class ApiService {
       dio.options = options;
       // if (kDebugMode)
       {
-        dio.interceptors.add(LogInterceptor(
+        dio.interceptors.add(PrettyDioLogger(
           requestBody: true,
           responseBody: true,
           requestHeader: true,
