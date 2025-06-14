@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../../imports.dart';
 
@@ -19,7 +18,8 @@ class ApiService {
 
       dio.httpClientAdapter = HttpClientAdapter();
       dio.options = options;
-      if (kDebugMode) {
+      // if (kDebugMode)
+      {
         dio.interceptors.add(LogInterceptor(
           requestBody: true,
           responseBody: true,
