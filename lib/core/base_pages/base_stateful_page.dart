@@ -70,6 +70,12 @@ abstract class BaseState<T extends BaseStatefulPage> extends State<T>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     if (appBar() != null && appbarWidget() != null) {
       throw Exception(
