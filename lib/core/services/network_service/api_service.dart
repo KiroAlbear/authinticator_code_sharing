@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../../imports.dart';
 
@@ -19,11 +19,14 @@ class ApiService {
 
       dio.httpClientAdapter = HttpClientAdapter();
       dio.options = options;
-      dio.interceptors.add(PrettyDioLogger(
-        requestBody: true,
-        requestHeader: true,
-        responseHeader: true,
-      ));
+      if (kDebugMode) {
+        dio.interceptors.add(LogInterceptor(
+          requestBody: true,
+          responseBody: true,
+          requestHeader: true,
+          responseHeader: true,
+        ));
+      }
 
       _instance = ApiService();
     }
