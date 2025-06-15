@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
               supportedLocales: context.supportedLocales,
               locale: context.locale,
               routerConfig: Routes.goRouter,
-              title: 'Flutter Demo',
+              title: 'Key Bridge',
               theme: appTheme(ThemeMode.light, context),
             ),
           )),
