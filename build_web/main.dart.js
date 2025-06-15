@@ -48888,7 +48888,7 @@ case 1:return A.u(q,r)}})
 return A.v($async$yz,r)},
 M(a){var s=null,r=this.d
 r===$&&A.b()
-return A.ll(B.cp,A.a([new A.Eq(new A.wv("images/gif/background.gif",s,s),r,new A.afi(this),B.KD,B.qX,s),A.e0(s,s,B.y,A.aI(B.d.aO(178.5),B.l.D()>>>16&255,B.l.D()>>>8&255,B.l.D()&255),s,s,s,1/0,s,s,s,s,1/0),this.arI(a)],t.p),B.P,B.abe)},
+return A.ll(B.cp,A.a([new A.Eq(new A.wv("assets/images/gif/background.gif",s,s),r,new A.afi(this),B.KD,B.qX,s),A.e0(s,s,B.y,A.aI(B.d.aO(178.5),B.l.D()>>>16&255,B.l.D()>>>8&255,B.l.D()&255),s,s,s,1/0,s,s,s,s,1/0),this.arI(a)],t.p),B.P,B.abe)},
 l(){var s=this.d
 s===$&&A.b()
 s.l()
