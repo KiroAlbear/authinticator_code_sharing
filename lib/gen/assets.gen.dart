@@ -40,7 +40,7 @@ class $AssetsImagesGifGen {
 
   /// File path: assets/images/gif/background.gif
   AssetGenImage get background =>
-      const AssetGenImage('assets/images/gif/background.gif');
+      const AssetGenImage('images/gif/background.gif');
 
   /// List of all assets
   List<AssetGenImage> get values => [background];
@@ -91,8 +91,7 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(
-    this._assetName, {
+  const AssetGenImage(this._assetName, {
     this.size,
     this.flavors = const {},
   });

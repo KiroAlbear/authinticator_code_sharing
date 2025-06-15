@@ -1,1 +1,1 @@
-fvm flutter build web --release --output-dir build_web --base-href="/https://authinticator-code-sharing.onrender.com/"
+fvm flutter build web --release --output-dir build_web
