@@ -164,6 +164,7 @@ mixin BasePageMixin implements BasePage {
                                     onOkPressed: () async {
                                   await SecureStorageService.getInstance()
                                       .clear();
+
                                   Routes.navigateToScreen(
                                       Routes.loginScreen,
                                       NavigationType.goNamed,

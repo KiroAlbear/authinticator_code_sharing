@@ -10,7 +10,7 @@ void main() async {
   await DependencyInjectionService().init();
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-
+  await SecureStorageService.init();
   runApp(EasyLocalization(
       supportedLocales: [Locale('en')],
       path: 'assets/translations',

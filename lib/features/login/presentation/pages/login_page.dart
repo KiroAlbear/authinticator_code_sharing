@@ -110,8 +110,9 @@ class _LoginPagePageState extends BaseState<LoginPage> {
                           email: emailController.text,
                           password: passwordController.text);
 
-                      await SecureStorageService.getInstance().setJsonObject(
-                          SecureStorageKeys.normalUser, userModel.toJson());
+                      await SecureStorageService.getInstance().setString(
+                          SecureStorageKeys.normalUser,
+                          userModel.toJson().toString());
 
                       Routes.navigateToScreen(
                         Routes.codeScreen,

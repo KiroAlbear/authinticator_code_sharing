@@ -1,11 +1,16 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SecureStorageService {
-  static SecureStorageService? _instance;
+  static SharedPreferences? _instance;
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
 
-  static SecureStorageService getInstance() {
-    return _instance ??= SecureStorageService();
+  static SharedPreferences getInstance() {
+    return _instance!;
+  }
+
+  static Future<void> init() async {
+    _instance = await SharedPreferences.getInstance();
   }
 
   Future<void> clear() async {
