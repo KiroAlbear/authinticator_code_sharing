@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../widgets/splash_screen.dart';
+
 class Routes {
   static BuildContext? buildContext;
 
@@ -12,6 +14,7 @@ class Routes {
       GlobalKey<NavigatorState>();
 
   static const String mainScreen = '/';
+  static const String splashScreen = '/splash';
   static const String loginScreen = '/login';
   static const String registerAdminScreen = '/registerAdminScreen';
   static const String forgetPasswordScreen = '/forget_password';
@@ -23,7 +26,7 @@ class Routes {
 
   static final GoRouter goRouter = GoRouter(
     observers: [],
-    initialLocation: loginScreen,
+    initialLocation: splashScreen,
     navigatorKey: rootNavigatorKey,
     debugLogDiagnostics: false,
     routes: <RouteBase>[
@@ -33,6 +36,13 @@ class Routes {
         name: mainScreen,
         pageBuilder: (context, state) =>
             _fadeTransitionScreenWrapper(context, state, TestFeaturePage()),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        path: splashScreen,
+        name: splashScreen,
+        pageBuilder: (context, state) =>
+            _fadeTransitionScreenWrapper(context, state, SplashScreen()),
       ),
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,

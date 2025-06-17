@@ -42,19 +42,6 @@ class _LoginPagePageState extends BaseState<LoginPage> {
 
   @override
   void didChangeDependencies() {
-    getChosenAdmin().then(
-      (value) {
-        if (value.email.isNotEmpty && value.password.isNotEmpty) {
-          Routes.clearStack();
-          Routes.navigateToScreen(
-            Routes.adminHomeScreen,
-            NavigationType.pushReplacementNamed,
-            context,
-          );
-        }
-      },
-    );
-
     super.didChangeDependencies();
   }
 
