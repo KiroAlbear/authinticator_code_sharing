@@ -35,12 +35,17 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
 
     if (!_isInitialized && ModalRoute.of(context)!.isCurrent) {
       _isInitialized = true;
-      BlocProvider.of<AdminHomeBloc>(context).add(getAdminHomeEvent(
-        requestModel: AdminHomeRequestModel(
-          email: Constants.chosenAdmin.email,
-          password: Constants.chosenAdmin.password,
-        ),
-      ));
+      getChosenAdmin().then(
+        (EmailPasswordModel value) {
+          Constants.chosenAdmin = value;
+          BlocProvider.of<AdminHomeBloc>(context).add(getAdminHomeEvent(
+            requestModel: AdminHomeRequestModel(
+              email: value.email,
+              password: value.password,
+            ),
+          ));
+        },
+      );
     }
   }
 

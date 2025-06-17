@@ -47,8 +47,7 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
       (EmailPasswordModel value) {
         BlocProvider.of<ProfileBloc>(context).add(
           getProfileEvent(ProfileRequestModel(
-              email: Constants.chosenAdmin.email,
-              password: Constants.chosenAdmin.password)),
+              email: value.email, password: value.password)),
         );
       },
     );
