@@ -42,10 +42,15 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    BlocProvider.of<ProfileBloc>(context).add(
-      getProfileEvent(ProfileRequestModel(
-          email: Constants.chosenAdmin.email,
-          password: Constants.chosenAdmin.password)),
+
+    getChosenAdmin().then(
+      (EmailPasswordModel value) {
+        BlocProvider.of<ProfileBloc>(context).add(
+          getProfileEvent(ProfileRequestModel(
+              email: Constants.chosenAdmin.email,
+              password: Constants.chosenAdmin.password)),
+        );
+      },
     );
   }
 
