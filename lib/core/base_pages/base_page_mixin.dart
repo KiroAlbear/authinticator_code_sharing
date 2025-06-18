@@ -290,19 +290,23 @@ mixin BasePageMixin implements BasePage {
 
   Future<void> _openWhatsApp(String phoneNumber) async {
     final Uri whatsappUri = Uri.parse("https://wa.me/$phoneNumber");
-    if (await canLaunchUrl(whatsappUri)) {
+    // if (await canLaunchUrl(whatsappUri))
+    {
       await launchUrl(whatsappUri, mode: LaunchMode.externalApplication);
-    } else {
-      throw Exception("Could not launch WhatsApp");
     }
+    // else {
+    //   throw Exception("Could not launch WhatsApp");
+    // }
   }
 
   Future<void> _openUrl(String url) async {
     final Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
+    // if (await canLaunchUrl(uri))
+    {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } else {
-      throw Exception("Could not launch Facebook");
     }
+    // else {
+    //   throw Exception("Could not launch Facebook");
+    // }
   }
 }
