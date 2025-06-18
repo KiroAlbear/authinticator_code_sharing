@@ -2,6 +2,7 @@ import 'package:code_grapper/imports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'package:code_grapper/core/base_pages/base_page.dart';
 
@@ -22,6 +23,9 @@ mixin BasePageMixin implements BasePage {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           body(context),
+          SizedBox(
+            height: 180,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -32,24 +36,39 @@ mixin BasePageMixin implements BasePage {
                     SizedBox(
                         height: _socialIconSize,
                         width: _socialIconSize,
-                        child:
-                            SvgPicture.asset(Assets.images.svg.facebookLogo)),
+                        child: GestureDetector(
+                            onTap: () {
+                              _openUrl(
+                                  "https://www.facebook.com/profile.php?id=61572852771732");
+                            },
+                            child: SvgPicture.asset(
+                                Assets.images.svg.facebookLogo))),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        _openUrl(
+                            "https://www.instagram.com/chathub.services?igsh=OG53cGZ5aWdyNnh6");
+                      },
+                      child: SizedBox(
+                          height: _socialIconSize,
+                          width: _socialIconSize,
+                          child: SvgPicture.asset(
+                              Assets.images.svg.instagramLogo)),
+                    ),
                     SizedBox(
                       width: 5,
                     ),
                     SizedBox(
                         height: _socialIconSize,
                         width: _socialIconSize,
-                        child:
-                            SvgPicture.asset(Assets.images.svg.instagramLogo)),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    SizedBox(
-                        height: _socialIconSize,
-                        width: _socialIconSize,
-                        child:
-                            SvgPicture.asset(Assets.images.svg.whatsappLogo)),
+                        child: GestureDetector(
+                            onTap: () {
+                              _openWhatsApp("+16892603417");
+                            },
+                            child: SvgPicture.asset(
+                                Assets.images.svg.whatsappLogo))),
                   ],
                 ),
                 SizedBox(
@@ -61,7 +80,16 @@ mixin BasePageMixin implements BasePage {
                     Text("Powered by",
                         style: GoogleFonts.libreBaskerville(
                           fontSize: 10,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                        )),
+                    SizedBox(
+                      width: 3,
+                    ),
+                    Text("ChatHub Services",
+                        style: GoogleFonts.libreBaskerville(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w900,
                           color: Colors.black,
                         )),
                     SizedBox(
@@ -79,9 +107,6 @@ mixin BasePageMixin implements BasePage {
               ],
             ),
           ),
-          SizedBox(
-            height: 100,
-          )
         ],
       );
     }
@@ -261,5 +286,23 @@ mixin BasePageMixin implements BasePage {
         child: _buildWidgetTree(context),
       ),
     ));
+  }
+
+  Future<void> _openWhatsApp(String phoneNumber) async {
+    final Uri whatsappUri = Uri.parse("https://wa.me/$phoneNumber");
+    if (await canLaunchUrl(whatsappUri)) {
+      await launchUrl(whatsappUri, mode: LaunchMode.externalApplication);
+    } else {
+      throw Exception("Could not launch WhatsApp");
+    }
+  }
+
+  Future<void> _openUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      throw Exception("Could not launch Facebook");
+    }
   }
 }
