@@ -52,6 +52,10 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/alert.png
   AssetGenImage get alert => const AssetGenImage('assets/images/png/alert.png');
 
+  /// File path: assets/images/png/chathub_logo.jpg
+  AssetGenImage get chathubLogo =>
+      const AssetGenImage('assets/images/png/chathub_logo.jpg');
+
   /// File path: assets/images/png/empty_list.png
   AssetGenImage get emptyList =>
       const AssetGenImage('assets/images/png/empty_list.png');
@@ -64,14 +68,21 @@ class $AssetsImagesPngGen {
   AssetGenImage get logo => const AssetGenImage('assets/images/png/logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [alert, emptyList, icLauncher, logo];
+  List<AssetGenImage> get values =>
+      [alert, chathubLogo, emptyList, icLauncher, logo];
 }
 
 class $AssetsImagesSvgGen {
   const $AssetsImagesSvgGen();
 
+  /// File path: assets/images/svg/facebook_logo.svg
+  String get facebookLogo => 'assets/images/svg/facebook_logo.svg';
+
   /// File path: assets/images/svg/ic_next.svg
   String get icNext => 'assets/images/svg/ic_next.svg';
+
+  /// File path: assets/images/svg/instagram_logo.svg
+  String get instagramLogo => 'assets/images/svg/instagram_logo.svg';
 
   /// File path: assets/images/svg/toast_error_icon.svg
   String get toastErrorIcon => 'assets/images/svg/toast_error_icon.svg';
@@ -79,8 +90,18 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/toast_success_icon.svg
   String get toastSuccessIcon => 'assets/images/svg/toast_success_icon.svg';
 
+  /// File path: assets/images/svg/whatsapp_logo.svg
+  String get whatsappLogo => 'assets/images/svg/whatsapp_logo.svg';
+
   /// List of all assets
-  List<String> get values => [icNext, toastErrorIcon, toastSuccessIcon];
+  List<String> get values => [
+        facebookLogo,
+        icNext,
+        instagramLogo,
+        toastErrorIcon,
+        toastSuccessIcon,
+        whatsappLogo
+      ];
 }
 
 class Assets {

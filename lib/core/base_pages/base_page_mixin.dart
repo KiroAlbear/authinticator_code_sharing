@@ -1,9 +1,11 @@
 import 'package:code_grapper/imports.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 part 'package:code_grapper/core/base_pages/base_page.dart';
 
+final double _socialIconSize = 28;
 mixin BasePageMixin implements BasePage {
   Widget _buildWidgetTree(BuildContext context) {
     if (appBar() == null && appbarWidget() != null) {
@@ -16,7 +18,72 @@ mixin BasePageMixin implements BasePage {
         ],
       );
     } else {
-      return body(context);
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          body(context),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                        height: _socialIconSize,
+                        width: _socialIconSize,
+                        child:
+                            SvgPicture.asset(Assets.images.svg.facebookLogo)),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    SizedBox(
+                        height: _socialIconSize,
+                        width: _socialIconSize,
+                        child:
+                            SvgPicture.asset(Assets.images.svg.instagramLogo)),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    SizedBox(
+                        height: _socialIconSize,
+                        width: _socialIconSize,
+                        child:
+                            SvgPicture.asset(Assets.images.svg.whatsappLogo)),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text("Powered by",
+                        style: GoogleFonts.libreBaskerville(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        )),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(1000),
+                            child: Image.asset(
+                                Assets.images.png.chathubLogo.path)))
+                  ],
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 100,
+          )
+        ],
+      );
     }
   }
 
