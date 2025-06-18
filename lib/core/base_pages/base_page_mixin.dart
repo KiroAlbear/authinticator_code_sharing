@@ -303,7 +303,7 @@ mixin BasePageMixin implements BasePage {
     final Uri uri = Uri.parse(url);
     // if (await canLaunchUrl(uri))
     {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+      await launchUrl(uri, mode: LaunchMode.platformDefault);
     }
     // else {
     //   throw Exception("Could not launch Facebook");
