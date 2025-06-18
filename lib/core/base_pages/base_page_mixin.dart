@@ -37,8 +37,8 @@ mixin BasePageMixin implements BasePage {
                         height: _socialIconSize,
                         width: _socialIconSize,
                         child: GestureDetector(
-                            onTap: () {
-                              _openUrl(
+                            onTap: () async {
+                              await _openUrl(
                                   "https://www.facebook.com/profile.php?id=61572852771732");
                             },
                             child: SvgPicture.asset(
@@ -47,9 +47,9 @@ mixin BasePageMixin implements BasePage {
                       width: 5,
                     ),
                     GestureDetector(
-                      onTap: () {
+                      onTap: () async {
                         _openUrl(
-                            "https://www.instagram.com/chathub.services?igsh=OG53cGZ5aWdyNnh6");
+                            await "https://www.instagram.com/chathub.services?igsh=OG53cGZ5aWdyNnh6");
                       },
                       child: SizedBox(
                           height: _socialIconSize,
@@ -64,8 +64,8 @@ mixin BasePageMixin implements BasePage {
                         height: _socialIconSize,
                         width: _socialIconSize,
                         child: GestureDetector(
-                            onTap: () {
-                              _openWhatsApp("+16892603417");
+                            onTap: () async {
+                              await _openWhatsApp("+16892603417");
                             },
                             child: SvgPicture.asset(
                                 Assets.images.svg.whatsappLogo))),
