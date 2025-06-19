@@ -27,87 +27,89 @@ mixin BasePageMixin implements BasePage {
             SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SizedBox(
-                          height: _socialIconSize,
-                          width: _socialIconSize,
-                          child: GestureDetector(
+            hasSocialMedia()
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            SizedBox(
+                                height: _socialIconSize,
+                                width: _socialIconSize,
+                                child: GestureDetector(
+                                    onTap: () async {
+                                      await _openUrl(
+                                          "https://www.facebook.com/profile.php?id=61572852771732");
+                                    },
+                                    child: SvgPicture.asset(
+                                        Assets.images.svg.facebookLogo))),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            GestureDetector(
                               onTap: () async {
-                                await _openUrl(
-                                    "https://www.facebook.com/profile.php?id=61572852771732");
+                                _openUrl(
+                                    await "https://www.instagram.com/chathub.services?igsh=OG53cGZ5aWdyNnh6");
                               },
-                              child: SvgPicture.asset(
-                                  Assets.images.svg.facebookLogo))),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      GestureDetector(
-                        onTap: () async {
-                          _openUrl(
-                              await "https://www.instagram.com/chathub.services?igsh=OG53cGZ5aWdyNnh6");
-                        },
-                        child: SizedBox(
-                            height: _socialIconSize,
-                            width: _socialIconSize,
-                            child: SvgPicture.asset(
-                                Assets.images.svg.instagramLogo)),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      SizedBox(
-                          height: _socialIconSize,
-                          width: _socialIconSize,
-                          child: GestureDetector(
-                              onTap: () async {
-                                await _openWhatsApp("+16892603417");
-                              },
-                              child: SvgPicture.asset(
-                                  Assets.images.svg.whatsappLogo))),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text("Powered by",
-                          style: GoogleFonts.libreBaskerville(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black,
-                          )),
-                      SizedBox(
-                        width: 3,
-                      ),
-                      Text("ChatHub Services",
-                          style: GoogleFonts.libreBaskerville(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.black,
-                          )),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(1000),
-                              child: Image.asset(
-                                  Assets.images.png.chathubLogo.path)))
-                    ],
+                              child: SizedBox(
+                                  height: _socialIconSize,
+                                  width: _socialIconSize,
+                                  child: SvgPicture.asset(
+                                      Assets.images.svg.instagramLogo)),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SizedBox(
+                                height: _socialIconSize,
+                                width: _socialIconSize,
+                                child: GestureDetector(
+                                    onTap: () async {
+                                      await _openWhatsApp("+16892603417");
+                                    },
+                                    child: SvgPicture.asset(
+                                        Assets.images.svg.whatsappLogo))),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text("Powered by",
+                                style: GoogleFonts.libreBaskerville(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black,
+                                )),
+                            SizedBox(
+                              width: 3,
+                            ),
+                            Text("ChatHub Services",
+                                style: GoogleFonts.libreBaskerville(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.black,
+                                )),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(1000),
+                                    child: Image.asset(
+                                        Assets.images.png.chathubLogo.path)))
+                          ],
+                        )
+                      ],
+                    ),
                   )
-                ],
-              ),
-            ),
+                : SizedBox(),
           ],
         ),
       );

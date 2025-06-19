@@ -48,17 +48,26 @@ class _SplashScreenState extends BaseState<SplashScreen> {
   bool containPadding() => false;
 
   @override
+  bool hasSocialMedia() => false;
+
+  @override
+  bool hasSideMenu() => false;
+
+  @override
   PreferredSizeWidget? appBar() => null;
 
   @override
   Widget body(BuildContext context) {
     return Material(
       color: Colors.white,
-      child: Center(
-        child: Image.asset(
-          Assets.images.png.logo.path,
-          width: 200,
-          height: 200,
+      child: Container(
+        height: 900,
+        child: Center(
+          child: Image.asset(
+            Assets.images.png.logo.path,
+            width: 200,
+            height: 200,
+          ),
         ),
       ),
     );

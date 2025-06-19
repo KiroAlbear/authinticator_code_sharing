@@ -29,6 +29,9 @@ abstract class BaseState<T extends BaseStatefulPage> extends State<T>
   @override
   bool showOnlyLogout() => false;
 
+  @override
+  bool hasSocialMedia() => true;
+
   late final GifController _controller;
 
   Future<EmailPasswordModel> getChosenAdmin() async {

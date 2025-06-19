@@ -13,6 +13,8 @@ sealed class BasePage {
 
   bool showOnlyLogout() => false;
 
+  bool hasSocialMedia() => true;
+
   Widget body(BuildContext context);
 
 // bool isMainPage();
