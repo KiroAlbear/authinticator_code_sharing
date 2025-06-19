@@ -52,14 +52,15 @@ class _SplashScreenState extends BaseState<SplashScreen> {
 
   @override
   Widget body(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: Center(
-          child: Image.asset(
-            Assets.images.png.logo.path,
-            width: 200,
-            height: 200,
-          ),
-        ));
+    return Material(
+      color: Colors.white,
+      child: Center(
+        child: Image.asset(
+          Assets.images.png.logo.path,
+          width: 200,
+          height: 200,
+        ),
+      ),
+    );
   }
 }
