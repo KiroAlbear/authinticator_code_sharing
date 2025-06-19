@@ -23,12 +23,9 @@ mixin BasePageMixin implements BasePage {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            SizedBox(
-              height: 80,
-            ),
             body(context),
             SizedBox(
-              height: 100,
+              height: 10,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

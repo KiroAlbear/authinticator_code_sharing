@@ -114,67 +114,64 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
               // ),
             ],
           ),
-          Expanded(
-            child: ParentBloc<AdminHomeBloc, AdminHomeState>(
-              emptyWidget: const EmptyUsersWidget(),
-              builder: (AdminHomeState state) {
-                return Container(
-                  constraints: BoxConstraints(
-                    maxWidth: AppDimensions.cardMaxWidth + 100,
-                  ),
-                  child: Stack(
-                    children: [
-                      ListView.separated(
-                        shrinkWrap: true,
-                        itemCount:
-                            state.adminHomeResponseModel!.usersList.length,
-                        separatorBuilder: (context, index) =>
-                            const SizedBox(height: 10),
-                        itemBuilder: (context, index) {
-                          return AdminUserItem(
-                            userId: state.adminHomeResponseModel!
-                                .usersList[index].userCode,
-                            name: state
-                                .adminHomeResponseModel!.usersList[index].name,
-                            phone: state.adminHomeResponseModel!
-                                .usersList[index].userPhone,
-                            email: state
-                                .adminHomeResponseModel!.usersList[index].email,
-                            adminPassword: Constants.chosenAdmin.password,
-                            expiryDate: state.adminHomeResponseModel!
-                                .usersList[index].expiryDate,
-                            lastLoginDate: state.adminHomeResponseModel!
-                                .usersList[index].lastLoginDate,
-                            startDate: state.adminHomeResponseModel!
-                                .usersList[index].startDate,
-                            endDate: state.adminHomeResponseModel!
-                                .usersList[index].endDate,
-                            requestedCodes: state.adminHomeResponseModel!
-                                .usersList[index].loginCount,
-                            daysLeft: state.adminHomeResponseModel!
-                                .usersList[index].daysLeft,
-                            isNew: state.adminHomeResponseModel!
-                                    .usersList[index].firstLoginDate ==
-                                null,
-                            isBlocked: state.adminHomeResponseModel!
-                                    .usersList[index].isActive ==
-                                false,
-                            isMaximumCodesReached: state.adminHomeResponseModel!
-                                .usersList[index].isMaximumCodesReached,
-                          );
-                        },
-                      ),
-                      state.savingStatus == Status.loading
-                          ? Container(
-                              color: Colors.black.withAlpha(50),
-                              child: const AppLoadingBar(),
-                            )
-                          : const SizedBox()
-                    ],
-                  ),
-                );
-              },
-            ),
+          ParentBloc<AdminHomeBloc, AdminHomeState>(
+            emptyWidget: const EmptyUsersWidget(),
+            builder: (AdminHomeState state) {
+              return Container(
+                constraints: BoxConstraints(
+                  maxWidth: AppDimensions.cardMaxWidth + 100,
+                ),
+                child: Stack(
+                  children: [
+                    ListView.separated(
+                      shrinkWrap: true,
+                      itemCount: state.adminHomeResponseModel!.usersList.length,
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 10),
+                      itemBuilder: (context, index) {
+                        return AdminUserItem(
+                          userId: state.adminHomeResponseModel!.usersList[index]
+                              .userCode,
+                          name: state
+                              .adminHomeResponseModel!.usersList[index].name,
+                          phone: state.adminHomeResponseModel!.usersList[index]
+                              .userPhone,
+                          email: state
+                              .adminHomeResponseModel!.usersList[index].email,
+                          adminPassword: Constants.chosenAdmin.password,
+                          expiryDate: state.adminHomeResponseModel!
+                              .usersList[index].expiryDate,
+                          lastLoginDate: state.adminHomeResponseModel!
+                              .usersList[index].lastLoginDate,
+                          startDate: state.adminHomeResponseModel!
+                              .usersList[index].startDate,
+                          endDate: state
+                              .adminHomeResponseModel!.usersList[index].endDate,
+                          requestedCodes: state.adminHomeResponseModel!
+                              .usersList[index].loginCount,
+                          daysLeft: state.adminHomeResponseModel!
+                              .usersList[index].daysLeft,
+                          isNew: state.adminHomeResponseModel!.usersList[index]
+                                  .firstLoginDate ==
+                              null,
+                          isBlocked: state.adminHomeResponseModel!
+                                  .usersList[index].isActive ==
+                              false,
+                          isMaximumCodesReached: state.adminHomeResponseModel!
+                              .usersList[index].isMaximumCodesReached,
+                        );
+                      },
+                    ),
+                    state.savingStatus == Status.loading
+                        ? Container(
+                            color: Colors.black.withAlpha(50),
+                            child: const AppLoadingBar(),
+                          )
+                        : const SizedBox()
+                  ],
+                ),
+              );
+            },
           ),
         ],
       ),
