@@ -10,8 +10,7 @@ class UnblockUserButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: AppDimensions.buttonHeight,
+      height: 35,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -25,7 +24,7 @@ class UnblockUserButtonWidget extends StatelessWidget {
           backgroundColor: onPressed == null ? Colors.grey[200] : Colors.white,
         ),
         child: Text(
-          "Unblock User",
+          "Unblock",
           style: TextStyleBlueprint.style(context,
               color: onPressed == null ? Colors.grey : Colors.green,
               fontSize: 16.0,

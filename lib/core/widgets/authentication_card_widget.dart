@@ -5,15 +5,16 @@ import 'package:google_fonts/google_fonts.dart';
 class AuthenticationCardWidget extends StatelessWidget {
   final Widget child;
   final String title;
+  final double? maxWidth;
 
   const AuthenticationCardWidget(
-      {super.key, required this.title, required this.child});
+      {super.key, required this.title, required this.child, this.maxWidth});
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        maxWidth:
+        maxWidth: maxWidth ??
             AppDimensions.cardMaxWidth, // Set a maximum width for the container
 
         // Set a maximum width for the container

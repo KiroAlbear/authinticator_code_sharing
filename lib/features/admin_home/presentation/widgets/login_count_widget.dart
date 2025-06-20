@@ -11,19 +11,18 @@ class LoginCountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          color: StaticColors.primaryColor.withAlpha(20),
-          borderRadius: BorderRadius.circular(5.0),
-          border: Border.all(
-            color: Colors.purple,
-            width: 1.0,
-          ),
+          color: Theme.of(context).primaryColor,
+          borderRadius: BorderRadius.circular(100.0),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 3),
+          padding: const EdgeInsets.all(12),
           child: Text(
             count.toString(),
-            style: AppTextStyles.regular_14_black(context)
-                .copyWith(color: Colors.purple),
+            style: TextStyleBlueprint.style(context,
+                color: Colors.white,
+                fontSize: 14.0,
+                height: 0.5,
+                fontWeight: FontWeight.w600),
           ),
         ));
   }

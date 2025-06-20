@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../imports.dart';
@@ -70,15 +69,18 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
                   ),
                 ),
               ),
-              5.horizontalSpace,
-              _buildTextButton(context, "Refresh", Icons.refresh, () {
-                BlocProvider.of<AdminHomeBloc>(context).add(getAdminHomeEvent(
-                  requestModel: AdminHomeRequestModel(
-                    email: Constants.chosenAdmin.email,
-                    password: Constants.chosenAdmin.password,
-                  ),
-                ));
-              }),
+
+              Padding(
+                padding: EdgeInsetsDirectional.only(start: 10),
+                child: _buildTextButton(context, "Refresh", Icons.refresh, () {
+                  BlocProvider.of<AdminHomeBloc>(context).add(getAdminHomeEvent(
+                    requestModel: AdminHomeRequestModel(
+                      email: Constants.chosenAdmin.email,
+                      password: Constants.chosenAdmin.password,
+                    ),
+                  ));
+                }),
+              ),
 
               // BlocBuilder<AdminHomeBloc, AdminHomeState>(
               //   builder: (context, state) {
@@ -106,6 +108,7 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
                   children: [
                     ListView.separated(
                       shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: state.adminHomeResponseModel!.usersList.length,
                       separatorBuilder: (context, index) =>
                           const SizedBox(height: 10),

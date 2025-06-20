@@ -45,6 +45,7 @@ class AdminUserItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 5.0),
+        padding: EdgeInsetsDirectional.only(bottom: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
@@ -57,177 +58,289 @@ class AdminUserItem extends StatelessWidget {
             ),
           ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.only(start: _horizontalPadding),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8.0),
+                  topRight: Radius.circular(8.0),
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsetsDirectional.only(
+                    start: _horizontalPadding,
+                    end: _horizontalPadding,
+                    top: 10,
+                    bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text(
-                          userId,
-                          style:
-                              AppTextStyles.bold_20_black_appbarText(context),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "user Password",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                            SizedBox(height: 3),
+                            Text(
+                              userId,
+                              style: AppTextStyles.bold_20_black_appbarText(
+                                      context)
+                                  .copyWith(color: Colors.white),
+                            ),
+                          ],
                         ),
-                        IconButton(
-                            onPressed: () {
-                              Clipboard.setData(ClipboardData(text: userId));
-                              AppToast.showToast("User ID copied to clipboard",
-                                  type: AppToastType.success, context: context);
-                            },
-                            icon: Icon(Icons.copy, color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsetsDirectional.only(start: 5),
+                          child: InkWell(
+                              onTap: () {
+                                Clipboard.setData(ClipboardData(text: userId));
+                                AppToast.showToast(
+                                    "User ID copied to clipboard",
+                                    type: AppToastType.success,
+                                    context: context);
+                              },
+                              child: Icon(
+                                Icons.copy,
+                                color: Colors.white,
+                                size: 20,
+                              )),
+                        ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        isBlocked
-                            ? UserBlockedWidget()
-                            : isNew
-                                ? UserNewWidget()
-                                : SizedBox(),
-                        IconButton(
-                            onPressed: () {
-                              showDialog(
-                                useRootNavigator: true,
-                                context: context,
-                                builder: (_) {
-                                  return CustomOkCancelDialog(
-                                    onOkPressed: () {
-                                      BlocProvider.of<AdminHomeBloc>(context)
-                                          .add(deleteUserEvent(
-                                              requestModel:
-                                                  DeleteUserRequestModel(
-                                                      userCode: userId,
-                                                      email: email,
-                                                      password:
-                                                          adminPassword)));
-                                    },
-                                  );
-                                },
-                              );
-                            },
-                            icon: Icon(Icons.delete, color: Colors.red)),
-                      ],
-                    ),
+
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple[100],
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12.0, vertical: 8.0),
+                        child: Text(
+                          name.substring(0, 2).toUpperCase(),
+                          style: AppTextStyles.regular_14_white(context)
+                              .copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                  color: Theme.of(context).primaryColor),
+                        ),
+                      ),
+                    )
+                    // Row(
+                    //   children: [
+                    //     isBlocked
+                    //         ? UserBlockedWidget()
+                    //         : isNew
+                    //             ? UserNewWidget()
+                    //             : SizedBox(),
+                    //     IconButton(
+                    //         onPressed: () {
+                    //           showDialog(
+                    //             useRootNavigator: true,
+                    //             context: context,
+                    //             builder: (_) {
+                    //               return CustomOkCancelDialog(
+                    //                 onOkPressed: () {
+                    //                   BlocProvider.of<AdminHomeBloc>(context)
+                    //                       .add(deleteUserEvent(
+                    //                           requestModel:
+                    //                               DeleteUserRequestModel(
+                    //                                   userCode: userId,
+                    //                                   email: email,
+                    //                                   password:
+                    //                                       adminPassword)));
+                    //                 },
+                    //               );
+                    //             },
+                    //           );
+                    //         },
+                    //         icon: Icon(Icons.delete, color: Colors.red)),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
-                child: Column(
-                  children: [
-                    25.verticalSpace,
-                    _buildRowItem(
-                        title: "Name:", value: name, context: context),
-                    phone.isEmpty ? SizedBox() : seperatorHeight,
-                    phone.isEmpty
-                        ? SizedBox()
-                        : _buildRowItem(
-                            title: "Phone:", value: phone, context: context),
-                    seperatorHeight,
-                    _buildRowItem(
-                        title: "Email:", value: email, context: context),
-                    expiryDate == null ? SizedBox() : seperatorHeight,
-                    expiryDate == null
-                        ? SizedBox()
-                        : _buildRowItem(
-                            title: "Expiry Date:",
-                            value: expiryDate!,
-                            context: context),
-                    lastLoginDate == null ? SizedBox() : seperatorHeight,
-                    lastLoginDate == null
-                        ? SizedBox()
-                        : _buildRowItem(
-                            title: "Last Login Date:",
-                            value: lastLoginDate!,
-                            context: context),
-                    startDate == null ? SizedBox() : seperatorHeight,
-                    startDate == null
-                        ? SizedBox()
-                        : _buildRowItem(
-                            title: "Start Date:",
-                            value: startDate!,
-                            context: context),
-                    endDate == null ? SizedBox() : seperatorHeight,
-                    endDate == null
-                        ? SizedBox()
-                        : _buildRowItem(
-                            title: "End Date:",
-                            value: endDate!,
-                            context: context),
-                    requestedCodes == null ? SizedBox() : seperatorHeight,
-                    requestedCodes == null
-                        ? SizedBox()
-                        : _buildRowItem(
-                            title: "Requested Codes:",
-                            value: requestedCodes.toString(),
-                            context: context,
-                            widget: LoginCountWidget(count: requestedCodes!)),
-                    seperatorHeight,
-                    _buildRowItem(
-                        title: "Days Left:",
-                        value: daysLeft.toString(),
-                        context: context,
-                        widget: DaysCountWidget(count: daysLeft)),
-                    isMaximumCodesReached ? 10.verticalSpace : SizedBox(),
-                    isMaximumCodesReached
-                        ? MaximumCodesReachedWidget(
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (_) {
-                                  return CustomOkCancelDialog(
-                                    onOkPressed: () {
-                                      BlocProvider.of<AdminHomeBloc>(context)
-                                          .add(resetUserEvent(
-                                              requestModel:
-                                                  ResetUserRequestModel(
-                                                      email: email,
-                                                      userCode: userId)));
-                                    },
-                                  );
-                                },
-                              );
-                            },
-                          )
-                        : SizedBox(),
-                    15.verticalSpace,
-                    isBlocked
-                        ? UnblockUserButtonWidget(onPressed: () {
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  15.verticalSpace,
+                  Row(
+                    children: [
+                      Text("Account Details",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black)),
+                      SizedBox(width: 10),
+                      isBlocked
+                          ? UserBlockedWidget()
+                          : isNew
+                              ? UserNewWidget()
+                              : SizedBox(),
+                    ],
+                  ),
+                  seperatorHeight,
+                  _buildRowItem(title: "Name", value: name, context: context),
+                  phone.isEmpty ? SizedBox() : seperatorHeight,
+                  phone.isEmpty
+                      ? SizedBox()
+                      : _buildRowItem(
+                          title: "Phone", value: phone, context: context),
+                  seperatorHeight,
+                  _buildRowItem(title: "Email", value: email, context: context),
+                  // expiryDate == null ? SizedBox() : seperatorHeight,
+                  // expiryDate == null
+                  //     ? SizedBox()
+                  //     : _buildRowItem(
+                  //         title: "Expiry Date",
+                  //         value: expiryDate!,
+                  //         context: context),
+
+                  startDate == null ? SizedBox() : seperatorHeight,
+                  startDate == null
+                      ? SizedBox()
+                      : _buildRowItem(
+                          title: "Start Date",
+                          value: startDate!,
+                          context: context),
+                  endDate == null ? SizedBox() : seperatorHeight,
+                  endDate == null
+                      ? SizedBox()
+                      : _buildRowItem(
+                          title: "End Date", value: endDate!, context: context),
+                  seperatorHeight,
+                  _buildRowItem(
+                      title: "Days Left",
+                      value: daysLeft.toString(),
+                      context: context,
+                      widget: DaysCountWidget(count: daysLeft)),
+                  Container(
+                    height: 1,
+                    color: Colors.grey.withAlpha(50),
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                  ),
+                  Text("Logins Usage",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black)),
+                  lastLoginDate == null ? SizedBox() : seperatorHeight,
+                  lastLoginDate == null
+                      ? SizedBox()
+                      : _buildRowItem(
+                          title: "Last Login Date",
+                          value: lastLoginDate!,
+                          context: context),
+                  requestedCodes == null ? SizedBox() : seperatorHeight,
+                  requestedCodes == null
+                      ? SizedBox()
+                      : _buildRowItem(
+                          title: "Requested Codes",
+                          value: requestedCodes.toString(),
+                          context: context,
+                          widget: LoginCountWidget(count: requestedCodes!)),
+                  isMaximumCodesReached ? 10.verticalSpace : SizedBox(),
+                  isMaximumCodesReached
+                      ? MaximumCodesReachedWidget(
+                          onPressed: () {
                             showDialog(
                               context: context,
                               builder: (_) {
                                 return CustomOkCancelDialog(
                                   onOkPressed: () {
                                     BlocProvider.of<AdminHomeBloc>(context).add(
-                                        enableDisableUserEvent(
-                                            requestModel:
-                                                EnableDisableUserRequestModel(
-                                                    email: email,
-                                                    userCode: userId,
-                                                    isActive: true)));
+                                        resetUserEvent(
+                                            requestModel: ResetUserRequestModel(
+                                                email: email,
+                                                userCode: userId)));
                                   },
                                 );
                               },
                             );
-                          })
-                        : _blockUserButton(context),
-                  ],
-                ),
+                          },
+                        )
+                      : SizedBox(),
+                  15.verticalSpace,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            showDialog(
+                              useRootNavigator: true,
+                              context: context,
+                              builder: (_) {
+                                return CustomOkCancelDialog(
+                                  onOkPressed: () {
+                                    BlocProvider.of<AdminHomeBloc>(context).add(
+                                        deleteUserEvent(
+                                            requestModel:
+                                                DeleteUserRequestModel(
+                                                    userCode: userId,
+                                                    email: email,
+                                                    password: adminPassword)));
+                                  },
+                                );
+                              },
+                            );
+                          },
+                          child: Text(
+                            "Delete",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600),
+                          )),
+                      SizedBox(width: 10),
+                      isBlocked
+                          ? _unBlockUserButton(context)
+                          : _blockUserButton(context),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ));
+  }
+
+  Widget _unBlockUserButton(BuildContext context) {
+    return UnblockUserButtonWidget(onPressed: () {
+      showDialog(
+        context: context,
+        builder: (_) {
+          return CustomOkCancelDialog(
+            onOkPressed: () {
+              BlocProvider.of<AdminHomeBloc>(context).add(
+                  enableDisableUserEvent(
+                      requestModel: EnableDisableUserRequestModel(
+                          email: email, userCode: userId, isActive: true)));
+            },
+          );
+        },
+      );
+    });
   }
 
   Widget _blockUserButton(BuildContext context) {
     return CustomElevatedButton(
-      width: double.infinity,
+      height: 35,
       onPressed: () {
         showDialog(
           context: context,
@@ -243,7 +356,7 @@ class AdminUserItem extends StatelessWidget {
           },
         );
       },
-      text: "Block User",
+      text: "Block",
       color: Colors.red,
     );
   }
@@ -259,8 +372,8 @@ class AdminUserItem extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppTextStyles.regular_14_black(context)
-              .copyWith(color: Colors.black, fontWeight: FontWeight.w700),
+          style: AppTextStyles.regular_14_black(context).copyWith(
+              color: Colors.black.withAlpha(95), fontWeight: FontWeight.w700),
         ),
         widget ??
             Text(
