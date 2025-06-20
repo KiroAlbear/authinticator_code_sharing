@@ -30,7 +30,7 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
 
   @override
   PreferredSizeWidget? appBar() => CustomAppbar(
-        title: "Register User",
+        title: "Add User",
         hasBackButton: false,
       );
 
@@ -106,7 +106,7 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
     return SlideTransition(
       position: _offsetAnimation,
       child: AuthenticationCardWidget(
-        title: "Register User",
+        title: "Add User",
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

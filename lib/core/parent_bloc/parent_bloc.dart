@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../imports.dart';
 
@@ -30,10 +29,7 @@ class ParentBloc<B extends StateStreamable<S>, S> extends StatelessWidget {
     if ((state as ParentState).status == Status.initial) {
       return loadingWidget ?? const AppLoadingBar();
     } else if (((state as ParentState).status == Status.loading)) {
-      return loadingWidget ??
-          Center(
-              child: LoadingAnimationWidget.staggeredDotsWave(
-                  color: StaticColors.primaryColor, size: 50));
+      return loadingWidget ?? const AppLoadingBar();
     } else if ((state as ParentState).status == Status.empty) {
       return emptyWidget ?? const NoDataErrorWidget();
     } else if ((state as ParentState).status == Status.error &&

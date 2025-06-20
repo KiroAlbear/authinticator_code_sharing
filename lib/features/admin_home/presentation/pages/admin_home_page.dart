@@ -163,9 +163,15 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
                       },
                     ),
                     state.savingStatus == Status.loading
-                        ? Container(
-                            color: Colors.black.withAlpha(50),
-                            child: const AppLoadingBar(),
+                        ? Positioned(
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            child: Container(
+                              color: Colors.black.withAlpha(50),
+                              child: const AppLoadingBar(),
+                            ),
                           )
                         : const SizedBox()
                   ],

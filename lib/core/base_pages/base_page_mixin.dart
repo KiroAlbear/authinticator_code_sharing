@@ -190,8 +190,8 @@ mixin BasePageMixin implements BasePage {
                                   ListTile(
                                     leading: const Icon(
                                         Icons.app_registration_outlined),
-                                    title: const Text('Register User'),
-                                    subtitle: const Text('Register a new user'),
+                                    title: const Text('Add User'),
+                                    subtitle: const Text('Add new user'),
                                     onTap: () {
                                       Routes.navigateToScreen(
                                           Routes.registerUserScreen,
