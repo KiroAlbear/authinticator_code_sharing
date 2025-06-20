@@ -10,7 +10,7 @@ class UpdateProfileRequestModel {
     required this.adminPassword,
     required this.secretKey,
     required this.maxLoginPerPeriod,
-    required this.resetAfterDays,
+    this.resetAfterDays = 10000, // Default value if not provided
   });
 
   Map<String, dynamic> toJson() {

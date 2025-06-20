@@ -102,7 +102,7 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
                     CustomTextField(
                       controller: maxLoginsController,
                       isNumbersOnlyField: true,
-                      labelText: "Max Logins",
+                      labelText: "Maximum codes per user",
                       keyboardType: TextInputType.phone,
                       validationMessage: "should be a positive number",
                       validationFunction: (p0) {
@@ -119,25 +119,25 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
                     SizedBox(height: 15),
 
                     // Reset After
-                    CustomTextField(
-                      controller: resetAfterController,
-                      isNumbersOnlyField: true,
-                      labelText: "Reset After",
-                      keyboardType: TextInputType.phone,
-                      validationMessage: "should be a positive number",
-                      validationFunction: (p0) {
-                        if (p0 == null || p0.isEmpty) {
-                          return false;
-                        }
-                        final value = int.tryParse(p0);
-                        if (value == null || value <= 0) {
-                          return false;
-                        }
-                        return true;
-                      },
-                    ),
+                    // CustomTextField(
+                    //   controller: resetAfterController,
+                    //   isNumbersOnlyField: true,
+                    //   labelText: "Reset After",
+                    //   keyboardType: TextInputType.phone,
+                    //   validationMessage: "should be a positive number",
+                    //   validationFunction: (p0) {
+                    //     if (p0 == null || p0.isEmpty) {
+                    //       return false;
+                    //     }
+                    //     final value = int.tryParse(p0);
+                    //     if (value == null || value <= 0) {
+                    //       return false;
+                    //     }
+                    //     return true;
+                    //   },
+                    // ),
 
-                    SizedBox(height: 15),
+                    // SizedBox(height: 15),
 
                     // Start Date
                     CustomTextField(
@@ -174,14 +174,12 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
                             onOkPressed: () {
                               BlocProvider.of<ProfileBloc>(context).add(
                                 updateProfileEvent(UpdateProfileRequestModel(
-                                    adminUserName: Constants.chosenAdmin.email,
-                                    adminPassword:
-                                        Constants.chosenAdmin.password,
-                                    secretKey: secretKeyController.text,
-                                    maxLoginPerPeriod:
-                                        int.parse(maxLoginsController.text),
-                                    resetAfterDays:
-                                        int.parse(resetAfterController.text))),
+                                  adminUserName: Constants.chosenAdmin.email,
+                                  adminPassword: Constants.chosenAdmin.password,
+                                  secretKey: secretKeyController.text,
+                                  maxLoginPerPeriod:
+                                      int.parse(maxLoginsController.text),
+                                )),
                               );
                             },
                           );
