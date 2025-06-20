@@ -77,7 +77,7 @@ class AdminHomeBloc extends Bloc<AdminHomeEvent, AdminHomeState> {
 
   void _updateUserList(UserResponseModel userResponseModel) {
     for (var user in state.adminHomeResponseModel!.usersList) {
-      if (user.userPhone == userResponseModel.phone) {
+      if (user.userCode == userResponseModel.userCode) {
         user.expiryDate = userResponseModel.expiryDate;
         user.isMaximumCodesReached = userResponseModel.isMaximumCodesReached;
         user.loginCount = userResponseModel.loginCounter;

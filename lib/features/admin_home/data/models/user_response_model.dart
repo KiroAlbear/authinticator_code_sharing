@@ -1,6 +1,7 @@
 class UserResponseModel {
   final String email;
   final String phone;
+  final String userCode;
   final String? lastLoginCode;
   final int loginCounter;
   final String? lastLoginDate;
@@ -12,6 +13,7 @@ class UserResponseModel {
   UserResponseModel({
     required this.email,
     required this.phone,
+    required this.userCode,
     this.lastLoginCode,
     required this.loginCounter,
     this.lastLoginDate,
@@ -25,6 +27,7 @@ class UserResponseModel {
     return UserResponseModel(
       email: json['email'],
       phone: json['phone'],
+      userCode: json['userCode'],
       lastLoginCode: json['lastLoginCode'],
       loginCounter: json['loginCounter'],
       lastLoginDate: json['lastLoginDate'],

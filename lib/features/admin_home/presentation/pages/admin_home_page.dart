@@ -71,47 +71,28 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
                 ),
               ),
               5.horizontalSpace,
-              IconButton(
-                icon: const Icon(Icons.refresh),
-                color: Theme.of(context).primaryColor,
-                style: IconButton.styleFrom(
-                  backgroundColor: Theme.of(context).primaryColor.withAlpha(20),
-                ),
-                onPressed: () {
-                  BlocProvider.of<AdminHomeBloc>(context).add(getAdminHomeEvent(
-                    requestModel: AdminHomeRequestModel(
-                      email: Constants.chosenAdmin.email,
-                      password: Constants.chosenAdmin.password,
-                    ),
-                  ));
-                },
-              ),
-              const Spacer(),
-              // block all users button
+              _buildTextButton(context, "Refresh", Icons.refresh, () {
+                BlocProvider.of<AdminHomeBloc>(context).add(getAdminHomeEvent(
+                  requestModel: AdminHomeRequestModel(
+                    email: Constants.chosenAdmin.email,
+                    password: Constants.chosenAdmin.password,
+                  ),
+                ));
+              }),
+
               // BlocBuilder<AdminHomeBloc, AdminHomeState>(
               //   builder: (context, state) {
-              //     return IconButton(
-              //       icon: Icon(
-              //         Icons.lock,
-              //       ),
-              //       color: Theme.of(context).primaryColor,
-              //       style: IconButton.styleFrom(
-              //         backgroundColor:
-              //             Theme.of(context).primaryColor.withAlpha(20),
-              //       ),
-              //       onPressed: () {
-              //         BlocProvider.of<AdminHomeBloc>(context)
-              //             .add(enableDisableAllUsersEvent(
-              //           requestModel: EnableDisableAllUsersRequestModel(
-              //             email: Constants.chosenAdmin.email,
-              //             password: Constants.chosenAdmin.password,
-              //             isActive: false,
-              //           ),
-              //         ));
-              //       },
-              //     );
-              //   },
-              // ),
+              //     return _buildTextButton(
+              //         context, "Reset Logins for all users", Icons.lock, () {
+              //       BlocProvider.of<AdminHomeBloc>(context)
+              //           .add(enableDisableAllUsersEvent(
+              //         requestModel: EnableDisableAllUsersRequestModel(
+              //           email: Constants.chosenAdmin.email,
+              //           password: Constants.chosenAdmin.password,
+              //           isActive: false,
+              //         ),
+              //       ));
+              //     });
             ],
           ),
           ParentBloc<AdminHomeBloc, AdminHomeState>(
@@ -181,6 +162,29 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildTextButton(BuildContext context, String text, IconData icon,
+      VoidCallback onPressed) {
+    return TextButton(
+      child: Row(
+        children: [
+          Icon(icon),
+          SizedBox(width: 5),
+          Text(
+            text,
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 12,
+            ),
+          ),
+        ],
+      ),
+      style: IconButton.styleFrom(
+        backgroundColor: Theme.of(context).primaryColor.withAlpha(20),
+      ),
+      onPressed: onPressed,
     );
   }
 }
