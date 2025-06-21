@@ -49677,7 +49677,7 @@ $1(a){return this.a33(a)},
 a33(a){var s=0,r=A.w(t.G0),q,p=this
 var $async$$1=A.r(function(b,c){if(b===1)return A.t(c,r)
 while(true)switch(s){case 0:s=3
-return A.A(p.a.a.jH("https://chatgpt-fastapi-391j.onrender.com/getAllAdminUsers",a.cU(),A.aTy(),t.di),$async$$1)
+return A.A(p.a.a.jH("http://56.228.27.101/getAllAdminUsers",a.cU(),A.aTy(),t.di),$async$$1)
 case 3:q=c
 s=1
 break
@@ -49688,7 +49688,7 @@ $1(a){return this.a3b(a)},
 a3b(a){var s=0,r=A.w(t.G0),q,p=this
 var $async$$1=A.r(function(b,c){if(b===1)return A.t(c,r)
 while(true)switch(s){case 0:s=3
-return A.A(p.a.a.jH("https://chatgpt-fastapi-391j.onrender.com/deleteUser",a.cU(),A.aTy(),t.di),$async$$1)
+return A.A(p.a.a.jH("http://56.228.27.101/deleteUser",a.cU(),A.aTy(),t.di),$async$$1)
 case 3:q=c
 s=1
 break
@@ -49699,7 +49699,7 @@ $1(a){return this.a3d(a)},
 a3d(a){var s=0,r=A.w(t.G0),q,p=this
 var $async$$1=A.r(function(b,c){if(b===1)return A.t(c,r)
 while(true)switch(s){case 0:s=3
-return A.A(p.a.a.jH("https://chatgpt-fastapi-391j.onrender.com/enableDisableAllAdminUsers",a.cU(),A.aTy(),t.di),$async$$1)
+return A.A(p.a.a.jH("http://56.228.27.101/enableDisableAllAdminUsers",a.cU(),A.aTy(),t.di),$async$$1)
 case 3:q=c
 s=1
 break
@@ -49710,7 +49710,7 @@ $1(a){return this.a3e(a)},
 a3e(a){var s=0,r=A.w(t.UL),q,p=this
 var $async$$1=A.r(function(b,c){if(b===1)return A.t(c,r)
 while(true)switch(s){case 0:s=3
-return A.A(p.a.a.jH("https://chatgpt-fastapi-391j.onrender.com/enableDisableUser",a.cU(),A.b2F(),t.l1),$async$$1)
+return A.A(p.a.a.jH("http://56.228.27.101/enableDisableUser",a.cU(),A.b2F(),t.l1),$async$$1)
 case 3:q=c
 s=1
 break
@@ -49721,7 +49721,7 @@ $1(a){return this.a3n(a)},
 a3n(a){var s=0,r=A.w(t.UL),q,p=this
 var $async$$1=A.r(function(b,c){if(b===1)return A.t(c,r)
 while(true)switch(s){case 0:s=3
-return A.A(p.a.a.jH("https://chatgpt-fastapi-391j.onrender.com/resetUser",a.cU(),A.b2F(),t.l1),$async$$1)
+return A.A(p.a.a.jH("http://56.228.27.101/resetUser",a.cU(),A.b2F(),t.l1),$async$$1)
 case 3:q=c
 s=1
 break
@@ -50049,7 +50049,7 @@ A.Qi.prototype={
 N9(a){return this.aB_(a)},
 aB_(a){var s=0,r=A.w(t.y9),q,p=this
 var $async$N9=A.r(function(b,c){if(b===1)return A.t(c,r)
-while(true)switch(s){case 0:q=p.a.jH("https://chatgpt-fastapi-391j.onrender.com/requestUserCode",a.cU(),A.bj7(),t.Ad)
+while(true)switch(s){case 0:q=p.a.jH("http://56.228.27.101/requestUserCode",a.cU(),A.bj7(),t.Ad)
 s=1
 break
 case 1:return A.u(q,r)}})
@@ -50194,7 +50194,7 @@ A.UZ.prototype={
 Mg(a){return this.ay0(a)},
 ay0(a){var s=0,r=A.w(t.Zy),q,p=this
 var $async$Mg=A.r(function(b,c){if(b===1)return A.t(c,r)
-while(true)switch(s){case 0:q=p.a.jH("https://chatgpt-fastapi-391j.onrender.com/getUserOrAdminData",a.cU(),A.bkK(),t.rp)
+while(true)switch(s){case 0:q=p.a.jH("http://56.228.27.101/getUserOrAdminData",a.cU(),A.bkK(),t.rp)
 s=1
 break
 case 1:return A.u(q,r)}})
@@ -50331,7 +50331,7 @@ $1(a){return this.a3k(a)},
 a3k(a){var s=0,r=A.w(t.fO),q,p=this
 var $async$$1=A.r(function(b,c){if(b===1)return A.t(c,r)
 while(true)switch(s){case 0:s=3
-return A.A(p.a.a.jH("https://chatgpt-fastapi-391j.onrender.com/getAdminProfileData",a.cU(),A.aU2(),t._V),$async$$1)
+return A.A(p.a.a.jH("http://56.228.27.101/getAdminProfileData",a.cU(),A.aU2(),t._V),$async$$1)
 case 3:q=c
 s=1
 break
@@ -50342,7 +50342,7 @@ $1(a){return this.a3o(a)},
 a3o(a){var s=0,r=A.w(t.fO),q,p=this
 var $async$$1=A.r(function(b,c){if(b===1)return A.t(c,r)
 while(true)switch(s){case 0:s=3
-return A.A(p.a.a.jH("https://chatgpt-fastapi-391j.onrender.com/updateAdmin",a.cU(),A.aU2(),t._V),$async$$1)
+return A.A(p.a.a.jH("http://56.228.27.101/updateAdmin",a.cU(),A.aU2(),t._V),$async$$1)
 case 3:q=c
 s=1
 break
@@ -50482,7 +50482,7 @@ $1(a){return this.a3l(a)},
 a3l(a){var s=0,r=A.w(t.fO),q,p=this
 var $async$$1=A.r(function(b,c){if(b===1)return A.t(c,r)
 while(true)switch(s){case 0:s=3
-return A.A(p.a.a.jH("https://chatgpt-fastapi-391j.onrender.com/addNewAdmin",a.cU(),A.aU2(),t._V),$async$$1)
+return A.A(p.a.a.jH("http://56.228.27.101/addNewAdmin",a.cU(),A.aU2(),t._V),$async$$1)
 case 3:q=c
 s=1
 break
@@ -50594,7 +50594,7 @@ $1(a){return this.a3m(a)},
 a3m(a){var s=0,r=A.w(t.dX),q,p=this
 var $async$$1=A.r(function(b,c){if(b===1)return A.t(c,r)
 while(true)switch(s){case 0:s=3
-return A.A(p.a.a.jH("https://chatgpt-fastapi-391j.onrender.com/registerUser",a.cU(),A.blr(),t.Ar),$async$$1)
+return A.A(p.a.a.jH("http://56.228.27.101/registerUser",a.cU(),A.blr(),t.Ar),$async$$1)
 case 3:q=c
 s=1
 break

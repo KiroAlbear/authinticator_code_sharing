@@ -5,9 +5,8 @@ class Urls {
 
   // static const String baseUrl = "http://localhost:8000";
 
-  static const String baseUrl = kDebugMode
-      ? "http://localhost:8000"
-      : "https://chatgpt-fastapi-391j.onrender.com";
+  static const String baseUrl =
+      kDebugMode ? "http://localhost:8000" : "http://56.228.27.101";
 
   static String get requestUserCode {
     return '$baseUrl/requestUserCode';
