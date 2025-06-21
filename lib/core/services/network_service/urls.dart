@@ -5,9 +5,8 @@ class Urls {
 
   // static const String baseUrl = "http://localhost:8000";
 
-  static const String baseUrl = kDebugMode
-      ? "http://localhost:8000"
-      : "https://keybridge.duckdns.org/docs";
+  static const String baseUrl =
+      kDebugMode ? "http://localhost:8000" : "https://keybridge.duckdns.org";
 
   static String get requestUserCode {
     return '$baseUrl/requestUserCode';
