@@ -6,7 +6,7 @@ class Urls {
   // static const String baseUrl = "http://localhost:8000";
 
   static const String baseUrl =
-      kDebugMode ? "http://localhost:8000" : "http://56.228.27.101";
+      kDebugMode ? "http://localhost:8000" : "http://16.171.25.5";
 
   static String get requestUserCode {
     return '$baseUrl/requestUserCode';
