@@ -61,7 +61,7 @@ class _CodePagePageState extends BaseState<CodePage> {
     _isButtonDisabled.value = true;
 
     setState(() {
-      _remainingTime = kDebugMode ? 5 : 30; // Reset countdown
+      _remainingTime = kDebugMode ? 5 : 59; // Reset countdown
     });
 
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
