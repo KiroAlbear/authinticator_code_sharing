@@ -13,7 +13,7 @@ class RegisterAdminRemoteDataSourceImpl extends ApiHelper
   FutureEither<ProfileResponseModel> registerAdmin(
       RegisterAdminRequestModel requestModel) {
     return postData<ProfileResponseModel>(
-      Urls.addNewAdmin,
+      Urls.verifyAndAddNewAdmin,
       body: requestModel.toJson(),
       responseConverter: ProfileResponseModel.fromJson,
     );

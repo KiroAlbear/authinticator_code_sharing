@@ -10,6 +10,8 @@ abstract class _$RegisterAdminStateCWProxy {
   RegisterAdminState profileResponseModel(
       ProfileResponseModel? profileResponseModel);
 
+  RegisterAdminState isVerified(bool isVerified);
+
   RegisterAdminState status(Status status);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `RegisterAdminState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -20,6 +22,7 @@ abstract class _$RegisterAdminStateCWProxy {
   /// ````
   RegisterAdminState call({
     ProfileResponseModel? profileResponseModel,
+    bool? isVerified,
     Status? status,
   });
 }
@@ -36,6 +39,10 @@ class _$RegisterAdminStateCWProxyImpl implements _$RegisterAdminStateCWProxy {
       this(profileResponseModel: profileResponseModel);
 
   @override
+  RegisterAdminState isVerified(bool isVerified) =>
+      this(isVerified: isVerified);
+
+  @override
   RegisterAdminState status(Status status) => this(status: status);
 
   @override
@@ -48,6 +55,7 @@ class _$RegisterAdminStateCWProxyImpl implements _$RegisterAdminStateCWProxy {
   /// ````
   RegisterAdminState call({
     Object? profileResponseModel = const $CopyWithPlaceholder(),
+    Object? isVerified = const $CopyWithPlaceholder(),
     Object? status = const $CopyWithPlaceholder(),
   }) {
     return RegisterAdminState(
@@ -55,6 +63,11 @@ class _$RegisterAdminStateCWProxyImpl implements _$RegisterAdminStateCWProxy {
           ? _value.profileResponseModel
           // ignore: cast_nullable_to_non_nullable
           : profileResponseModel as ProfileResponseModel?,
+      isVerified:
+          isVerified == const $CopyWithPlaceholder() || isVerified == null
+              ? _value.isVerified
+              // ignore: cast_nullable_to_non_nullable
+              : isVerified as bool,
       status: status == const $CopyWithPlaceholder() || status == null
           ? _value.status
           // ignore: cast_nullable_to_non_nullable

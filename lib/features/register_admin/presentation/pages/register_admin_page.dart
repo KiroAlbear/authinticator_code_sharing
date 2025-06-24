@@ -111,10 +111,11 @@ class _RegisterAdminPageState extends BaseState<RegisterAdminPage> {
                 onPressed: () async {
                   if (formFieldKey.currentState!.validate()) {
                     Routes.navigateToScreen(
-                        Routes.otpScreen, NavigationType.goNamed, context,
+                        Routes.otpScreen, NavigationType.pushNamed, context,
                         extra: OtpPageArgs(
                             registerAdminRequestModel:
                                 RegisterAdminRequestModel(
+                          verificationCode: "",
                           secretKey: secretKeyController.text,
                           adminUserName: emailController.text,
                           adminPassword: passwordController.text,

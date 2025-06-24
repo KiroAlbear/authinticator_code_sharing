@@ -52,7 +52,7 @@ class Urls {
     return '$baseUrl/registerUser';
   }
 
-  static String get addNewAdmin {
-    return '$baseUrl/addNewAdmin';
+  static String get verifyAndAddNewAdmin {
+    return '$baseUrl/verifyAndAddNewAdmin';
   }
 }

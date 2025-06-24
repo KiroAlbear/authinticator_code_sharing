@@ -6,12 +6,14 @@ part 'register_admin_state.g.dart';
 @CopyWith()
 class RegisterAdminState extends ParentState {
   ProfileResponseModel? profileResponseModel;
+  bool isVerified;
 
   RegisterAdminState({
     this.profileResponseModel,
+    this.isVerified = false,
     super.status = Status.success,
   }) : super();
 
   @override
-  List<Object?> get props => [profileResponseModel];
+  List<Object?> get props => [profileResponseModel, isVerified];
 }

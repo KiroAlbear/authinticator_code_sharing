@@ -75,7 +75,7 @@ class _CodePagePageState extends BaseState<OtpPage> {
             ParentBloc<RegisterAdminBloc, RegisterAdminState>(
               showWidgetOnError: true,
               listenerFunction: (context2, state) async {
-                if (state.status == Status.success) {
+                if (state.status == Status.success && state.isVerified) {
                   await CommonUtils.saveAdminUsernameAndPassword(
                       widget.requestModel.adminUserName,
                       widget.requestModel.adminPassword);
@@ -89,6 +89,7 @@ class _CodePagePageState extends BaseState<OtpPage> {
                   width: buttonWidth.w,
                   height: buttonHeight.h,
                   onPressed: () async {
+                    widget.requestModel.verificationCode = otpController.text;
                     BlocProvider.of<RegisterAdminBloc>(context).add(
                       registerAdminEvent(
                         requestModel: widget.requestModel,

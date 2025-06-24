@@ -31,7 +31,8 @@ class RegisterAdminBloc extends Bloc<RegisterAdminEvent, RegisterAdminState> {
           ..errorMessage = failure.toErrorModel().message);
       },
       (ProfileResponseModel profileResponseModel) {
-        emit(state.copyWith(profileResponseModel: profileResponseModel)
+        emit(state.copyWith(
+            profileResponseModel: profileResponseModel, isVerified: true)
           ..status = Status.success
           ..profileResponseModel = profileResponseModel);
       },

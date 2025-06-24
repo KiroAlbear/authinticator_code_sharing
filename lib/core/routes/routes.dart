@@ -89,15 +89,8 @@ class Routes {
         parentNavigatorKey: rootNavigatorKey,
         path: registerAdminScreen,
         name: registerAdminScreen,
-        pageBuilder: (context, state) => _fadeTransitionScreenWrapper(
-            context,
-            state,
-            BlocProvider(
-                create: (context) => RegisterAdminBloc(
-                      registrationUsecase: getIt<RegisterAdminUsecase>(),
-                      sendEmailUsecase: getIt<SendEmailUsecase>(),
-                    ),
-                child: RegisterAdminPage())),
+        pageBuilder: (context, state) =>
+            _fadeTransitionScreenWrapper(context, state, RegisterAdminPage()),
       ),
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
