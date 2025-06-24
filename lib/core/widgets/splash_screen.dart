@@ -19,7 +19,7 @@ class _SplashScreenState extends BaseState<SplashScreen> {
 
   @override
   void didChangeDependencies() {
-    Future.delayed(const Duration(milliseconds: 300), () {
+    Future.delayed(const Duration(milliseconds: 0), () {
       getChosenAdmin().then(
         (value) {
           Constants.chosenAdmin = value;

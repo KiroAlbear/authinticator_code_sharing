@@ -26,7 +26,7 @@ class Routes {
 
   static final GoRouter goRouter = GoRouter(
     observers: [],
-    initialLocation: splashScreen,
+    initialLocation: loginScreen,
     navigatorKey: rootNavigatorKey,
     debugLogDiagnostics: false,
     routes: <RouteBase>[

@@ -34,6 +34,65 @@
     <link href="manifest.json" rel="manifest">
 </head>
 <body>
+<style>
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white; /* You can customize this */
+      z-index: 9999;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 6px solid #ccc;
+      border-top-color: #6750a4; /* Customize color if needed */
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+</style>
+
+<div id="loader">
+    <div class="spinner"></div>
+</div>
+
+<!--<script src="main.dart.js" type="application/javascript"></script>-->
 <script async src="flutter_bootstrap.js"></script>
+
+<script>
+    window.addEventListener('flutter-first-frame', function () {
+    const loader = document.getElementById('loader');
+      if (loader) {
+        loader.style.display = 'none';
+      }
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistration().then(function(registration) {
+          if (registration) {
+            registration.addEventListener('updatefound', function() {
+              const newWorker = registration.installing;
+              newWorker.addEventListener('statechange', function() {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  // New version is available
+                  console.log('New version available. Refreshing...');
+                  location.reload(); // You could prompt user before refreshing if needed
+                }
+              });
+            });
+          }
+        });
+      }
+    });
+</script>
+
 </body>
 </html>
