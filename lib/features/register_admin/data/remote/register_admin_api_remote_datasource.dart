@@ -1,6 +1,8 @@
 import 'package:code_grapper/imports.dart';
 
 abstract class RegisterAdminRemoteDataSource {
+  FutureEither<ApiResponseModel> sendEmail(String email);
+
   FutureEither<ProfileResponseModel> registerAdmin(
       RegisterAdminRequestModel requestModel);
 }
@@ -14,6 +16,14 @@ class RegisterAdminRemoteDataSourceImpl extends ApiHelper
       Urls.addNewAdmin,
       body: requestModel.toJson(),
       responseConverter: ProfileResponseModel.fromJson,
+    );
+  }
+
+  @override
+  FutureEither<ApiResponseModel> sendEmail(String email) {
+    return postData<ApiResponseModel>(
+      Urls.sendEmail(email),
+      responseConverter: ApiResponseModel.fromJson,
     );
   }
 }

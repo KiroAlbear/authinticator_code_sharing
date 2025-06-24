@@ -17,3 +17,12 @@ class registerAdminEvent extends RegisterAdminEvent {
   @override
   List<Object> get props => <Object>[requestModel];
 }
+
+class sendEmailEvent extends RegisterAdminEvent {
+  final String email;
+
+  const sendEmailEvent({required this.email});
+
+  @override
+  List<Object> get props => <Object>[email];
+}

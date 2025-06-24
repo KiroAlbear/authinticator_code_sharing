@@ -10,4 +10,9 @@ class RegisterAdminRepositoryImpl extends RegisterAdminRepository {
       RegisterAdminRequestModel requestModel) {
     return _dataSource.registerAdmin(requestModel);
   }
+
+  @override
+  FutureEither<ApiResponseModel> sendEmail(String email) {
+    return _dataSource.sendEmail(email);
+  }
 }

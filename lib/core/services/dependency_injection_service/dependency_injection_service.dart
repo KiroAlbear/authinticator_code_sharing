@@ -71,6 +71,8 @@ class DependencyInjectionService {
     getIt
         .registerSingleton<RegisterAdminUsecase>(RegisterAdminUsecase(getIt()));
 
+    getIt.registerSingleton<SendEmailUsecase>(SendEmailUsecase(getIt()));
+
     //////////////////////////////////////////////////////////////
   }
 }

@@ -12,6 +12,10 @@ class Urls {
     return '$baseUrl/requestUserCode';
   }
 
+  static String sendEmail(String email) {
+    return '$baseUrl/sendEmail?email=$email';
+  }
+
   static String get loginUserAdmin {
     return '$baseUrl/getUserOrAdminData';
   }

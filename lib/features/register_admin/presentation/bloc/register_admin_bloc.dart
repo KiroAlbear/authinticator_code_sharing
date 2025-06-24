@@ -6,10 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterAdminBloc extends Bloc<RegisterAdminEvent, RegisterAdminState> {
   final RegisterAdminUsecase registrationUsecase;
+  final SendEmailUsecase sendEmailUsecase;
 
-  RegisterAdminBloc({required this.registrationUsecase})
-      : super(RegisterAdminState()) {
+  RegisterAdminBloc({
+    required this.registrationUsecase,
+    required this.sendEmailUsecase,
+  }) : super(RegisterAdminState()) {
     on<registerAdminEvent>(_getRegisterAdmin);
+    on<sendEmailEvent>(_sendEmail);
   }
 
   FutureOr<void> _getRegisterAdmin(
@@ -30,6 +34,26 @@ class RegisterAdminBloc extends Bloc<RegisterAdminEvent, RegisterAdminState> {
         emit(state.copyWith(profileResponseModel: profileResponseModel)
           ..status = Status.success
           ..profileResponseModel = profileResponseModel);
+      },
+    );
+  }
+
+  FutureOr<void> _sendEmail(
+      sendEmailEvent event, Emitter<RegisterAdminState> emit) async {
+    emit(state.copyWith()
+      ..status = Status.loading
+      ..errorMessage = '');
+    Either<Failure, ApiResponseModel> result =
+        await sendEmailUsecase(event.email);
+
+    result.fold(
+      (failure) {
+        emit(state.copyWith()
+          ..status = Status.error
+          ..errorMessage = failure.toErrorModel().message);
+      },
+      (ApiResponseModel apiResponseModel) {
+        emit(state.copyWith()..status = Status.success);
       },
     );
   }

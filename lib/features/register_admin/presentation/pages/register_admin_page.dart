@@ -1,9 +1,9 @@
+import 'package:code_grapper/features/register_admin/data/models/otp_page_args.dart';
 import 'package:code_grapper/gen/locale_keys.g.dart';
 import 'package:code_grapper/imports.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterAdminPage extends BaseStatefulPage {
   RegisterAdminPage({super.key});
@@ -106,45 +106,23 @@ class _RegisterAdminPageState extends BaseState<RegisterAdminPage> {
 
           // Submit button
           SizedBox(
-            width: double.infinity,
-            child: ParentBloc<RegisterAdminBloc, RegisterAdminState>(
-              showWidgetOnError: true,
-              listenerFunction: (context, state) async {
-                if (state.status == Status.success) {
-                  await CommonUtils.saveAdminUsernameAndPassword(
-                      emailController.text, passwordController.text);
-
-                  Routes.navigateToScreen(
-                      Routes.adminHomeScreen, NavigationType.goNamed, context);
-                }
-              },
-              builder: (RegisterAdminState state) {
-                return CustomElevatedButton(
-                  onPressed: () async {
-                    if (formFieldKey.currentState!.validate()) {
-                      showDialog(
-                        context: context,
-                        builder: (_) {
-                          return CustomOkCancelDialog(onOkPressed: () {
-                            BlocProvider.of<RegisterAdminBloc>(context).add(
-                              registerAdminEvent(
-                                requestModel: RegisterAdminRequestModel(
-                                  adminUserName: emailController.text,
-                                  adminPassword: passwordController.text,
-                                  secretKey: secretKeyController.text,
-                                ),
-                              ),
-                            );
-                          });
-                        },
-                      );
-                    }
-                  },
-                  text: (LocaleKeys.register.tr()),
-                );
-              },
-            ),
-          ),
+              width: double.infinity,
+              child: CustomElevatedButton(
+                onPressed: () async {
+                  if (formFieldKey.currentState!.validate()) {
+                    Routes.navigateToScreen(
+                        Routes.otpScreen, NavigationType.goNamed, context,
+                        extra: OtpPageArgs(
+                            registerAdminRequestModel:
+                                RegisterAdminRequestModel(
+                          secretKey: secretKeyController.text,
+                          adminUserName: emailController.text,
+                          adminPassword: passwordController.text,
+                        )));
+                  }
+                },
+                text: (LocaleKeys.register.tr()),
+              )),
         ],
       ),
     );

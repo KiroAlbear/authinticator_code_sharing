@@ -1,9 +1,8 @@
+import 'package:code_grapper/features/register_admin/data/models/otp_page_args.dart';
 import 'package:code_grapper/imports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
-import '../widgets/splash_screen.dart';
 
 class Routes {
   static BuildContext? buildContext;
@@ -23,10 +22,11 @@ class Routes {
   static const String adminHomeScreen = '/admingHome';
   static const String registerUserScreen = '/registerUserScreen';
   static const String scannerScreen = '/scannerScreen';
+  static const String otpScreen = '/otpScreen';
 
   static final GoRouter goRouter = GoRouter(
     observers: [],
-    initialLocation: loginScreen,
+    initialLocation: registerAdminScreen,
     navigatorKey: rootNavigatorKey,
     debugLogDiagnostics: false,
     routes: <RouteBase>[
@@ -66,6 +66,27 @@ class Routes {
       ),
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
+        path: otpScreen,
+        name: otpScreen,
+        pageBuilder: (context, state) {
+          final OtpPageArgs? args =
+              state.extra is OtpPageArgs ? state.extra as OtpPageArgs : null;
+
+          return _fadeTransitionScreenWrapper(
+              context,
+              state,
+              BlocProvider(
+                  create: (context) => RegisterAdminBloc(
+                        registrationUsecase: getIt<RegisterAdminUsecase>(),
+                        sendEmailUsecase: getIt<SendEmailUsecase>(),
+                      ),
+                  child: OtpPage(
+                    requestModel: args!.registerAdminRequestModel,
+                  )));
+        },
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
         path: registerAdminScreen,
         name: registerAdminScreen,
         pageBuilder: (context, state) => _fadeTransitionScreenWrapper(
@@ -74,6 +95,7 @@ class Routes {
             BlocProvider(
                 create: (context) => RegisterAdminBloc(
                       registrationUsecase: getIt<RegisterAdminUsecase>(),
+                      sendEmailUsecase: getIt<SendEmailUsecase>(),
                     ),
                 child: RegisterAdminPage())),
       ),
