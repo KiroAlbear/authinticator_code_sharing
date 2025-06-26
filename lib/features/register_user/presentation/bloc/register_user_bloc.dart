@@ -24,11 +24,13 @@ class RegisterUserBloc extends Bloc<RegisterUserEvent, RegisterUserState> {
       (failure) {
         emit(state.copyWith(savingStatus: Status.error)
           ..status = Status.error
+          ..savingStatus = Status.error
           ..errorMessage = failure.toErrorModel().message);
       },
       (RegisterUserResponseModel profileData) {
         emit(state.copyWith(registerUserResponseModel: profileData)
           ..successMessage = "User registered successfully"
+          ..savingStatus = Status.success
           ..status = Status.success);
       },
     );

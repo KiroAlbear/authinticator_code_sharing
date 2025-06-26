@@ -180,6 +180,15 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
             SizedBox(
               width: double.infinity,
               child: ParentBloc<RegisterUserBloc, RegisterUserState>(
+                listenerFunction: (context, state) async {
+                  if (state.savingStatus == Status.success) {
+                    _slideUp();
+                    nameController.clear();
+                    phoneController.clear();
+                    startDateController.clear();
+                    endDateController.clear();
+                  }
+                },
                 showWidgetOnError: true,
                 builder: (RegisterUserState state) {
                   return CustomElevatedButton(
@@ -201,11 +210,6 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
                                     endDate: dateFormat.format(endDate!),
                                   )),
                                 );
-                                _slideUp();
-                                nameController.clear();
-                                phoneController.clear();
-                                startDateController.clear();
-                                endDateController.clear();
                               },
                             );
                           },
