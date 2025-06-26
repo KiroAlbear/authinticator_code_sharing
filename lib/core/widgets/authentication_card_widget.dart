@@ -22,9 +22,11 @@ class AuthenticationCardWidget extends StatelessWidget {
       child: Card(
         color: Colors.transparent,
         margin: const EdgeInsets.only(top: 50),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: Container(
             padding: const EdgeInsets.all(20),
-            margin: const EdgeInsets.symmetric(horizontal: 25),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),

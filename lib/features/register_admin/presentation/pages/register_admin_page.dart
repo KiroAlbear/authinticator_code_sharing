@@ -68,7 +68,7 @@ class _RegisterAdminPageState extends BaseState<RegisterAdminPage> {
 
                 CustomTextField(
                   controller: secretKeyController,
-                  labelText: "Scan or enter your secret key",
+                  labelText: "Scan your secret key",
                   isScannerField: true,
                 ),
                 SizedBox(height: 15),
