@@ -40,6 +40,7 @@ mixin BasePageMixin implements BasePage {
                               color: Colors.black,
                             )),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
