@@ -12,45 +12,49 @@ class AuthenticationCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: maxWidth ??
-            AppDimensions.cardMaxWidth, // Set a maximum width for the container
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 25),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: maxWidth ??
+              AppDimensions
+                  .cardMaxWidth, // Set a maximum width for the container
 
-        // Set a maximum width for the container
-      ),
-      child: Card(
-        color: Colors.transparent,
-        margin: const EdgeInsets.only(top: 50),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          // Set a maximum width for the container
         ),
-        child: Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              // boxShadow: [
-              //   BoxShadow(
-              //     color: Colors.black.withAlpha(50),
-              //     blurRadius: 10,
-              //     offset: const Offset(0, 4), // changes position of shadow
-              //   ),
-              // ],
-            ),
-            child: Column(
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: GoogleFonts.libreBaskerville().fontFamily),
-                ),
-                SizedBox(height: 20),
-                child,
-              ],
-            )),
+        child: Card(
+          color: Colors.transparent,
+          margin: const EdgeInsets.only(top: 50),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: Colors.black.withAlpha(50),
+                //     blurRadius: 10,
+                //     offset: const Offset(0, 4), // changes position of shadow
+                //   ),
+                // ],
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: GoogleFonts.libreBaskerville().fontFamily),
+                  ),
+                  SizedBox(height: 20),
+                  child,
+                ],
+              )),
+        ),
       ),
     );
   }
