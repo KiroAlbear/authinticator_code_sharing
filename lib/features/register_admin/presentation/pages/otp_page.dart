@@ -47,8 +47,8 @@ class _CodePagePageState extends BaseState<OtpPage> {
               key: UniqueKey(),
               onSubmit: (pin) {},
               keyboardType: TextInputType.number,
-              fieldHeight: 50,
-              fieldWidth: 40,
+              fieldHeight: 50.h,
+              fieldWidth: 35.w,
               autoFillEnable: false,
               phoneNumbersHint: true,
               beforeTextPaste: (text) {

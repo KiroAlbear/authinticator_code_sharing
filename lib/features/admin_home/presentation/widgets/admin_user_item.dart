@@ -87,7 +87,7 @@ class AdminUserItem extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              "user Password",
+                              "User Password",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 12,
