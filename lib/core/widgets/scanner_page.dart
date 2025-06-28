@@ -11,14 +11,14 @@ class ScannerPage extends StatelessWidget {
         MobileScanner(
           onDetect: (barcodes) {
             final String barcode = barcodes.barcodes.first.rawValue ?? '';
-            Navigator.pop(
-              context,
-              extractSecretKey(barcode),
-            );
+            // Navigator.pop(
+            //   context,
+            //   extractSecretKey(barcode),
+            // );
           },
         ),
         PositionedDirectional(
-          top: 50,
+          top: 10,
           end: 10,
           child: IconButton(
             icon: const Icon(Icons.close, size: 30, color: Colors.white),

@@ -290,7 +290,7 @@ mixin BasePageMixin implements BasePage {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 12, 3),
                               child: Text(
-                                "v1.0.3",
+                                "v1.0.4",
                                 style: GoogleFonts.libreBaskerville(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w400,
