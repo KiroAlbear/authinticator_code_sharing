@@ -30,95 +30,83 @@ mixin BasePageMixin implements BasePage {
             hasSocialMedia()
                 ? Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text("Version 1.0",
-                            style: GoogleFonts.libreBaskerville(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black,
-                            )),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                SizedBox(
-                                    height: _socialIconSize,
-                                    width: _socialIconSize,
-                                    child: GestureDetector(
-                                        onTap: () async {
-                                          await _openUrl(
-                                              "https://www.facebook.com/profile.php?id=61572852771732");
-                                        },
-                                        child: SvgPicture.asset(
-                                            Assets.images.svg.facebookLogo))),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                GestureDetector(
-                                  onTap: () async {
-                                    _openUrl(
-                                        await "https://www.instagram.com/chathub.services?igsh=OG53cGZ5aWdyNnh6");
-                                  },
-                                  child: SizedBox(
-                                      height: _socialIconSize,
-                                      width: _socialIconSize,
-                                      child: SvgPicture.asset(
-                                          Assets.images.svg.instagramLogo)),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                SizedBox(
-                                    height: _socialIconSize,
-                                    width: _socialIconSize,
-                                    child: GestureDetector(
-                                        onTap: () async {
-                                          await _openWhatsApp("+16892603417");
-                                        },
-                                        child: SvgPicture.asset(
-                                            Assets.images.svg.whatsappLogo))),
-                              ],
+                            SizedBox(
+                                height: _socialIconSize,
+                                width: _socialIconSize,
+                                child: GestureDetector(
+                                    onTap: () async {
+                                      await _openUrl(
+                                          "https://www.facebook.com/profile.php?id=61572852771732");
+                                    },
+                                    child: SvgPicture.asset(
+                                        Assets.images.svg.facebookLogo))),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            GestureDetector(
+                              onTap: () async {
+                                _openUrl(
+                                    await "https://www.instagram.com/chathub.services?igsh=OG53cGZ5aWdyNnh6");
+                              },
+                              child: SizedBox(
+                                  height: _socialIconSize,
+                                  width: _socialIconSize,
+                                  child: SvgPicture.asset(
+                                      Assets.images.svg.instagramLogo)),
                             ),
                             SizedBox(
-                              height: 10,
+                              width: 5,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text("Powered by",
-                                    style: GoogleFonts.libreBaskerville(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black,
-                                    )),
-                                SizedBox(
-                                  width: 3,
-                                ),
-                                Text("ChatHub Services",
-                                    style: GoogleFonts.libreBaskerville(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w900,
-                                      color: Colors.black,
-                                    )),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                SizedBox(
-                                    height: 20,
-                                    width: 20,
-                                    child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(1000),
-                                        child: Image.asset(Assets
-                                            .images.png.chathubLogo.path)))
-                              ],
-                            )
+                            SizedBox(
+                                height: _socialIconSize,
+                                width: _socialIconSize,
+                                child: GestureDetector(
+                                    onTap: () async {
+                                      await _openWhatsApp("+16892603417");
+                                    },
+                                    child: SvgPicture.asset(
+                                        Assets.images.svg.whatsappLogo))),
                           ],
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text("Powered by",
+                                style: GoogleFonts.libreBaskerville(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black,
+                                )),
+                            SizedBox(
+                              width: 3,
+                            ),
+                            Text("ChatHub Services",
+                                style: GoogleFonts.libreBaskerville(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.black,
+                                )),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(1000),
+                                    child: Image.asset(
+                                        Assets.images.png.chathubLogo.path)))
+                          ],
+                        )
                       ],
                     ),
                   )
@@ -134,13 +122,19 @@ mixin BasePageMixin implements BasePage {
         child: Scaffold(
       drawer: hasSideMenu()
           ? Drawer(
+              backgroundColor: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   DrawerHeader(
                     padding: const EdgeInsetsDirectional.fromSTEB(15, 20, 0, 0),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor.withAlpha(20),
+                      gradient: LinearGradient(
+                        colors: [Colors.deepPurple, Color(0xFFEDE7F6)],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        stops: const [0, 1.0],
+                      ),
                     ),
                     child: showOnlyLogout() == true
                         ? SizedBox()
@@ -150,11 +144,9 @@ mixin BasePageMixin implements BasePage {
                               Text(
                                 "Welcome Admin!",
                                 style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 24,
+                                  color: Colors.white,
+                                  fontSize: 22,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily:
-                                      GoogleFonts.libreBaskerville().fontFamily,
                                 ),
                               ),
                               SizedBox(
@@ -166,11 +158,17 @@ mixin BasePageMixin implements BasePage {
                                 children: [
                                   const Icon(
                                     Icons.account_circle_outlined,
-                                    size: 20,
-                                    color: Colors.black,
+                                    size: 16,
+                                    color: Colors.white,
                                   ),
-                                  const SizedBox(width: 10),
-                                  Text(Constants.chosenAdmin.email)
+                                  const SizedBox(width: 5),
+                                  Text(
+                                    Constants.chosenAdmin.email,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                    ),
+                                  ),
                                 ],
                               )
                             ],
@@ -259,29 +257,49 @@ mixin BasePageMixin implements BasePage {
                                       );
                                     },
                                   ),
+                                  Divider(),
                                 ],
                               ),
-                        ListTile(
-                          leading: const Icon(Icons.logout_outlined),
-                          title: const Text('Log Out'),
-                          subtitle: const Text('Sign out of all your accounts'),
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (_) {
-                                return CustomOkCancelDialog(
-                                    onOkPressed: () async {
-                                  await SecureStorageService.getInstance()
-                                      .clear();
-                                  Routes.clearStack();
-                                  Routes.navigateToScreen(
-                                      Routes.loginScreen,
-                                      NavigationType.goNamed,
-                                      context); // Closes the drawer
-                                });
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            ListTile(
+                              leading: const Icon(Icons.logout_outlined),
+                              title: const Text('Log Out'),
+                              subtitle:
+                                  const Text('Sign out of all your accounts'),
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) {
+                                    return CustomOkCancelDialog(
+                                        onOkPressed: () async {
+                                      await SecureStorageService.getInstance()
+                                          .clear();
+                                      Routes.clearStack();
+                                      Routes.navigateToScreen(
+                                          Routes.loginScreen,
+                                          NavigationType.goNamed,
+                                          context); // Closes the drawer
+                                    });
+                                  },
+                                );
                               },
-                            );
-                          },
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 12, 3),
+                              child: Text(
+                                "v1.0.3",
+                                style: GoogleFonts.libreBaskerville(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black,
+                                ),
+                                textAlign: TextAlign.end,
+                              ),
+                            )
+                          ],
                         ),
                       ],
                     ),

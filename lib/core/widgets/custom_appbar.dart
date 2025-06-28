@@ -14,20 +14,29 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withAlpha(90),
-            spreadRadius: 1,
-            blurRadius: 15,
-            offset: const Offset(0, 6), // changes position of shadow
-          ),
-        ],
+        gradient: LinearGradient(
+          colors: [
+            Colors.white,
+            Colors.white.withOpacity(0.3),
+            Colors.transparent
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.topRight,
+          stops: [0.3, 0.4, 1],
+        ),
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(16),
+          bottomRight: Radius.circular(16),
+        ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(width: 2),
+          (hasBackButton == null)
+              ? SizedBox(width: 8)
+              : SizedBox(
+                  width: 0,
+                ),
           hasBackButton == null
               ? const SizedBox()
               : hasBackButton!
