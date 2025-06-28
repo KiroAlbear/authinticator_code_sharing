@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool? hasBackButton;
+  final double _iconSize = 20;
 
   const CustomAppbar(
       {super.key, required this.title, this.hasBackButton = true});
@@ -26,13 +27,16 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(width: 10),
+          SizedBox(width: 2),
           hasBackButton == null
               ? const SizedBox()
               : hasBackButton!
                   ? IconButton(
                       padding: const EdgeInsets.all(0),
-                      icon: const Icon(Icons.arrow_back_ios_new),
+                      icon: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: _iconSize,
+                      ),
                       onPressed: () {
                         if (Navigator.canPop(context)) {
                           Navigator.pop(context);
@@ -41,7 +45,10 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                     )
                   : IconButton(
                       padding: const EdgeInsets.all(0),
-                      icon: const Icon(Icons.menu),
+                      icon: Icon(
+                        Icons.menu,
+                        size: _iconSize,
+                      ),
                       onPressed: () {
                         Scaffold.of(context).openDrawer();
                       },
@@ -52,10 +59,10 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: 5,
+                  width: 3,
                 ),
                 SizedBox(
-                    width: 90, child: Image.asset(Assets.images.png.logo.path)),
+                    width: 70, child: Image.asset(Assets.images.png.logo.path)),
               ],
             ),
           ),
