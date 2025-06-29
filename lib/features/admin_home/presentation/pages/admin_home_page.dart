@@ -99,6 +99,7 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
           ),
           ParentBloc<AdminHomeBloc, AdminHomeState>(
             emptyWidget: const EmptyUsersWidget(),
+            showWidgetOnError: true,
             builder: (AdminHomeState state) {
               return Container(
                 constraints: BoxConstraints(

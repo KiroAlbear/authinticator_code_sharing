@@ -7,6 +7,8 @@ import 'package:url_launcher/url_launcher.dart';
 part 'package:code_grapper/core/base_pages/base_page.dart';
 
 final double _socialIconSize = 28;
+final String version =
+    const String.fromEnvironment('APP_VERSION', defaultValue: 'v1.0.0');
 mixin BasePageMixin implements BasePage {
   Widget _buildWidgetTree(BuildContext context) {
     if (appBar() == null && appbarWidget() != null) {
@@ -290,7 +292,7 @@ mixin BasePageMixin implements BasePage {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 12, 3),
                               child: Text(
-                                "v1.0.4",
+                                version,
                                 style: GoogleFonts.libreBaskerville(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w400,

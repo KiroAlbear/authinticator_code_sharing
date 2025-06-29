@@ -63,7 +63,7 @@ class AdminHomeBloc extends Bloc<AdminHomeEvent, AdminHomeState> {
       (failure) {
         emit(state.copyWith()
           ..savingStatus = Status.error
-          ..status = Status.success
+          ..status = Status.error
           ..errorMessage = failure.toErrorModel().message);
       },
       (UserResponseModel userResponseModel) {

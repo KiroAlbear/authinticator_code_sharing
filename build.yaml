@@ -1,0 +1,6 @@
+targets:
+  $default:
+    builders:
+      build_version:
+        options:
+          version: "1.0.5" # Replace this with your desired version

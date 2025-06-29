@@ -189,10 +189,16 @@ class AdminUserItem extends StatelessWidget {
                               color: Colors.black)),
                       SizedBox(width: 10),
                       isBlocked
-                          ? UserBlockedWidget()
-                          : isNew
-                              ? UserNewWidget()
-                              : SizedBox(),
+                          ? UserRedLabel(
+                              title: "Blocked",
+                            )
+                          : daysLeft == 0
+                              ? UserRedLabel(
+                                  title: "Expired",
+                                )
+                              : isNew
+                                  ? UserNewWidget()
+                                  : SizedBox(),
                     ],
                   ),
                   seperatorHeight,

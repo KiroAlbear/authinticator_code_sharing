@@ -11,10 +11,10 @@ class ScannerPage extends StatelessWidget {
         MobileScanner(
           onDetect: (barcodes) {
             final String barcode = barcodes.barcodes.first.rawValue ?? '';
-            // Navigator.pop(
-            //   context,
-            //   extractSecretKey(barcode),
-            // );
+            Navigator.pop(
+              context,
+              extractSecretKey(barcode),
+            );
           },
         ),
         PositionedDirectional(
