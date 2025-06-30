@@ -141,11 +141,15 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
                       controller: startDateController,
                       labelText: 'User Start Date',
                       onTap: () async {
-                        startDate = await CommonUtils.pickDate(context);
-                        if (startDate != null) {
-                          startDateController.text =
-                              dateFormat.format(startDate!);
-                        }
+                        await CommonUtils.pickDate(context).then(
+                          (value) {
+                            if (value != null) {
+                              startDate = value;
+                              startDateController.text =
+                                  dateFormat.format(startDate!);
+                            }
+                          },
+                        );
                       }),
                   SizedBox(height: 15),
                   CustomTextField(
@@ -163,10 +167,15 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
                         return true;
                       },
                       onTap: () async {
-                        endDate = await CommonUtils.pickDate(context);
-                        if (endDate != null) {
-                          endDateController.text = dateFormat.format(endDate!);
-                        }
+                        await CommonUtils.pickDate(context).then(
+                          (value) {
+                            if (value != null) {
+                              endDate = value;
+                              endDateController.text =
+                                  dateFormat.format(endDate!);
+                            }
+                          },
+                        );
                       }),
 
                   SizedBox(height: 20),
