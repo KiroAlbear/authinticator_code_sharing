@@ -38,6 +38,14 @@ class _LoginPagePageState extends BaseState<LoginPage> {
       emailController.text = "program.gpt1@gmail.com";
       passwordController.text = "kiro123#";
     }
+    getChosenAdmin().then(
+      (EmailPasswordModel value) {
+        if (value.email.isNotEmpty && value.password.isNotEmpty) {
+          Routes.navigateToScreen(
+              Routes.adminHomeScreen, NavigationType.goNamed, context);
+        }
+      },
+    );
   }
 
   @override
@@ -121,7 +129,7 @@ class _LoginPagePageState extends BaseState<LoginPage> {
 
                       Routes.navigateToScreen(
                         Routes.codeScreen,
-                        NavigationType.pushNamed,
+                        NavigationType.goNamed,
                         context,
                       );
                     }
