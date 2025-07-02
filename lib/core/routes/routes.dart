@@ -1,4 +1,3 @@
-import 'package:code_grapper/features/register_admin/data/models/otp_page_args.dart';
 import 'package:code_grapper/imports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -110,14 +109,23 @@ class Routes {
         parentNavigatorKey: rootNavigatorKey,
         path: registerUserScreen,
         name: registerUserScreen,
-        pageBuilder: (context, state) => _fadeTransitionScreenWrapper(
-            context,
-            state,
-            BlocProvider(
-                create: (context) => RegisterUserBloc(
-                      registerUserUsecase: getIt<RegisterUserUsecase>(),
-                    ),
-                child: RegisterUserPage())),
+        pageBuilder: (context, state) {
+          final RegisterUserPageArgs? args = state.extra is RegisterUserPageArgs
+              ? state.extra as RegisterUserPageArgs
+              : null;
+
+          return _fadeTransitionScreenWrapper(
+              context,
+              state,
+              BlocProvider(
+                  create: (context) => RegisterUserBloc(
+                        registerUserUsecase: getIt<RegisterUserUsecase>(),
+                        updateUserUsecase: getIt<UpdateUserUsecase>(),
+                      ),
+                  child: RegisterUserPage(
+                    args: args,
+                  )));
+        },
       ),
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,

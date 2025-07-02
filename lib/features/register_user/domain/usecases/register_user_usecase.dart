@@ -10,6 +10,6 @@ class RegisterUserUsecase
   @override
   Future<Either<Failure, RegisterUserResponseModel>> call(
       RegisterUserRequestModel requestModel) async {
-    return await repository.getRegisterUserData(requestModel);
+    return await repository.registerUser(requestModel);
   }
 }

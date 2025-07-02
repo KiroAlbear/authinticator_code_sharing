@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterUserPage extends BaseStatefulPage {
-  const RegisterUserPage({super.key});
+  final RegisterUserPageArgs? args;
+
+  const RegisterUserPage({this.args, super.key});
 
   @override
   State<RegisterUserPage> createState() => _RegisterUserPagePageState();
@@ -26,14 +28,6 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
   late AnimationController _controller;
   late Animation<Offset> _offsetAnimation;
 
-  // final ValueNotifier<DateTime?> selectedDate = ValueNotifier<DateTime?>(null);
-
-  @override
-  PreferredSizeWidget? appBar() => CustomAppbar(
-        title: "Add User",
-        hasBackButton: false,
-      );
-
   @override
   bool containPadding() => false;
 
@@ -44,6 +38,23 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) async {
         emailController.text = Constants.chosenAdmin.email;
+
+        if (widget.args == null) {
+          startDate = DateTime.now();
+          startDateController.text = dateFormat.format(startDate!);
+        } else {
+          nameController.text = widget.args!.requestModel.name;
+          phoneController.text = widget.args!.requestModel.phone;
+          startDateController.text = widget.args!.requestModel.startDate;
+          endDateController.text = widget.args!.requestModel.endDate;
+
+          startDate = DateTime.parse(
+            widget.args!.requestModel.startDate,
+          );
+          endDate = DateTime.parse(
+            widget.args!.requestModel.endDate,
+          );
+        }
       },
     );
 
@@ -106,7 +117,7 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
     return SlideTransition(
       position: _offsetAnimation,
       child: AuthenticationCardWidget(
-        title: "Add User",
+        title: widget.args == null ? "Add User" : "Update User",
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -190,12 +201,20 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
               width: double.infinity,
               child: ParentBloc<RegisterUserBloc, RegisterUserState>(
                 listenerFunction: (context, state) async {
-                  if (state.savingStatus == Status.success) {
+                  if (state.savingStatus == Status.success &&
+                      widget.args == null) {
                     _slideUp();
                     nameController.clear();
                     phoneController.clear();
                     startDateController.clear();
                     endDateController.clear();
+                  } else if (state.savingStatus == Status.success &&
+                      widget.args != null) {
+                    nameController.clear();
+                    phoneController.clear();
+                    startDateController.clear();
+                    endDateController.clear();
+                    Navigator.pop(context);
                   }
                 },
                 showWidgetOnError: true,
@@ -208,17 +227,32 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
                           builder: (_) {
                             return CustomOkCancelDialog(
                               onOkPressed: () {
-                                BlocProvider.of<RegisterUserBloc>(context).add(
-                                  registerUserEvent(
-                                      registerRequestModel:
-                                          RegisterUserRequestModel(
+                                if (widget.args == null) {
+                                  BlocProvider.of<RegisterUserBloc>(context)
+                                      .add(
+                                    registerUserEvent(
+                                        registerRequestModel:
+                                            RegisterUserRequestModel(
+                                      name: nameController.text,
+                                      phone: phoneController.text,
+                                      email: Constants.chosenAdmin.email,
+                                      startDate: dateFormat.format(startDate!),
+                                      endDate: dateFormat.format(endDate!),
+                                    )),
+                                  );
+                                } else {
+                                  BlocProvider.of<RegisterUserBloc>(context)
+                                      .add(updateUserEvent(
+                                          updateRequestModel:
+                                              UpdateUserRequestModel(
                                     name: nameController.text,
-                                    phone: phoneController.text,
-                                    email: Constants.chosenAdmin.email,
+                                    userId: widget.args!.requestModel.userId,
                                     startDate: dateFormat.format(startDate!),
                                     endDate: dateFormat.format(endDate!),
-                                  )),
-                                );
+                                    email: Constants.chosenAdmin.email,
+                                    phone: phoneController.text,
+                                  )));
+                                }
                               },
                             );
                           },

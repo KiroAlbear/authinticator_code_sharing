@@ -1,3 +1,4 @@
+import 'package:code_grapper/features/register_user/data/models/update_user_request_model.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../imports.dart';
@@ -16,4 +17,13 @@ class registerUserEvent extends RegisterUserEvent {
 
   @override
   List<Object> get props => <Object>[registerRequestModel];
+}
+
+class updateUserEvent extends RegisterUserEvent {
+  final UpdateUserRequestModel updateRequestModel;
+
+  const updateUserEvent({required this.updateRequestModel});
+
+  @override
+  List<Object> get props => <Object>[updateRequestModel];
 }

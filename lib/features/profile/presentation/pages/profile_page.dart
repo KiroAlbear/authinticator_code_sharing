@@ -21,12 +21,6 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
   final GlobalKey<FormState> formFieldKey = GlobalKey<FormState>();
 
   @override
-  PreferredSizeWidget? appBar() => CustomAppbar(
-        title: LocaleKeys.profile.tr(),
-        hasBackButton: false,
-      );
-
-  @override
   bool containPadding() => false;
 
   @override

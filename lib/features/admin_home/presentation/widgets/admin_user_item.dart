@@ -45,7 +45,7 @@ class AdminUserItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 5.0),
-        padding: EdgeInsetsDirectional.only(bottom: 10),
+        padding: const EdgeInsetsDirectional.only(bottom: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
@@ -64,7 +64,7 @@ class AdminUserItem extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(8.0),
                   topRight: Radius.circular(8.0),
                 ),
@@ -86,14 +86,14 @@ class AdminUserItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
+                            const Text(
                               "User Password",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400),
                             ),
-                            SizedBox(height: 3),
+                            const SizedBox(height: 3),
                             Text(
                               userId,
                               style: AppTextStyles.bold_20_black_appbarText(
@@ -103,7 +103,7 @@ class AdminUserItem extends StatelessWidget {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.only(start: 5),
+                          padding: const EdgeInsetsDirectional.only(start: 5),
                           child: InkWell(
                               onTap: () {
                                 Clipboard.setData(ClipboardData(text: userId));
@@ -112,7 +112,7 @@ class AdminUserItem extends StatelessWidget {
                                     type: AppToastType.success,
                                     context: context);
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.copy,
                                 color: Colors.white,
                                 size: 20,
@@ -182,30 +182,30 @@ class AdminUserItem extends StatelessWidget {
                   15.verticalSpace,
                   Row(
                     children: [
-                      Text("Account Details",
+                      const Text("Account Details",
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
                               color: Colors.black)),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       isBlocked
-                          ? UserRedLabel(
+                          ? const UserRedLabel(
                               title: "Blocked",
                             )
                           : daysLeft == 0
-                              ? UserRedLabel(
+                              ? const UserRedLabel(
                                   title: "Expired",
                                 )
                               : isNew
-                                  ? UserNewWidget()
-                                  : SizedBox(),
+                                  ? const UserNewWidget()
+                                  : const SizedBox(),
                     ],
                   ),
                   seperatorHeight,
                   _buildRowItem(title: "Name", value: name, context: context),
-                  phone.isEmpty ? SizedBox() : seperatorHeight,
+                  phone.isEmpty ? const SizedBox() : seperatorHeight,
                   phone.isEmpty
-                      ? SizedBox()
+                      ? const SizedBox()
                       : _buildRowItem(
                           title: "Phone", value: phone, context: context),
                   seperatorHeight,
@@ -218,16 +218,16 @@ class AdminUserItem extends StatelessWidget {
                   //         value: expiryDate!,
                   //         context: context),
 
-                  startDate == null ? SizedBox() : seperatorHeight,
+                  startDate == null ? const SizedBox() : seperatorHeight,
                   startDate == null
-                      ? SizedBox()
+                      ? const SizedBox()
                       : _buildRowItem(
                           title: "Start Date",
                           value: startDate!,
                           context: context),
-                  endDate == null ? SizedBox() : seperatorHeight,
+                  endDate == null ? const SizedBox() : seperatorHeight,
                   endDate == null
-                      ? SizedBox()
+                      ? const SizedBox()
                       : _buildRowItem(
                           title: "End Date", value: endDate!, context: context),
                   seperatorHeight,
@@ -239,29 +239,29 @@ class AdminUserItem extends StatelessWidget {
                   Container(
                     height: 1,
                     color: Colors.grey.withAlpha(50),
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                   ),
-                  Text("Logins Usage",
+                  const Text("Logins Usage",
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: Colors.black)),
-                  lastLoginDate == null ? SizedBox() : seperatorHeight,
+                  lastLoginDate == null ? const SizedBox() : seperatorHeight,
                   lastLoginDate == null
-                      ? SizedBox()
+                      ? const SizedBox()
                       : _buildRowItem(
                           title: "Last Login Date",
                           value: lastLoginDate!,
                           context: context),
-                  requestedCodes == null ? SizedBox() : seperatorHeight,
+                  requestedCodes == null ? const SizedBox() : seperatorHeight,
                   requestedCodes == null
-                      ? SizedBox()
+                      ? const SizedBox()
                       : _buildRowItem(
                           title: "Requested Codes",
                           value: requestedCodes.toString(),
                           context: context,
                           widget: LoginCountWidget(count: requestedCodes!)),
-                  isMaximumCodesReached ? 10.verticalSpace : SizedBox(),
+                  isMaximumCodesReached ? 10.verticalSpace : const SizedBox(),
                   isMaximumCodesReached
                       ? MaximumCodesReachedWidget(
                           onPressed: () {
@@ -281,12 +281,13 @@ class AdminUserItem extends StatelessWidget {
                             );
                           },
                         )
-                      : SizedBox(),
+                      : const SizedBox(),
                   15.verticalSpace,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      TextButton(
+                      _buildTextButton(
+                          text: "Delete",
                           onPressed: () {
                             showDialog(
                               useRootNavigator: true,
@@ -306,14 +307,34 @@ class AdminUserItem extends StatelessWidget {
                               },
                             );
                           },
-                          child: Text(
-                            "Delete",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600),
-                          )),
-                      SizedBox(width: 10),
+                          context: context),
+                      _buildTextButton(
+                          text: "Update",
+                          onPressed: () {
+                            Routes.navigateToScreen(Routes.registerUserScreen,
+                                    NavigationType.pushNamed, context,
+                                    extra: RegisterUserPageArgs(
+                                        requestModel: UpdateUserRequestModel(
+                                            userId: userId,
+                                            email: email,
+                                            name: name,
+                                            phone: phone,
+                                            startDate: startDate!,
+                                            endDate: endDate!)))
+                                .then(
+                              (value) {
+                                BlocProvider.of<AdminHomeBloc>(context)
+                                    .add(getAdminHomeEvent(
+                                  requestModel: AdminHomeRequestModel(
+                                    email: email,
+                                    password: adminPassword,
+                                  ),
+                                ));
+                              },
+                            );
+                          },
+                          context: context),
+                      const SizedBox(width: 10),
                       isBlocked
                           ? _unBlockUserButton(context)
                           : _blockUserButton(context),
@@ -323,6 +344,21 @@ class AdminUserItem extends StatelessWidget {
               ),
             ),
           ],
+        ));
+  }
+
+  Widget _buildTextButton(
+      {required String text,
+      required Function() onPressed,
+      required BuildContext context}) {
+    return TextButton(
+        onPressed: () {
+          onPressed();
+        },
+        child: Text(
+          text,
+          style: const TextStyle(
+              color: Colors.black, fontSize: 14, fontWeight: FontWeight.w600),
         ));
   }
 

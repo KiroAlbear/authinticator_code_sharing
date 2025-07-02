@@ -208,7 +208,7 @@ mixin BasePageMixin implements BasePage {
                                     onTap: () {
                                       Routes.navigateToScreen(
                                           Routes.registerUserScreen,
-                                          NavigationType.goNamed,
+                                          NavigationType.pushNamed,
                                           context);
                                       Navigator.pop(
                                           context); // Closes the drawer
@@ -222,7 +222,7 @@ mixin BasePageMixin implements BasePage {
                                     onTap: () {
                                       Routes.navigateToScreen(
                                           Routes.profileScreen,
-                                          NavigationType.goNamed,
+                                          NavigationType.pushNamed,
                                           context);
                                       Navigator.pop(
                                           context); // Closes the drawer

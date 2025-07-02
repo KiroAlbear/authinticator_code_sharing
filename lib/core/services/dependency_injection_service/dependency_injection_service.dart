@@ -1,3 +1,4 @@
+import 'package:code_grapper/features/register_user/domain/usecases/update_user_usecase.dart';
 import 'package:code_grapper/imports.dart';
 import 'package:get_it/get_it.dart';
 
@@ -59,6 +60,8 @@ class DependencyInjectionService {
         RegisterUserRepositoryImpl(getIt()));
 
     getIt.registerSingleton<RegisterUserUsecase>(RegisterUserUsecase(getIt()));
+
+    getIt.registerSingleton<UpdateUserUsecase>(UpdateUserUsecase(getIt()));
 
     //////////////////////////////////////////////////////////////   RegisterAdmin
 

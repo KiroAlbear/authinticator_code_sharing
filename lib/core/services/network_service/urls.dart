@@ -52,6 +52,10 @@ class Urls {
     return '$baseUrl/registerUser';
   }
 
+  static String get updateUser {
+    return '$baseUrl/updateUser';
+  }
+
   static String get verifyAndAddNewAdmin {
     return '$baseUrl/verifyAndAddNewAdmin';
   }
