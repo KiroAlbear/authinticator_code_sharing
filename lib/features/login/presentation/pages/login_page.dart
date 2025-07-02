@@ -38,7 +38,7 @@ class _LoginPagePageState extends BaseState<LoginPage> {
       emailController.text = "program.gpt1@gmail.com";
       passwordController.text = "kiro123#";
     }
-    if (widget.args?.IsLoggingAgain == false) {
+    if (widget.args == null) {
       getChosenAdmin().then(
         (EmailPasswordModel value) {
           if (value.email.isNotEmpty && value.password.isNotEmpty) {
