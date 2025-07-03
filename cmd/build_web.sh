@@ -1,1 +1,1 @@
-fvm flutter build web --release --output-dir build_web --dart-define=APP_VERSION=v1.0.11
+fvm flutter build web --release --output-dir build_web --dart-define=APP_VERSION=v1.0.11 --pwa-strategy=none
