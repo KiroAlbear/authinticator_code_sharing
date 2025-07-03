@@ -1,5 +1,6 @@
 import 'package:code_grapper/imports.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -209,9 +210,23 @@ mixin BasePageMixin implements BasePage {
                                         Text(LocaleKeys.Add_new_user.tr()),
                                     onTap: () {
                                       Routes.navigateToScreen(
-                                          Routes.registerUserScreen,
-                                          NavigationType.pushNamed,
-                                          context);
+                                              Routes.registerUserScreen,
+                                              NavigationType.pushNamed,
+                                              context)
+                                          .then(
+                                        (value) {
+                                          BlocProvider.of<AdminHomeBloc>(
+                                                  context)
+                                              .add(getAdminHomeEvent(
+                                            requestModel: AdminHomeRequestModel(
+                                              email:
+                                                  Constants.chosenAdmin.email,
+                                              password: Constants
+                                                  .chosenAdmin.password,
+                                            ),
+                                          ));
+                                        },
+                                      );
                                       Navigator.pop(
                                           context); // Closes the drawer
                                     },
