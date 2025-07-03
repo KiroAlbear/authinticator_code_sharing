@@ -71,9 +71,14 @@ index_generator:
     - '**.freezed.dart'
     - '**/api_utility.dart'
     - '**/base_page.dart'
+
   libraries:
     - directory_path: lib
       file_name: imports
+      exports:
+        - package: package:easy_localization/easy_localization.dart
+        - package: package:code_grapper/gen/locale_keys.g.dart
+
 
 flutter:
   uses-material-design: true

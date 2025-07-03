@@ -1,6 +1,4 @@
-import 'package:code_grapper/gen/locale_keys.g.dart';
 import 'package:code_grapper/imports.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -117,7 +115,9 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
     return SlideTransition(
       position: _offsetAnimation,
       child: AuthenticationCardWidget(
-        title: widget.args == null ? "Add User" : "Update User",
+        title: widget.args == null
+            ? LocaleKeys.add_user.tr()
+            : LocaleKeys.update_user.tr(),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -127,14 +127,14 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
                 children: [
                   CustomTextField(
                     controller: nameController,
-                    labelText: "Name",
+                    labelText: LocaleKeys.name.tr(),
                   ),
                   SizedBox(height: 15),
 
                   CustomTextField(
                     controller: phoneController,
                     isNumbersOnlyField: true,
-                    labelText: "Phone",
+                    labelText: LocaleKeys.phone.tr(),
                     isRequired: false,
                     keyboardType: TextInputType.phone,
                   ),
@@ -143,14 +143,14 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
                   CustomTextField(
                     controller: emailController,
                     isNumbersOnlyField: true,
-                    labelText: "Email",
+                    labelText: LocaleKeys.email.tr(),
                     isDisabled: true,
                     keyboardType: TextInputType.phone,
                   ),
                   SizedBox(height: 15),
                   CustomTextField(
                       controller: startDateController,
-                      labelText: 'User Start Date',
+                      labelText: LocaleKeys.User_Start_Date.tr(),
                       onTap: () async {
                         await CommonUtils.pickDate(context).then(
                           (value) {
@@ -165,8 +165,8 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
                   SizedBox(height: 15),
                   CustomTextField(
                       controller: endDateController,
-                      labelText: 'User End Date',
-                      validationMessage: "First Date should be before End Date",
+                      labelText: LocaleKeys.User_End_Date.tr(),
+                      validationMessage: LocaleKeys.First_Date_should_be.tr(),
                       validationFunction: (p0) {
                         if (startDateController.text.isEmpty ||
                             startDate == null) {

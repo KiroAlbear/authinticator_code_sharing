@@ -1,6 +1,4 @@
-import 'package:code_grapper/gen/locale_keys.g.dart';
 import 'package:code_grapper/imports.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -78,7 +76,7 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
                   children: [
                     CustomTextField(
                       controller: emailController,
-                      labelText: "Email",
+                      labelText: LocaleKeys.email.tr(),
                       isDisabled: true,
                       isRequired: false,
                     ),
@@ -87,7 +85,7 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
                     // Secret Key
                     CustomTextField(
                       controller: secretKeyController,
-                      labelText: "Scan or enter your secret key",
+                      labelText: LocaleKeys.scan_or_enter_your_secret_key.tr(),
                       isScannerField: true,
                     ),
                     SizedBox(height: 15),
@@ -96,9 +94,10 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
                     CustomTextField(
                       controller: maxLoginsController,
                       isNumbersOnlyField: true,
-                      labelText: "Maximum codes per user",
+                      labelText: LocaleKeys.maximum_codes_per_user.tr(),
                       keyboardType: TextInputType.phone,
-                      validationMessage: "should be a positive number",
+                      validationMessage:
+                          LocaleKeys.should_be_positive_number.tr(),
                       validationFunction: (p0) {
                         if (p0 == null || p0.isEmpty) {
                           return false;
@@ -112,31 +111,10 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
                     ),
                     SizedBox(height: 15),
 
-                    // Reset After
-                    // CustomTextField(
-                    //   controller: resetAfterController,
-                    //   isNumbersOnlyField: true,
-                    //   labelText: "Reset After",
-                    //   keyboardType: TextInputType.phone,
-                    //   validationMessage: "should be a positive number",
-                    //   validationFunction: (p0) {
-                    //     if (p0 == null || p0.isEmpty) {
-                    //       return false;
-                    //     }
-                    //     final value = int.tryParse(p0);
-                    //     if (value == null || value <= 0) {
-                    //       return false;
-                    //     }
-                    //     return true;
-                    //   },
-                    // ),
-
-                    // SizedBox(height: 15),
-
                     // Start Date
                     CustomTextField(
                       controller: startDateController,
-                      labelText: "Your Subscription Start Date",
+                      labelText: LocaleKeys.your_subscription_start_date.tr(),
                       isDisabled: true,
                       isRequired: false,
                     ),
@@ -146,7 +124,7 @@ class _ProfilePagePageState extends BaseState<ProfilePage> {
                     // End Date
                     CustomTextField(
                       controller: endDateController,
-                      labelText: "Your Subscription End Date",
+                      labelText: LocaleKeys.your_subscription_end_date.tr(),
                       isDisabled: true,
                       isRequired: false,
                     ),

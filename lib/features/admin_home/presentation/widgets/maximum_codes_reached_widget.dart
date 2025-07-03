@@ -1,5 +1,6 @@
-import 'package:code_grapper/config/font/custom_text_styles.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../imports.dart';
 
 class MaximumCodesReachedWidget extends StatelessWidget {
   final Function()? onPressed;
@@ -24,7 +25,7 @@ class MaximumCodesReachedWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Maximum codes reached",
+              LocaleKeys.maximum_codes_reached.tr(),
               style: AppTextStyles.bold_14_black(context)
                   .copyWith(color: Colors.orange),
             ),
@@ -33,10 +34,6 @@ class MaximumCodesReachedWidget extends StatelessWidget {
               height: 30,
               child: ElevatedButton(
                 onPressed: onPressed,
-                child: Text(
-                  "Reset",
-                  style: TextStyle(color: Colors.orange, fontSize: 12),
-                ),
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.zero,
                   backgroundColor: Colors.transparent,
@@ -46,6 +43,10 @@ class MaximumCodesReachedWidget extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
+                ),
+                child: Text(
+                  LocaleKeys.reset.tr(),
+                  style: TextStyle(color: Colors.orange, fontSize: 12),
                 ),
               ),
             )

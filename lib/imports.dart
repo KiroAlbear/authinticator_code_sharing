@@ -2,6 +2,9 @@
 
 library;
 
+export 'package:code_grapper/gen/locale_keys.g.dart';
+export 'package:easy_localization/easy_localization.dart';
+
 export 'config/colors/static_colors.dart';
 export 'config/dimensions/app_dimensions.dart';
 export 'config/extensions/padding_extension.dart';

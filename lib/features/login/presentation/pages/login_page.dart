@@ -1,6 +1,4 @@
-import 'package:code_grapper/gen/locale_keys.g.dart';
 import 'package:code_grapper/imports.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -167,7 +165,7 @@ class _LoginPagePageState extends BaseState<LoginPage> {
               );
             },
             child: Text(
-              "Register as admin",
+              LocaleKeys.register_as_admin.tr(),
               style: AppTextStyles.bold_14_black(context).copyWith(
                 decoration: TextDecoration.underline,
                 decorationStyle: TextDecorationStyle.solid,
@@ -176,19 +174,6 @@ class _LoginPagePageState extends BaseState<LoginPage> {
               ),
             ),
           ),
-
-          // const SizedBox(height: 15),
-          // ValueListenableBuilder<String>(
-          //   valueListenable: errorNotifier,
-          //   builder: (context, errorMessage, child) {
-          //     return errorMessage.isEmpty
-          //         ? SizedBox()
-          //         : Text(
-          //             errorMessage,
-          //             style: AppTextStyles.regular_12_red(context),
-          //           );
-          //   },
-          // ),
         ],
       ),
     );

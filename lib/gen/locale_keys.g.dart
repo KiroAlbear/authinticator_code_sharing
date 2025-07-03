@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const email = 'email';
   static const login = 'login';
   static const do_not_have_account = 'do_not_have_account';
@@ -21,6 +21,59 @@ abstract class LocaleKeys {
   static const password_should_have = 'password_should_have';
   static const submit = 'submit';
   static const profile = 'profile';
-  static const home = 'code';
+  static const home = 'home';
   static const order_now = 'order_now';
+  static const users_list = 'users_list';
+  static const refresh = 'refresh';
+  static const user_password = 'user_password';
+  static const user_id_copied = 'user_id_copied';
+  static const account_details = 'account_details';
+  static const blocked = 'blocked';
+  static const expired = 'expired';
+  static const start_date = 'start_date';
+  static const end_date = 'end_date';
+  static const days_lef = 'days_lef';
+  static const logins_usage = 'logins_usage';
+  static const last_login_date = 'last_login_date';
+  static const requested_codes = 'requested_codes';
+  static const delete = 'delete';
+  static const update = 'update';
+  static const block = 'block';
+  static const no_registered_users = 'no_registered_users';
+  static const register_user = 'register_user';
+  static const maximum_codes_reached = 'maximum_codes_reached';
+  static const reset = 'reset';
+  static const unblock = 'unblock';
+  static const new_user = 'new_user';
+  static const authentication_code = 'authentication_code';
+  static const cannot_get_code = 'cannot_get_code';
+  static const code_copied = 'code_copied';
+  static const copy_to_clipboard = 'copy_to_clipboard';
+  static const resend_in = 'resend_in';
+  static const resend_code = 'resend_code';
+  static const register_as_admin = 'register_as_admin';
+  static const maximum_codes_per_user = 'maximum_codes_per_user';
+  static const should_be_positive_number = 'should_be_positive_number';
+  static const your_subscription_start_date = 'your_subscription_start_date';
+  static const your_subscription_end_date = 'your_subscription_end_date';
+  static const scan_or_enter_your_secret_key = 'scan_or_enter_your_secret_key';
+  static const verification_code_is_sent = 'verification_code_is_sent';
+  static const verification_code = 'verification_code';
+  static const scan_your_secret_key = 'scan_your_secret_key';
+  static const add_user = 'add_user';
+  static const update_user = 'update_user';
+  static const User_Start_Date = 'User_Start_Date';
+  static const User_End_Date = 'User_End_Date';
+  static const First_Date_should_be = 'First_Date_should_be';
+  static const Something_went_wrong = 'Something_went_wrong';
+  static const Welcome_Admin = 'Welcome_Admin';
+  static const Go_to_home_page = 'Go_to_home_page';
+  static const Add_new_user = 'Add_new_user';
+  static const Go_to_profile_page = 'Go_to_profile_page';
+  static const Login_with_other_account = 'Login_with_other_account';
+  static const Switch_Account = 'Switch_Account';
+  static const Switch_to_another_account = 'Switch_to_another_account';
+  static const Log_Out = 'Log_Out';
+  static const Sign_out_of_all_your_accounts = 'Sign_out_of_all_your_accounts';
+
 }

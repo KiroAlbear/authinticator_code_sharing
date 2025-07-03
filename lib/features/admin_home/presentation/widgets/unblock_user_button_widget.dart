@@ -24,7 +24,7 @@ class UnblockUserButtonWidget extends StatelessWidget {
           backgroundColor: onPressed == null ? Colors.grey[200] : Colors.white,
         ),
         child: Text(
-          "Unblock",
+          LocaleKeys.unblock.tr(),
           style: TextStyleBlueprint.style(context,
               color: onPressed == null ? Colors.grey : Colors.green,
               fontSize: 16.0,

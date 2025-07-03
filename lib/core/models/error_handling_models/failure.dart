@@ -1,4 +1,4 @@
-import 'error_model.dart';
+import 'package:code_grapper/imports.dart';
 
 abstract class Failure {
   const Failure();
@@ -11,7 +11,7 @@ class ServerFailure extends Failure {
 
   @override
   ErrorModel toErrorModel() {
-    return const ErrorModel(message: "Something went wrong");
+    return ErrorModel(message: LocaleKeys.Something_went_wrong.tr());
   }
 }
 

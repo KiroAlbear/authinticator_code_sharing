@@ -13,8 +13,8 @@ class AdminHomePage extends BaseStatefulPage {
 
 class _AdminHomePagePageState extends BaseState<AdminHomePage> {
   @override
-  PreferredSizeWidget? appBar() => const CustomAppbar(
-        title: "Home",
+  PreferredSizeWidget? appBar() => CustomAppbar(
+        title: LocaleKeys.home.tr(),
         hasBackButton: false,
       );
 
@@ -61,7 +61,7 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
               Padding(
                 padding: EdgeInsetsDirectional.only(start: 16),
                 child: Text(
-                  "Users List",
+                  LocaleKeys.users_list.tr(),
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -72,7 +72,8 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
 
               Padding(
                 padding: EdgeInsetsDirectional.only(start: 10),
-                child: _buildTextButton(context, "Refresh", Icons.refresh, () {
+                child: _buildTextButton(
+                    context, LocaleKeys.refresh.tr(), Icons.refresh, () {
                   BlocProvider.of<AdminHomeBloc>(context).add(getAdminHomeEvent(
                     requestModel: AdminHomeRequestModel(
                       email: Constants.chosenAdmin.email,
@@ -81,20 +82,6 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
                   ));
                 }),
               ),
-
-              // BlocBuilder<AdminHomeBloc, AdminHomeState>(
-              //   builder: (context, state) {
-              //     return _buildTextButton(
-              //         context, "Reset Logins for all users", Icons.lock, () {
-              //       BlocProvider.of<AdminHomeBloc>(context)
-              //           .add(enableDisableAllUsersEvent(
-              //         requestModel: EnableDisableAllUsersRequestModel(
-              //           email: Constants.chosenAdmin.email,
-              //           password: Constants.chosenAdmin.password,
-              //           isActive: false,
-              //         ),
-              //       ));
-              //     });
             ],
           ),
           ParentBloc<AdminHomeBloc, AdminHomeState>(

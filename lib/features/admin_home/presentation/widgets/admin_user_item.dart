@@ -86,9 +86,9 @@ class AdminUserItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            const Text(
-                              "User Password",
-                              style: TextStyle(
+                            Text(
+                              LocaleKeys.user_password.tr(),
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400),
@@ -108,7 +108,7 @@ class AdminUserItem extends StatelessWidget {
                               onTap: () {
                                 Clipboard.setData(ClipboardData(text: userId));
                                 AppToast.showToast(
-                                    "User ID copied to clipboard",
+                                    LocaleKeys.user_id_copied.tr(),
                                     type: AppToastType.success,
                                     context: context);
                               },
@@ -120,7 +120,6 @@ class AdminUserItem extends StatelessWidget {
                         ),
                       ],
                     ),
-
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.deepPurple[100],
@@ -139,37 +138,6 @@ class AdminUserItem extends StatelessWidget {
                         ),
                       ),
                     )
-                    // Row(
-                    //   children: [
-                    //     isBlocked
-                    //         ? UserBlockedWidget()
-                    //         : isNew
-                    //             ? UserNewWidget()
-                    //             : SizedBox(),
-                    //     IconButton(
-                    //         onPressed: () {
-                    //           showDialog(
-                    //             useRootNavigator: true,
-                    //             context: context,
-                    //             builder: (_) {
-                    //               return CustomOkCancelDialog(
-                    //                 onOkPressed: () {
-                    //                   BlocProvider.of<AdminHomeBloc>(context)
-                    //                       .add(deleteUserEvent(
-                    //                           requestModel:
-                    //                               DeleteUserRequestModel(
-                    //                                   userCode: userId,
-                    //                                   email: email,
-                    //                                   password:
-                    //                                       adminPassword)));
-                    //                 },
-                    //               );
-                    //             },
-                    //           );
-                    //         },
-                    //         icon: Icon(Icons.delete, color: Colors.red)),
-                    //   ],
-                    // ),
                   ],
                 ),
               ),
@@ -182,19 +150,19 @@ class AdminUserItem extends StatelessWidget {
                   15.verticalSpace,
                   Row(
                     children: [
-                      const Text("Account Details",
-                          style: TextStyle(
+                      Text(LocaleKeys.account_details.tr(),
+                          style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
                               color: Colors.black)),
                       const SizedBox(width: 10),
                       isBlocked
-                          ? const UserRedLabel(
-                              title: "Blocked",
+                          ? UserRedLabel(
+                              title: LocaleKeys.blocked.tr(),
                             )
                           : daysLeft == 0
-                              ? const UserRedLabel(
-                                  title: "Expired",
+                              ? UserRedLabel(
+                                  title: LocaleKeys.expired.tr(),
                                 )
                               : isNew
                                   ? const UserNewWidget()
@@ -202,37 +170,39 @@ class AdminUserItem extends StatelessWidget {
                     ],
                   ),
                   seperatorHeight,
-                  _buildRowItem(title: "Name", value: name, context: context),
+                  _buildRowItem(
+                      title: LocaleKeys.name.tr(),
+                      value: name,
+                      context: context),
                   phone.isEmpty ? const SizedBox() : seperatorHeight,
                   phone.isEmpty
                       ? const SizedBox()
                       : _buildRowItem(
-                          title: "Phone", value: phone, context: context),
+                          title: LocaleKeys.phone.tr(),
+                          value: phone,
+                          context: context),
                   seperatorHeight,
-                  _buildRowItem(title: "Email", value: email, context: context),
-                  // expiryDate == null ? SizedBox() : seperatorHeight,
-                  // expiryDate == null
-                  //     ? SizedBox()
-                  //     : _buildRowItem(
-                  //         title: "Expiry Date",
-                  //         value: expiryDate!,
-                  //         context: context),
-
+                  _buildRowItem(
+                      title: LocaleKeys.email.tr(),
+                      value: email,
+                      context: context),
                   startDate == null ? const SizedBox() : seperatorHeight,
                   startDate == null
                       ? const SizedBox()
                       : _buildRowItem(
-                          title: "Start Date",
+                          title: LocaleKeys.start_date.tr(),
                           value: startDate!,
                           context: context),
                   endDate == null ? const SizedBox() : seperatorHeight,
                   endDate == null
                       ? const SizedBox()
                       : _buildRowItem(
-                          title: "End Date", value: endDate!, context: context),
+                          title: LocaleKeys.end_date.tr(),
+                          value: endDate!,
+                          context: context),
                   seperatorHeight,
                   _buildRowItem(
-                      title: "Days Left",
+                      title: LocaleKeys.days_lef.tr(),
                       value: daysLeft.toString(),
                       context: context,
                       widget: DaysCountWidget(count: daysLeft)),
@@ -241,8 +211,8 @@ class AdminUserItem extends StatelessWidget {
                     color: Colors.grey.withAlpha(50),
                     margin: const EdgeInsets.symmetric(vertical: 10),
                   ),
-                  const Text("Logins Usage",
-                      style: TextStyle(
+                  Text(LocaleKeys.logins_usage.tr(),
+                      style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: Colors.black)),
@@ -250,14 +220,14 @@ class AdminUserItem extends StatelessWidget {
                   lastLoginDate == null
                       ? const SizedBox()
                       : _buildRowItem(
-                          title: "Last Login Date",
+                          title: LocaleKeys.last_login_date.tr(),
                           value: lastLoginDate!,
                           context: context),
                   requestedCodes == null ? const SizedBox() : seperatorHeight,
                   requestedCodes == null
                       ? const SizedBox()
                       : _buildRowItem(
-                          title: "Requested Codes",
+                          title: LocaleKeys.requested_codes.tr(),
                           value: requestedCodes.toString(),
                           context: context,
                           widget: LoginCountWidget(count: requestedCodes!)),
@@ -287,7 +257,7 @@ class AdminUserItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       _buildTextButton(
-                          text: "Delete",
+                          text: LocaleKeys.delete.tr(),
                           onPressed: () {
                             showDialog(
                               useRootNavigator: true,
@@ -309,7 +279,7 @@ class AdminUserItem extends StatelessWidget {
                           },
                           context: context),
                       _buildTextButton(
-                          text: "Update",
+                          text: LocaleKeys.update.tr(),
                           onPressed: () {
                             Routes.navigateToScreen(Routes.registerUserScreen,
                                     NavigationType.pushNamed, context,
@@ -398,7 +368,7 @@ class AdminUserItem extends StatelessWidget {
           },
         );
       },
-      text: "Block",
+      text: LocaleKeys.block.tr(),
       color: Colors.red,
     );
   }

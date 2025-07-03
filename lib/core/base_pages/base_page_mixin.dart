@@ -144,7 +144,7 @@ mixin BasePageMixin implements BasePage {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Welcome Admin!",
+                                LocaleKeys.Welcome_Admin.tr(),
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 22,
@@ -188,8 +188,9 @@ mixin BasePageMixin implements BasePage {
                                 children: [
                                   ListTile(
                                     leading: const Icon(Icons.home_outlined),
-                                    title: const Text('Home'),
-                                    subtitle: const Text('Go to home page'),
+                                    title: Text(LocaleKeys.home.tr()),
+                                    subtitle:
+                                        Text(LocaleKeys.Go_to_home_page.tr()),
                                     onTap: () {
                                       Routes.navigateToScreen(
                                           Routes.adminHomeScreen,
@@ -203,8 +204,9 @@ mixin BasePageMixin implements BasePage {
                                   ListTile(
                                     leading: const Icon(
                                         Icons.app_registration_outlined),
-                                    title: const Text('Add User'),
-                                    subtitle: const Text('Add new user'),
+                                    title: Text(LocaleKeys.add_user.tr()),
+                                    subtitle:
+                                        Text(LocaleKeys.Add_new_user.tr()),
                                     onTap: () {
                                       Routes.navigateToScreen(
                                           Routes.registerUserScreen,
@@ -217,8 +219,9 @@ mixin BasePageMixin implements BasePage {
                                   ListTile(
                                     leading:
                                         const Icon(Icons.perm_identity_rounded),
-                                    title: const Text('Profile'),
-                                    subtitle: const Text('Go to profile page'),
+                                    title: Text(LocaleKeys.profile.tr()),
+                                    subtitle: Text(
+                                        LocaleKeys.Go_to_profile_page.tr()),
                                     onTap: () {
                                       Routes.navigateToScreen(
                                           Routes.profileScreen,
@@ -230,9 +233,9 @@ mixin BasePageMixin implements BasePage {
                                   ),
                                   ListTile(
                                     leading: const Icon(Icons.login),
-                                    title: const Text('Login'),
-                                    subtitle:
-                                        const Text('Login with other account'),
+                                    title: Text(LocaleKeys.login.tr()),
+                                    subtitle: Text(LocaleKeys
+                                        .Login_with_other_account.tr()),
                                     onTap: () {
                                       Routes.navigateToScreen(
                                           Routes.loginScreen,
@@ -247,9 +250,9 @@ mixin BasePageMixin implements BasePage {
                                   ListTile(
                                     leading: const Icon(
                                         Icons.switch_account_outlined),
-                                    title: const Text('Switch Account'),
-                                    subtitle:
-                                        const Text('Switch to another account'),
+                                    title: Text(LocaleKeys.Switch_Account.tr()),
+                                    subtitle: Text(LocaleKeys
+                                        .Switch_to_another_account.tr()),
                                     onTap: () {
                                       showDialog(
                                         context: context,
@@ -267,9 +270,9 @@ mixin BasePageMixin implements BasePage {
                           children: [
                             ListTile(
                               leading: const Icon(Icons.logout_outlined),
-                              title: const Text('Log Out'),
-                              subtitle:
-                                  const Text('Sign out of all your accounts'),
+                              title: Text(LocaleKeys.Log_Out.tr()),
+                              subtitle: Text(LocaleKeys
+                                  .Sign_out_of_all_your_accounts.tr()),
                               onTap: () {
                                 showDialog(
                                   context: context,

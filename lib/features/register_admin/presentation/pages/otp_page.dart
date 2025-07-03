@@ -31,7 +31,7 @@ class _CodePagePageState extends BaseState<OtpPage> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       BlocProvider.of<RegisterAdminBloc>(context)
           .add(sendEmailEvent(email: widget.requestModel.adminUserName));
-      AppToast.showToast("Verification code is sent to your email.",
+      AppToast.showToast(LocaleKeys.verification_code_is_sent.tr(),
           context: context, type: AppToastType.success);
     });
   }
@@ -40,7 +40,7 @@ class _CodePagePageState extends BaseState<OtpPage> {
   Widget body(BuildContext context) {
     return AuthenticationCardWidget(
         maxWidth: 450,
-        title: "Verification Code",
+        title: LocaleKeys.verification_code.tr(),
         child: Column(
           children: [
             OtpPinField(
@@ -96,7 +96,7 @@ class _CodePagePageState extends BaseState<OtpPage> {
                       ),
                     );
                   },
-                  text: "Submit",
+                  text: LocaleKeys.submit.tr(),
                 );
               },
             ),

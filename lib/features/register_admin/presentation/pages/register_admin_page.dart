@@ -1,7 +1,4 @@
-import 'package:code_grapper/features/register_admin/data/models/otp_page_args.dart';
-import 'package:code_grapper/gen/locale_keys.g.dart';
 import 'package:code_grapper/imports.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -68,7 +65,7 @@ class _RegisterAdminPageState extends BaseState<RegisterAdminPage> {
 
                 CustomTextField(
                   controller: secretKeyController,
-                  labelText: "Scan your secret key",
+                  labelText: LocaleKeys.scan_your_secret_key.tr(),
                   isScannerField: true,
                 ),
                 SizedBox(height: 15),

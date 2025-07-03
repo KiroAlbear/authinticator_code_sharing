@@ -1,8 +1,6 @@
 import 'dart:async';
 
-import 'package:code_grapper/gen/locale_keys.g.dart';
 import 'package:code_grapper/imports.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -80,11 +78,11 @@ class _CodePagePageState extends BaseState<CodePage> {
   Widget body(BuildContext context) {
     return AuthenticationCardWidget(
       maxWidth: 450,
-      title: "Verification Code",
+      title: LocaleKeys.authentication_code.tr(),
       child: ParentBloc<CodeBloc, CodeState>(
         key: const Key("code_bloc"),
         errorWidget: Text(
-          "Can not get code for this user",
+          LocaleKeys.cannot_get_code.tr(),
           style: AppTextStyles.regular_12_red(context),
         ),
         listenerFunction: (context, state) {
@@ -119,7 +117,7 @@ class _CodePagePageState extends BaseState<CodePage> {
                 onPressed: () {
                   Clipboard.setData(ClipboardData(text: state.codeData!.code));
                   // flutter toast
-                  AppToast.showToast("Code copied to clipboard",
+                  AppToast.showToast(LocaleKeys.code_copied.tr(),
                       type: AppToastType.success, context: context);
                   // Fluttertoast.showToast(
                   //   msg: "Code copied to clipboard",
@@ -131,7 +129,7 @@ class _CodePagePageState extends BaseState<CodePage> {
                   //   fontSize: 16.0.sp,
                   // );
                 },
-                text: "Copy to clipboard",
+                text: LocaleKeys.copy_to_clipboard.tr(),
               ),
 
               // resend code button that turns into a countdown timer
@@ -164,7 +162,9 @@ class _CodePagePageState extends BaseState<CodePage> {
                               },
                             );
                           },
-                    text: value ? "Resend in $_remainingTime s" : "Resend Code",
+                    text: value
+                        ? "${LocaleKeys.resend_in.tr()} $_remainingTime"
+                        : "${LocaleKeys.resend_code.tr()}",
                   );
                 },
               ),

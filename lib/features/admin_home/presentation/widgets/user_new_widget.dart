@@ -1,5 +1,6 @@
-import 'package:code_grapper/config/font/custom_text_styles.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../imports.dart';
 
 class UserNewWidget extends StatelessWidget {
   const UserNewWidget({super.key});
@@ -14,7 +15,7 @@ class UserNewWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Text(
-          "New",
+          LocaleKeys.new_user.tr(),
           style: AppTextStyles.regular_12_red(context)
               .copyWith(color: Colors.green),
         ),
