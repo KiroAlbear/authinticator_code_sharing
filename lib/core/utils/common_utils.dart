@@ -11,6 +11,7 @@ class CommonUtils {
       initialDate: DateTime.now(),
       firstDate: DateTime(1900),
       lastDate: DateTime(2100),
+      locale: const Locale('en', 'US'),
       builder: (context, child) {
         return Theme(
           data: ThemeData.light().copyWith(

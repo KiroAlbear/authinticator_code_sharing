@@ -18,7 +18,7 @@ class _RegisterUserPagePageState extends BaseState<RegisterUserPage> {
   final TextEditingController startDateController = TextEditingController();
   final TextEditingController endDateController = TextEditingController();
   final GlobalKey<FormState> formFieldKey = GlobalKey<FormState>();
-  final DateFormat dateFormat = DateFormat('yyyy-MM-dd');
+  final DateFormat dateFormat = DateFormat('yyyy-MM-dd', 'en_US');
   late DateTime? startDate;
 
   late DateTime? endDate;
