@@ -49374,7 +49374,7 @@ m=A.bn(A.aO("Switch_Account"),k,k,k,k,k,k,k)
 m=A.cA(A.a([q,p,o,n,A.yz(B.Ti,new A.ag2(a),A.bn(A.aO("Switch_to_another_account"),k,k,k,k,k,k,k),m),A.aXG(k,k)],t.p),B.C,B.D,B.bh)
 q=m}p=A.bn(A.aO("Log_Out"),k,k,k,k,k,k,k)
 o=t.p
-o=new A.TB(B.k,A.cA(A.a([new A.TF(new A.cq(k,k,k,k,k,new A.q8(B.dp,B.Jw,B.ce,s,B.Uy,k),B.W),B.RD,r,k),A.k2(A.cA(A.a([q,A.cA(A.a([A.yz(B.Tm,new A.ag3(a),A.bn(A.aO("Sign_out_of_all_your_accounts"),k,k,k,k,k,k,k),p),new A.bH(new A.cR(0,0,12,3),A.bn("v1.0.11",k,k,k,A.ae1().$3$color$fontSize$fontWeight(B.m,10,B.I),B.hM,k,k),k)],o),B.cX,B.D,B.H)],o),B.C,B.dc,B.H),1)],o),B.cF,B.D,B.H),k)
+o=new A.TB(B.k,A.cA(A.a([new A.TF(new A.cq(k,k,k,k,k,new A.q8(B.dp,B.Jw,B.ce,s,B.Uy,k),B.W),B.RD,r,k),A.k2(A.cA(A.a([q,A.cA(A.a([A.yz(B.Tm,new A.ag3(a),A.bn(A.aO("Sign_out_of_all_your_accounts"),k,k,k,k,k,k,k),p),new A.bH(new A.cR(0,0,12,3),A.bn("v1.0.12",k,k,k,A.ae1().$3$color$fontSize$fontWeight(B.m,10,B.I),B.hM,k,k),k)],o),B.cX,B.D,B.H)],o),B.C,B.dc,B.H),1)],o),B.cF,B.D,B.H),k)
 s=o}else s=B.aH
 r=l.D5()?100:0
 q=l.nW()
