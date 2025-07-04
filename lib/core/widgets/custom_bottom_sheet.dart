@@ -1,4 +1,4 @@
-import 'package:code_grapper/imports.dart';
+import 'package:key_bridge/imports.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomSheet extends StatelessWidget {
@@ -6,11 +6,10 @@ class CustomBottomSheet extends StatelessWidget {
   final String title;
   final Widget child;
 
-  const CustomBottomSheet(
-      {super.key,
-      required this.title,
-      required this.child,
-      this.bottomSheetHeight = 300});
+  const CustomBottomSheet({super.key,
+    required this.title,
+    required this.child,
+    this.bottomSheetHeight = 300});
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,9 @@
-import 'package:code_grapper/features/admin_home/data/models/admin_home_request_model.dart';
-import 'package:code_grapper/features/admin_home/data/models/delete_user_request_model.dart';
-import 'package:code_grapper/features/admin_home/data/models/enable_disable_all_users_request_model.dart';
-import 'package:code_grapper/features/admin_home/data/models/enable_disable_user_request_model.dart';
-import 'package:code_grapper/features/admin_home/data/models/reset_user_request_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:key_bridge/features/admin_home/data/models/admin_home_request_model.dart';
+import 'package:key_bridge/features/admin_home/data/models/delete_user_request_model.dart';
+import 'package:key_bridge/features/admin_home/data/models/enable_disable_all_users_request_model.dart';
+import 'package:key_bridge/features/admin_home/data/models/enable_disable_user_request_model.dart';
+import 'package:key_bridge/features/admin_home/data/models/reset_user_request_model.dart';
 
 abstract class AdminHomeEvent extends Equatable {
   const AdminHomeEvent();

@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:code_grapper/features/register_user/domain/usecases/update_user_usecase.dart';
-import 'package:code_grapper/imports.dart';
+import 'package:key_bridge/features/register_user/domain/usecases/update_user_usecase.dart';
+import 'package:key_bridge/imports.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

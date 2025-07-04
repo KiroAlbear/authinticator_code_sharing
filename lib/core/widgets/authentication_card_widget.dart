@@ -1,4 +1,4 @@
-import 'package:code_grapper/config/dimensions/app_dimensions.dart';
+import 'package:key_bridge/config/dimensions/app_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -48,7 +48,9 @@ class AuthenticationCardWidget extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
-                        fontFamily: GoogleFonts.libreBaskerville().fontFamily),
+                        fontFamily: GoogleFonts
+                            .libreBaskerville()
+                            .fontFamily),
                   ),
                   SizedBox(height: 20),
                   child,

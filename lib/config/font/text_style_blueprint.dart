@@ -1,4 +1,4 @@
-import 'package:code_grapper/imports.dart';
+import 'package:key_bridge/imports.dart';
 import 'package:flutter/material.dart';
 
 class TextStyleBlueprint {
@@ -12,8 +12,7 @@ class TextStyleBlueprint {
 
   late Map<String, TextStyle> basicTextStylesMap;
 
-  static TextStyle? style(
-    BuildContext context, {
+  static TextStyle? style(BuildContext context, {
     Color? color,
     double? height,
     double? fontSize,
@@ -21,7 +20,11 @@ class TextStyleBlueprint {
     TextDecoration? decoration,
     String? fontFamily,
   }) {
-    color ??= Theme.of(context).textTheme.displayLarge?.color;
+    color ??= Theme
+        .of(context)
+        .textTheme
+        .displayLarge
+        ?.color;
     height ??= AppDimensions.textHeight;
     TextStyle selectedTextStyle = TextStyle(
       color: color,

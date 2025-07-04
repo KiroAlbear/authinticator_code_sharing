@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../imports.dart';
 
-// import 'package:code_grapper/config/colors/index.dart';
-// import 'package:code_grapper/config/dimensions/index.dart';
+// import 'package:key_bridge/config/colors/index.dart';
+// import 'package:key_bridge/config/dimensions/index.dart';
 
 class CustomRoundedCard extends StatelessWidget {
   final Widget child;

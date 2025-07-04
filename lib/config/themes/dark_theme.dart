@@ -1,10 +1,11 @@
-import 'package:code_grapper/imports.dart';
+import 'package:key_bridge/imports.dart';
 import 'package:flutter/material.dart';
 
-ThemeData darkTheme(BuildContext context) => ThemeData(
+ThemeData darkTheme(BuildContext context) =>
+    ThemeData(
       colorScheme: ThemeData().colorScheme.copyWith(
-            brightness: Brightness.dark,
-          ),
+        brightness: Brightness.dark,
+      ),
       scaffoldBackgroundColor: StaticColors.blueBlackTextColor_62E,
       textTheme: TextTheme(
         titleMedium: TextStyleBlueprint.style(context,
@@ -22,7 +23,7 @@ ThemeData darkTheme(BuildContext context) => ThemeData(
       ),
       radioTheme: RadioThemeData(
         fillColor:
-            WidgetStateProperty.all<Color>(StaticColors.primaryColor_55f),
+        WidgetStateProperty.all<Color>(StaticColors.primaryColor_55f),
       ),
       progressIndicatorTheme: customProgressIndicatorTheme,
       switchTheme: customSwitchLightTheme,

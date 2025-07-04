@@ -1,5 +1,5 @@
-import 'package:code_grapper/features/login/data/models/login_request_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:key_bridge/features/login/data/models/login_request_model.dart';
 
 abstract class LoginEvent extends Equatable {
   const LoginEvent();

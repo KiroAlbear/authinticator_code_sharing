@@ -1,6 +1,6 @@
-import 'package:code_grapper/features/register_user/domain/usecases/update_user_usecase.dart';
-import 'package:code_grapper/imports.dart';
 import 'package:get_it/get_it.dart';
+import 'package:key_bridge/features/register_user/domain/usecases/update_user_usecase.dart';
+import 'package:key_bridge/imports.dart';
 
 final GetIt getIt = GetIt.instance;
 

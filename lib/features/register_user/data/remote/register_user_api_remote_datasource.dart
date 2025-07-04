@@ -1,5 +1,5 @@
-import 'package:code_grapper/features/register_user/data/models/update_user_request_model.dart';
-import 'package:code_grapper/imports.dart';
+import 'package:key_bridge/features/register_user/data/models/update_user_request_model.dart';
+import 'package:key_bridge/imports.dart';
 
 abstract class RegisterUserRemoteDataSource {
   FutureEither<RegisterUserResponseModel> registerUser(

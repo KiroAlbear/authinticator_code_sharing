@@ -1,6 +1,6 @@
-import 'package:code_grapper/imports.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:key_bridge/imports.dart';
 
 class RegisterAdminPage extends BaseStatefulPage {
   RegisterAdminPage({super.key});

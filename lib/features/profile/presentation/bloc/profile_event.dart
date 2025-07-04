@@ -1,6 +1,6 @@
-import 'package:code_grapper/features/profile/data/models/profile_request_model.dart';
-import 'package:code_grapper/features/profile/data/models/update_profile_request_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:key_bridge/features/profile/data/models/profile_request_model.dart';
+import 'package:key_bridge/features/profile/data/models/update_profile_request_model.dart';
 
 abstract class ProfileEvent extends Equatable {
   const ProfileEvent();

@@ -1,11 +1,11 @@
-import 'package:code_grapper/imports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:key_bridge/imports.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-part 'package:code_grapper/core/base_pages/base_page.dart';
+part 'package:key_bridge/core/base_pages/base_page.dart';
 
 final double _socialIconSize = 28;
 final String version =

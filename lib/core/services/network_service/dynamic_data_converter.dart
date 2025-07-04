@@ -1,4 +1,4 @@
-import 'package:code_grapper/imports.dart';
+import 'package:key_bridge/imports.dart';
 
 class JsonToListConverter {
   JsonToListConverter._();
