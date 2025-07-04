@@ -71,7 +71,7 @@ mixin BasePageMixin implements BasePage {
                                 width: _socialIconSize,
                                 child: GestureDetector(
                                     onTap: () async {
-                                      await _openWhatsApp("+16892603417");
+                                      await _openWhatsApp("+201505940668");
                                     },
                                     child: SvgPicture.asset(
                                         Assets.images.svg.whatsappLogo))),
