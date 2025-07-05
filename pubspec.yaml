@@ -49,9 +49,11 @@ dependencies:
   google_fonts: ^6.2.1
   shared_preferences: ^2.5.3
   url_launcher: ^6.1.7
+  sentry_flutter: ^9.3.0
 
 
 dev_dependencies:
+  sentry_dart_plugin: ^3.1.0
   flutter_test:
     sdk: flutter
   
@@ -89,3 +91,8 @@ flutter:
     - assets/images/svg/
     - assets/images/gif/
     - assets/translations/
+sentry:
+  upload_debug_symbols: true
+  upload_source_maps: true
+  project: flutter
+  org: keybridge
