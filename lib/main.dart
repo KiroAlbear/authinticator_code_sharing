@@ -1,29 +1,32 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'imports.dart';import 'package:sentry_flutter/sentry_flutter.dart';
-
+import 'imports.dart';
 
 void main() async {
-  await DependencyInjectionService().init();
-  WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
-  await SecureStorageService.init();
   await SentryFlutter.init(
     (options) {
-      options.dsn = 'https://c4476861b52959c375799b3dc7b924c5@o4509616183705600.ingest.us.sentry.io/4509616185278464';
+      options.dsn =
+          'https://c4476861b52959c375799b3dc7b924c5@o4509616183705600.ingest.us.sentry.io/4509616185278464';
       // Set tracesSampleRate to 1.0 to capture 100% of transactions for tracing.
       // We recommend adjusting this value in production.
       options.tracesSampleRate = 1.0;
     },
-    appRunner: () => runApp(SentryWidget(child: EasyLocalization(
-      supportedLocales: [Locale('en')],
-      path: 'assets/translations',
-      fallbackLocale: Locale('en'),
-      child: const MyApp()))),
+    appRunner: () async {
+      await DependencyInjectionService().init();
+      WidgetsFlutterBinding.ensureInitialized();
+      await EasyLocalization.ensureInitialized();
+      await SecureStorageService.init();
+      runApp(SentryWidget(
+          child: EasyLocalization(
+              supportedLocales: [Locale('en')],
+              path: 'assets/translations',
+              fallbackLocale: Locale('en'),
+              child: const MyApp())));
+    },
   );
   // TODO: Remove this line after sending the first sample event to sentry.
   await Sentry.captureException(Exception('This is a sample exception.'));
