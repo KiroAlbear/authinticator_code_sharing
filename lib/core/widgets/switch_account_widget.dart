@@ -56,9 +56,14 @@ class SwitchAccountWidget extends StatelessWidget {
                                     account.email, account.password);
                                 Navigator.pop(context);
                                 Navigator.pop(context);
-                                AppToast.showToast(
-                                    "Account switched to ${account.email}",
-                                    type: AppToastType.success);
+                                // show top snackbar
+                                ScaffoldMessenger.of(Routes
+                                        .rootNavigatorKey.currentState!.context)
+                                    .showSnackBar(SnackBar(
+                                  showCloseIcon: true,
+                                  content: Text(
+                                      "Switched to account: ${account.email}"),
+                                ));
                                 Routes.clearStack();
                                 Routes.navigateToScreen(
                                     Routes.adminHomeScreen,
