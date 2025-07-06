@@ -75,5 +75,9 @@ abstract class  LocaleKeys {
   static const Switch_to_another_account = 'Switch_to_another_account';
   static const Log_Out = 'Log_Out';
   static const Sign_out_of_all_your_accounts = 'Sign_out_of_all_your_accounts';
+  static const are_you_sure = 'are_you_sure';
+  static const confirmation = 'confirmation';
+  static const cancel = 'cancel';
+  static const ok = 'ok';
 
 }

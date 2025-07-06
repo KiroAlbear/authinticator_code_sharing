@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:key_bridge/core/widgets/custom_elevated_button.dart';
+import 'package:key_bridge/imports.dart';
 
 class CustomOkCancelDialog extends StatelessWidget {
   final Function onOkPressed;
@@ -9,8 +9,8 @@ class CustomOkCancelDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Confirmation'),
-      content: const Text('Are you sure you want to proceed?'),
+      title: Text(LocaleKeys.confirmation.tr()),
+      content: Text(LocaleKeys.are_you_sure.tr()),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -19,7 +19,7 @@ class CustomOkCancelDialog extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop(); // Close the dialog
           },
-          child: const Text('Cancel'),
+          child: Text(LocaleKeys.cancel.tr()),
         ),
         CustomElevatedButton(
           color: Theme.of(context).primaryColor,
@@ -29,7 +29,7 @@ class CustomOkCancelDialog extends StatelessWidget {
             onOkPressed();
             Navigator.of(context).pop(); // Close the dialog
           },
-          text: 'Confirm',
+          text: LocaleKeys.ok.tr(),
         ),
       ],
     );

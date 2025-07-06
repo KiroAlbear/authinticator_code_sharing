@@ -70,5 +70,9 @@
   "Switch_Account": "Switch Account",
   "Switch_to_another_account": "Switch to another account",
   "Log_Out": "Log Out",
-  "Sign_out_of_all_your_accounts": "Sign out of all your accounts"
+  "Sign_out_of_all_your_accounts": "Sign out of all your accounts",
+  "are_you_sure": "Are you sure you want to proceed ?",
+  "confirmation": "Confirmation",
+  "cancel": "Cancel",
+  "ok": "Confirm"
 }

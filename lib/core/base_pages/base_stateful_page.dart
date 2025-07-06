@@ -36,7 +36,7 @@ abstract class BaseState<T extends BaseStatefulPage> extends State<T>
 
   Future<EmailPasswordModel> getChosenAdmin() async {
     return await CommonUtils.getChosenAdminOrUser(
-        SecureStorageKeys.chosenAdminKey);
+        SharedPrefrencesKeys.chosenAdminKey);
   }
 
   Future<AdminAccountList> getAdminAccountList() async {
@@ -44,7 +44,8 @@ abstract class BaseState<T extends BaseStatefulPage> extends State<T>
   }
 
   Future<EmailPasswordModel> getChosenUser() async {
-    return await CommonUtils.getChosenAdminOrUser(SecureStorageKeys.normalUser);
+    return await CommonUtils.getChosenAdminOrUser(
+        SharedPrefrencesKeys.normalUser);
   }
 
   @override

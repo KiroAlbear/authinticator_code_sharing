@@ -19,12 +19,16 @@ void main() async {
       await DependencyInjectionService().init();
       WidgetsFlutterBinding.ensureInitialized();
       await EasyLocalization.ensureInitialized();
-      await SecureStorageService.init();
+      await SharedPrefrencesService.init();
+
       runApp(SentryWidget(
           child: EasyLocalization(
-              supportedLocales: [Locale('en')],
+              supportedLocales: [
+            Locale(SharedPrefrencesKeys.arabicLanguageKey),
+            Locale(SharedPrefrencesKeys.englishLanguageKey)
+          ],
               path: 'assets/translations',
-              fallbackLocale: Locale('en'),
+              fallbackLocale: Locale(SharedPrefrencesKeys.englishLanguageKey),
               child: const MyApp())));
     },
   );
@@ -40,6 +44,21 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        final String language = SharedPrefrencesService.getInstance()
+                .getString(SharedPrefrencesKeys.languageKey) ??
+            SharedPrefrencesKeys.englishLanguageKey;
+
+        EasyLocalization.of(context)!.setLocale(Locale(language));
+      },
+    );
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

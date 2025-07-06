@@ -15,11 +15,17 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       height: 60,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            Colors.white,
-            Colors.white.withOpacity(0.3),
-            Colors.transparent
-          ],
+          colors: EasyLocalization.of(context)!.currentLocale == Locale('en')
+              ? [
+                  Colors.white,
+                  Colors.white.withOpacity(0.3),
+                  Colors.transparent
+                ]
+              : [
+                  Colors.transparent,
+                  Colors.white.withOpacity(0.3),
+                  Colors.white,
+                ],
           begin: Alignment.topLeft,
           end: Alignment.topRight,
           stops: [0.3, 0.4, 1],
@@ -72,6 +78,61 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 SizedBox(
                     width: 70, child: Image.asset(Assets.images.png.logo.path)),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      // language switcher
+                      PopupMenuButton<String>(
+                        icon: const Icon(Icons.language),
+                        onSelected: (value) {
+                          if (value ==
+                              SharedPrefrencesKeys.englishLanguageKey) {
+                            EasyLocalization.of(context)!.setLocale(
+                                const Locale(
+                                    SharedPrefrencesKeys.englishLanguageKey));
+                            SharedPrefrencesService.getInstance().setString(
+                              SharedPrefrencesKeys.languageKey,
+                              SharedPrefrencesKeys.englishLanguageKey,
+                            );
+                          } else if (value ==
+                              SharedPrefrencesKeys.arabicLanguageKey) {
+                            EasyLocalization.of(context)!.setLocale(
+                                const Locale(
+                                    SharedPrefrencesKeys.arabicLanguageKey));
+
+                            SharedPrefrencesService.getInstance().setString(
+                              SharedPrefrencesKeys.languageKey,
+                              SharedPrefrencesKeys.arabicLanguageKey,
+                            );
+                          }
+                        },
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            value: 'en',
+                            child: Row(
+                              children: const [
+                                Text('🇺🇸'),
+                                SizedBox(width: 8),
+                                Text('English'),
+                              ],
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 'ar',
+                            child: Row(
+                              children: const [
+                                Text('🇪🇬'),
+                                SizedBox(width: 8),
+                                Text('العربية'),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),

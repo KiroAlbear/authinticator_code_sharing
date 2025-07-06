@@ -60,7 +60,7 @@
   "update_user": "تحديث المستخدم",
   "User_Start_Date": "تاريخ بدء المستخدم",
   "User_End_Date": "تاريخ انتهاء المستخدم",
-  "First_Date_should_be": "يجب أن يكون التاريخ الأول قبل تاريخ الانتهاء",
+  "First_Date_should_be": "يجب أن يكون تاريخ البدء قبل تاريخ الانتهاء",
   "Something_went_wrong": "حدث خطأ ما",
   "Welcome_Admin": "اهلا بك!",
   "Go_to_home_page": "اذهب إلى الصفحة الرئيسية",
@@ -70,5 +70,9 @@
   "Switch_Account": "تبديل الحساب",
   "Switch_to_another_account": "التبديل إلى حساب آخر",
   "Log_Out": "تسجيل الخروج",
-  "Sign_out_of_all_your_accounts": "تسجيل الخروج من جميع حساباتك"
+  "Sign_out_of_all_your_accounts": "تسجيل الخروج من جميع حساباتك",
+  "are_you_sure": "هل أنت متأكد أنك تريد المتابعة؟",
+  "confirmation": "تأكيد",
+  "cancel": "إلغاء",
+  "ok": "موافق"
 }

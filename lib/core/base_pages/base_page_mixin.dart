@@ -294,7 +294,8 @@ mixin BasePageMixin implements BasePage {
                                   builder: (_) {
                                     return CustomOkCancelDialog(
                                         onOkPressed: () async {
-                                      await SecureStorageService.getInstance()
+                                      await SharedPrefrencesService
+                                              .getInstance()
                                           .clear();
                                       Routes.clearStack();
                                       Routes.navigateToScreen(

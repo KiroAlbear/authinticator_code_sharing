@@ -123,8 +123,8 @@ class _LoginPagePageState extends BaseState<LoginPage> {
                           email: emailController.text,
                           password: passwordController.text);
 
-                      await SecureStorageService.getInstance().setString(
-                          SecureStorageKeys.normalUser,
+                      await SharedPrefrencesService.getInstance().setString(
+                          SharedPrefrencesKeys.normalUser,
                           userModel.toJson().toString());
 
                       Routes.navigateToScreen(

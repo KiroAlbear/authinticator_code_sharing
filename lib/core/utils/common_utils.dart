@@ -34,7 +34,7 @@ class CommonUtils {
     String username,
     String password,
   ) async {
-    final secureStorage = SecureStorageService.getInstance();
+    final secureStorage = SharedPrefrencesService.getInstance();
 
     AdminAccountList adminAccountList = await getAdminAccountList();
 
@@ -42,7 +42,7 @@ class CommonUtils {
         EmailPasswordModel(email: username, password: password);
 
     secureStorage.setString(
-      SecureStorageKeys.chosenAdminKey,
+      SharedPrefrencesKeys.chosenAdminKey,
       adminModel.toJson().toString(),
     );
     Constants.chosenAdmin = adminModel;
@@ -60,7 +60,7 @@ class CommonUtils {
           .removeWhere((account) => account.email == username);
       adminAccountList.accounts.add(existingAccount);
       await secureStorage.setString(
-        SecureStorageKeys.adminAccountsList,
+        SharedPrefrencesKeys.adminAccountsList,
         adminAccountList.toJson().toString(),
       );
       return;
@@ -69,14 +69,14 @@ class CommonUtils {
     adminAccountList.accounts.add(adminModel);
 
     await secureStorage.setString(
-      SecureStorageKeys.adminAccountsList,
+      SharedPrefrencesKeys.adminAccountsList,
       adminAccountList.toJson().toString(),
     );
   }
 
   static Future<AdminAccountList> getAdminAccountList() async {
-    String jsonString = SecureStorageService.getInstance()
-            .getString(SecureStorageKeys.adminAccountsList) ??
+    String jsonString = SharedPrefrencesService.getInstance()
+            .getString(SharedPrefrencesKeys.adminAccountsList) ??
         "";
 
     if (jsonString.isNotEmpty) {
@@ -89,7 +89,7 @@ class CommonUtils {
 
   static Future<EmailPasswordModel> getChosenAdminOrUser(String key) async {
     String jsonString =
-        await SecureStorageService.getInstance().getString(key) ?? "";
+        await SharedPrefrencesService.getInstance().getString(key) ?? "";
 
     if (jsonString.isNotEmpty) {
       Map<String, dynamic> jsonMap = jsonDecode(jsonString);
