@@ -8,9 +8,9 @@ import 'imports.dart';
 
 void main() async {
   await SentryFlutter.init(
-    (options) {
+        (options) {
       options.dsn =
-          'https://c4476861b52959c375799b3dc7b924c5@o4509616183705600.ingest.us.sentry.io/4509616185278464';
+      'https://c4476861b52959c375799b3dc7b924c5@o4509616183705600.ingest.us.sentry.io/4509616185278464';
       // Set tracesSampleRate to 1.0 to capture 100% of transactions for tracing.
       // We recommend adjusting this value in production.
       options.tracesSampleRate = 1.0;
@@ -24,16 +24,14 @@ void main() async {
       runApp(SentryWidget(
           child: EasyLocalization(
               supportedLocales: [
-            Locale(SharedPrefrencesKeys.arabicLanguageKey),
-            Locale(SharedPrefrencesKeys.englishLanguageKey)
-          ],
+                Locale(SharedPrefrencesKeys.arabicLanguageKey),
+                Locale(SharedPrefrencesKeys.englishLanguageKey)
+              ],
               path: 'assets/translations',
               fallbackLocale: Locale(SharedPrefrencesKeys.englishLanguageKey),
               child: const MyApp())));
     },
   );
-  // TODO: Remove this line after sending the first sample event to sentry.
-  await Sentry.captureException(Exception('This is a sample exception.'));
 }
 
 class MyApp extends StatefulWidget {
@@ -47,9 +45,9 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
+          (timeStamp) {
         final String language = SharedPrefrencesService.getInstance()
-                .getString(SharedPrefrencesKeys.languageKey) ??
+            .getString(SharedPrefrencesKeys.languageKey) ??
             SharedPrefrencesKeys.englishLanguageKey;
 
         EasyLocalization.of(context)!.setLocale(Locale(language));
