@@ -49,6 +49,10 @@ ThemeData lightTheme(BuildContext context) => ThemeData(
         borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(color: Colors.grey),
       ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: Colors.grey[800]!, width: 1),
+      ),
       errorStyle: const TextStyle(
         color: Colors.red,
         fontSize: 0,

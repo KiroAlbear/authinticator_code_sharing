@@ -30,10 +30,6 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
           end: Alignment.topRight,
           stops: [0.3, 0.4, 1],
         ),
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(16),
-          bottomRight: Radius.circular(16),
-        ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

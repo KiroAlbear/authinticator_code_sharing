@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart'
     show StringTranslateExtension;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:key_bridge/config/colors/static_colors.dart';
 import 'package:key_bridge/core/routes/navigation_type.dart';
 import 'package:key_bridge/core/routes/routes.dart';
 import 'package:key_bridge/gen/locale_keys.g.dart';
@@ -60,6 +61,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
           enabled: !widget.isDisabled,
           readOnly: widget.onTap != null,
           onTap: widget.onTap,
+          style: TextStyle(
+            color:
+                widget.isDisabled ? StaticColors.greyTextColor : Colors.white,
+          ),
           inputFormatters: [
             if (widget.isNumbersOnlyField)
               FilteringTextInputFormatter.digitsOnly,
@@ -79,7 +84,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
               label: RichText(
                 text: TextSpan(
                   text: widget.labelText,
-                  style: TextStyle(color: Colors.grey[800], fontSize: 16),
+                  style: TextStyle(
+                      color: StaticColors.greyTextColor, fontSize: 16),
                   children: [
                     widget.isRequired
                         ? const TextSpan(
@@ -98,6 +104,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       builder: (context, value, child) {
                         return IconButton(
                           icon: Icon(
+                            color: Colors.white,
                             value ? Icons.visibility : Icons.visibility_off,
                           ),
                           onPressed: () {
@@ -113,7 +120,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       ? Padding(
                           padding: EdgeInsetsDirectional.only(end: 0),
                           child: IconButton(
-                            icon: const Icon(Icons.qr_code_scanner_outlined),
+                            icon: const Icon(
+                              Icons.qr_code_scanner_outlined,
+                              color: Colors.white,
+                            ),
                             onPressed: () async {
                               await Routes.navigateToScreen(
                                 Routes.scannerScreen,

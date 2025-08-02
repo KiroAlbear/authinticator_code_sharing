@@ -169,8 +169,8 @@ class _LoginPagePageState extends BaseState<LoginPage> {
               style: AppTextStyles.bold_14_black(context).copyWith(
                 decoration: TextDecoration.underline,
                 decorationStyle: TextDecorationStyle.solid,
-                decorationColor: Colors.black,
-                color: Colors.black,
+                decorationColor: Colors.white,
+                color: Colors.white,
               ),
             ),
           ),
