@@ -53,7 +53,7 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20, top: 20),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
@@ -65,6 +65,7 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
+                    color: Colors.white,
                     fontFamily: GoogleFonts.libreBaskerville().fontFamily,
                   ),
                 ),

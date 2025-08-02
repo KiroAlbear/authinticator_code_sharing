@@ -53,20 +53,20 @@ abstract class BaseState<T extends BaseStatefulPage> extends State<T>
     return Stack(
       fit: StackFit.expand,
       children: [
-        Gif(
-          image: AssetImage(Assets.images.gif.background.path),
-          fit: BoxFit.fill,
-          controller: _controller,
-          repeat: ImageRepeat.repeat,
-          onFetchCompleted: () {
-            _controller.reset();
-            _controller.repeat();
-          },
-        ),
+        // Gif(
+        //   image: AssetImage(Assets.images.gif.background.path),
+        //   fit: BoxFit.fill,
+        //   controller: _controller,
+        //   repeat: ImageRepeat.repeat,
+        //   onFetchCompleted: () {
+        //     _controller.reset();
+        //     _controller.repeat();
+        //   },
+        // ),
         Container(
           height: double.infinity,
           width: double.infinity,
-          color: Colors.white.withOpacity(0.7),
+          color: StaticColors.backgroundColor,
         ),
         buildBody(context),
       ],

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../../imports.dart';
 
-class UnblockUserButtonWidget extends StatelessWidget {
+class BlockUserButtonWidget extends StatelessWidget {
   final void Function()? onPressed;
 
-  const UnblockUserButtonWidget({required this.onPressed, super.key});
+  const BlockUserButtonWidget({required this.onPressed, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class UnblockUserButtonWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
             side: BorderSide(
-              color: onPressed == null ? Colors.grey : Colors.green[300]!,
+              color: onPressed == null ? Colors.grey : Colors.red[300]!,
               width: 1.0,
             ),
           ),
@@ -25,9 +25,9 @@ class UnblockUserButtonWidget extends StatelessWidget {
               onPressed == null ? Colors.grey[200] : Colors.transparent,
         ),
         child: Text(
-          LocaleKeys.unblock.tr(),
+          LocaleKeys.block.tr(),
           style: TextStyleBlueprint.style(context,
-              color: onPressed == null ? Colors.grey : Colors.green[300],
+              color: onPressed == null ? Colors.grey : Colors.red[300]!,
               fontSize: 16.0,
               fontWeight: FontWeight.w500),
         ),

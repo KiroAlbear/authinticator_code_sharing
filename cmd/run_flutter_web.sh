@@ -1,1 +1,1 @@
-flutter run -d chrome --web-hostname=127.0.0.1 --web-port=8000
+flutter run -d chrome --web-hostname=127.0.0.2 --web-port=8080 --web-browser-flag "--disable-web-security"

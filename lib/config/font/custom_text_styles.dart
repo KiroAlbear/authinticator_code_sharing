@@ -18,10 +18,9 @@ class AppTextStyles {
         fontSize: 14, fontWeight: FontWeight.w400, color: Colors.red)!;
   }
 
-  static TextStyle semiBold_14_black_noSpacing(BuildContext context) {
+  static TextStyle regular_14_white_noSpacing(BuildContext context) {
     return TextStyleBlueprint.style(context,
-            fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black)!
-        .copyWith(letterSpacing: 0);
+        fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white)!;
   }
 
   static TextStyle regular_14_white(BuildContext context) {

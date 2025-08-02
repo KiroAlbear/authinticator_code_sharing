@@ -32,7 +32,7 @@ abstract class  LocaleKeys {
   static const expired = 'expired';
   static const start_date = 'start_date';
   static const end_date = 'end_date';
-  static const days_lef = 'days_lef';
+  static const days_left = 'days_left';
   static const logins_usage = 'logins_usage';
   static const last_login_date = 'last_login_date';
   static const requested_codes = 'requested_codes';
