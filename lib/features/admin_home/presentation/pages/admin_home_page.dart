@@ -79,7 +79,7 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
                   ),
 
                   Padding(
-                    padding: EdgeInsetsDirectional.only(start: 10),
+                    padding: EdgeInsetsDirectional.only(start: 15),
                     child: _buildTextButton(
                         context, LocaleKeys.refresh.tr(), Icons.refresh, () {
                       BlocProvider.of<AdminHomeBloc>(context)
@@ -190,7 +190,7 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
         ],
       ),
       style: IconButton.styleFrom(
-        backgroundColor: Theme.of(context).primaryColor.withAlpha(20),
+        backgroundColor: Theme.of(context).primaryColor.withAlpha(50),
       ),
       onPressed: onPressed,
     );

@@ -97,20 +97,30 @@ mixin BasePageMixin implements BasePage {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Text("Powered by",
+                                  Text(
+                                      EasyLocalization.of(context)
+                                                  ?.currentLocale! ==
+                                              Locale("en")
+                                          ? "Powered by"
+                                          : "ChatHub Services",
                                       style: GoogleFonts.libreBaskerville(
                                         fontSize: 10,
                                         fontWeight: FontWeight.w400,
-                                        color: Colors.black,
+                                        color: Colors.white,
                                       )),
                                   SizedBox(
                                     width: 3,
                                   ),
-                                  Text("ChatHub Services",
+                                  Text(
+                                      EasyLocalization.of(context)
+                                                  ?.currentLocale! ==
+                                              Locale("en")
+                                          ? "ChatHub Services"
+                                          : "Powered by",
                                       style: GoogleFonts.libreBaskerville(
                                         fontSize: 10,
                                         fontWeight: FontWeight.w900,
-                                        color: Colors.black,
+                                        color: Colors.white,
                                       )),
                                   SizedBox(
                                     width: 5,

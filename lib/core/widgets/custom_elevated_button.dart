@@ -29,16 +29,20 @@ class CustomElevatedButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.0),
             ),
-            backgroundColor: onPressed == null
-                ? Colors.grey
-                : color ?? Theme.of(context).primaryColor,
+            side: BorderSide(
+              color:
+                  onPressed == null ? Colors.grey : StaticColors.greyTextColor,
+              width: 0.2,
+            ),
+            backgroundColor:
+                onPressed == null ? Colors.grey : color ?? Color(0xff2a2635),
           ),
           child: Text(
             text,
             style: TextStyleBlueprint.style(context,
                 color: onPressed == null ? Colors.grey : Colors.white,
-                fontSize: 19.0,
-                fontWeight: FontWeight.w700),
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400),
           ),
         ));
   }

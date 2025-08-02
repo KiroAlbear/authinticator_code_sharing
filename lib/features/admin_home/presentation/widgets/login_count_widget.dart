@@ -11,7 +11,7 @@ class LoginCountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
+          color: StaticColors.primaryColor,
           borderRadius: BorderRadius.circular(100.0),
         ),
         child: Padding(

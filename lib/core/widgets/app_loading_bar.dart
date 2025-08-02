@@ -10,6 +10,6 @@ class AppLoadingBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: LoadingAnimationWidget.staggeredDotsWave(
-            color: StaticColors.primaryColor, size: 50));
+            color: Color(0xff5c45a3), size: 50));
   }
 }

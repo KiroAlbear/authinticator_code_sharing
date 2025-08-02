@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 ThemeData lightTheme(BuildContext context) => ThemeData(
     colorScheme: ThemeData().colorScheme.copyWith(
           brightness: Brightness.light,
+          primary: StaticColors.primaryColor,
         ),
     scaffoldBackgroundColor: StaticColors.scaffoldBackground_7F4,
     textTheme: TextTheme(

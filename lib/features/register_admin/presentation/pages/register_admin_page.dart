@@ -34,6 +34,9 @@ class _RegisterAdminPageState extends BaseState<RegisterAdminPage> {
   bool containPadding() => false;
 
   @override
+  bool hasSideMenu() => false;
+
+  @override
   Widget body(BuildContext context) {
     if (kDebugMode) {
       emailController.text = "program.gpt3@gmail.com";
