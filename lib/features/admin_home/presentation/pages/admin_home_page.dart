@@ -51,106 +51,122 @@ class _AdminHomePagePageState extends BaseState<AdminHomePage> {
   @override
   Widget body(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20, top: 20),
+      padding: EdgeInsetsDirectional.only(
+        bottom: 20,
+        top: 20,
+      ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // title with refresh button
-              Padding(
-                padding: EdgeInsetsDirectional.only(start: 16),
-                child: Text(
-                  LocaleKeys.users_list.tr(),
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontFamily: GoogleFonts.libreBaskerville().fontFamily,
-                  ),
-                ),
-              ),
-
-              Padding(
-                padding: EdgeInsetsDirectional.only(start: 10),
-                child: _buildTextButton(
-                    context, LocaleKeys.refresh.tr(), Icons.refresh, () {
-                  BlocProvider.of<AdminHomeBloc>(context).add(getAdminHomeEvent(
-                    requestModel: AdminHomeRequestModel(
-                      email: Constants.chosenAdmin.email,
-                      password: Constants.chosenAdmin.password,
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // title with refresh button
+                  Padding(
+                    padding: EdgeInsetsDirectional.only(start: 16),
+                    child: Text(
+                      LocaleKeys.users_list.tr(),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontFamily: GoogleFonts.libreBaskerville().fontFamily,
+                      ),
                     ),
-                  ));
-                }),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsetsDirectional.only(start: 10),
+                    child: _buildTextButton(
+                        context, LocaleKeys.refresh.tr(), Icons.refresh, () {
+                      BlocProvider.of<AdminHomeBloc>(context)
+                          .add(getAdminHomeEvent(
+                        requestModel: AdminHomeRequestModel(
+                          email: Constants.chosenAdmin.email,
+                          password: Constants.chosenAdmin.password,
+                        ),
+                      ));
+                    }),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              ParentBloc<AdminHomeBloc, AdminHomeState>(
+                emptyWidget: const EmptyUsersWidget(),
+                showWidgetOnError: true,
+                builder: (AdminHomeState state) {
+                  return Container(
+                    constraints: BoxConstraints(
+                      maxWidth: AppDimensions.cardMaxWidth + 100,
+                    ),
+                    child: Stack(
+                      children: [
+                        ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount:
+                              state.adminHomeResponseModel!.usersList.length,
+                          separatorBuilder: (context, index) =>
+                              const SizedBox(height: 10),
+                          itemBuilder: (context, index) {
+                            return AdminUserItem(
+                              userId: state.adminHomeResponseModel!
+                                  .usersList[index].userCode,
+                              name: state.adminHomeResponseModel!
+                                  .usersList[index].name,
+                              phone: state.adminHomeResponseModel!
+                                  .usersList[index].userPhone,
+                              email: state.adminHomeResponseModel!
+                                  .usersList[index].email,
+                              adminPassword: Constants.chosenAdmin.password,
+                              expiryDate: state.adminHomeResponseModel!
+                                  .usersList[index].expiryDate,
+                              lastLoginDate: state.adminHomeResponseModel!
+                                  .usersList[index].lastLoginDate,
+                              startDate: state.adminHomeResponseModel!
+                                  .usersList[index].startDate,
+                              endDate: state.adminHomeResponseModel!
+                                  .usersList[index].endDate,
+                              requestedCodes: state.adminHomeResponseModel!
+                                  .usersList[index].loginCount,
+                              daysLeft: state.adminHomeResponseModel!
+                                  .usersList[index].daysLeft,
+                              isNew: state.adminHomeResponseModel!
+                                      .usersList[index].firstLoginDate ==
+                                  null,
+                              isBlocked: state.adminHomeResponseModel!
+                                      .usersList[index].isActive ==
+                                  false,
+                              isMaximumCodesReached: state
+                                  .adminHomeResponseModel!
+                                  .usersList[index]
+                                  .isMaximumCodesReached,
+                            );
+                          },
+                        ),
+                        state.savingStatus == Status.loading
+                            ? Positioned(
+                                left: 0,
+                                right: 0,
+                                top: 0,
+                                bottom: 0,
+                                child: Container(
+                                  color: Colors.black.withAlpha(50),
+                                  child: const AppLoadingBar(),
+                                ),
+                              )
+                            : const SizedBox()
+                      ],
+                    ),
+                  );
+                },
               ),
             ],
-          ),
-          ParentBloc<AdminHomeBloc, AdminHomeState>(
-            emptyWidget: const EmptyUsersWidget(),
-            showWidgetOnError: true,
-            builder: (AdminHomeState state) {
-              return Container(
-                constraints: BoxConstraints(
-                  maxWidth: AppDimensions.cardMaxWidth + 100,
-                ),
-                child: Stack(
-                  children: [
-                    ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: state.adminHomeResponseModel!.usersList.length,
-                      separatorBuilder: (context, index) =>
-                          const SizedBox(height: 10),
-                      itemBuilder: (context, index) {
-                        return AdminUserItem(
-                          userId: state.adminHomeResponseModel!.usersList[index]
-                              .userCode,
-                          name: state
-                              .adminHomeResponseModel!.usersList[index].name,
-                          phone: state.adminHomeResponseModel!.usersList[index]
-                              .userPhone,
-                          email: state
-                              .adminHomeResponseModel!.usersList[index].email,
-                          adminPassword: Constants.chosenAdmin.password,
-                          expiryDate: state.adminHomeResponseModel!
-                              .usersList[index].expiryDate,
-                          lastLoginDate: state.adminHomeResponseModel!
-                              .usersList[index].lastLoginDate,
-                          startDate: state.adminHomeResponseModel!
-                              .usersList[index].startDate,
-                          endDate: state
-                              .adminHomeResponseModel!.usersList[index].endDate,
-                          requestedCodes: state.adminHomeResponseModel!
-                              .usersList[index].loginCount,
-                          daysLeft: state.adminHomeResponseModel!
-                              .usersList[index].daysLeft,
-                          isNew: state.adminHomeResponseModel!.usersList[index]
-                                  .firstLoginDate ==
-                              null,
-                          isBlocked: state.adminHomeResponseModel!
-                                  .usersList[index].isActive ==
-                              false,
-                          isMaximumCodesReached: state.adminHomeResponseModel!
-                              .usersList[index].isMaximumCodesReached,
-                        );
-                      },
-                    ),
-                    state.savingStatus == Status.loading
-                        ? Positioned(
-                            left: 0,
-                            right: 0,
-                            top: 0,
-                            bottom: 0,
-                            child: Container(
-                              color: Colors.black.withAlpha(50),
-                              child: const AppLoadingBar(),
-                            ),
-                          )
-                        : const SizedBox()
-                  ],
-                ),
-              );
-            },
           ),
         ],
       ),

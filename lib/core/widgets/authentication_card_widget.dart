@@ -14,7 +14,7 @@ class AuthenticationCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 25),
+      padding: EdgeInsetsDirectional.only(start: 25, end: 25, top: 25),
       child: ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: maxWidth ??

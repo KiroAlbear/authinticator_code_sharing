@@ -167,6 +167,12 @@ class Routes {
     ],
   );
 
+  static bool currentScreen(String route, BuildContext context) {
+    final String state =
+        GoRouter.of(context).routeInformationProvider.value.uri.path;
+    return state.contains(route);
+  }
+
   static Future<void> navigateToScreen(
     String screenName,
     NavigationType navigateType,

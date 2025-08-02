@@ -8,6 +8,8 @@ class StaticColors {
   static const Color primaryColor = Color(0x57e682ff);
   static const Color buttonStartColor = Color(0xff157C8C);
   static const Color backgroundColor = Color(0xff1e1a29);
+  static const Color sideMenuHeaderColor = Color(0xff312c42);
+  static const Color sideMenuColor = Color(0xff252131);
   static const Color greyTextColor = Color(0xff9b98ab);
 
   static const Color greyColor_5fb = Color(0xfff6f5fb);

@@ -14,29 +14,19 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: EasyLocalization.of(context)!.currentLocale == Locale('en')
-              ? [
-                  Colors.white,
-                  Colors.white.withOpacity(0.3),
-                  Colors.transparent
-                ]
-              : [
-                  Colors.transparent,
-                  Colors.white.withOpacity(0.3),
-                  Colors.white,
-                ],
-          begin: Alignment.topLeft,
-          end: Alignment.topRight,
-          stops: [0.3, 0.4, 1],
+        border: Border(
+          bottom: BorderSide(
+            color: StaticColors.greyTextColor,
+            width: 0.5,
+          ),
         ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           (hasBackButton == null)
-              ? SizedBox(width: 8)
-              : SizedBox(
+              ? const SizedBox(width: 8)
+              : const SizedBox(
                   width: 0,
                 ),
           hasBackButton == null
@@ -47,6 +37,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                       icon: Icon(
                         Icons.arrow_back_ios_new,
                         size: _iconSize,
+                        color: Colors.white,
                       ),
                       onPressed: () {
                         if (Navigator.canPop(context)) {
@@ -54,22 +45,28 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                         }
                       },
                     )
-                  : IconButton(
-                      padding: const EdgeInsets.all(0),
-                      icon: Icon(
-                        Icons.menu,
-                        size: _iconSize,
-                      ),
-                      onPressed: () {
-                        Scaffold.of(context).openDrawer();
-                      },
-                    ),
+                  : MediaQuery.of(context).size.width >
+                          AppDimensions.mobileScreenWidth
+                      ? SizedBox(
+                          width: 10,
+                        )
+                      : IconButton(
+                          padding: const EdgeInsets.all(0),
+                          icon: Icon(
+                            Icons.menu,
+                            color: Colors.white,
+                            size: _iconSize,
+                          ),
+                          onPressed: () {
+                            Scaffold.of(context).openDrawer();
+                          },
+                        ),
           // const SizedBox(width: 10),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 3,
                 ),
                 SizedBox(
@@ -80,7 +77,10 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                     children: [
                       // language switcher
                       PopupMenuButton<String>(
-                        icon: const Icon(Icons.language),
+                        icon: const Icon(
+                          Icons.language,
+                          color: Colors.white,
+                        ),
                         onSelected: (value) {
                           if (value ==
                               SharedPrefrencesKeys.englishLanguageKey) {
@@ -103,24 +103,40 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                             );
                           }
                         },
+                        color: StaticColors.backgroundColor,
+                        elevation: 10,
                         itemBuilder: (context) => [
-                          PopupMenuItem(
+                          const PopupMenuItem(
                             value: 'en',
+                            textStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
                             child: Row(
-                              children: const [
+                              children: [
                                 Text('🇺🇸'),
                                 SizedBox(width: 8),
-                                Text('English'),
+                                Text(
+                                  'English',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
-                          PopupMenuItem(
+                          const PopupMenuItem(
                             value: 'ar',
                             child: Row(
-                              children: const [
+                              children: [
                                 Text('🇪🇬'),
                                 SizedBox(width: 8),
-                                Text('العربية'),
+                                Text(
+                                  'العربية',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
