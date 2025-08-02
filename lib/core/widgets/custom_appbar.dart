@@ -31,24 +31,24 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                 ),
           hasBackButton == null
               ? const SizedBox()
-              : hasBackButton!
-                  ? IconButton(
-                      padding: const EdgeInsets.all(0),
-                      icon: Icon(
-                        Icons.arrow_back_ios_new,
-                        size: _iconSize,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        if (Navigator.canPop(context)) {
-                          Navigator.pop(context);
-                        }
-                      },
+              : MediaQuery.of(context).size.width >
+                      AppDimensions.mobileScreenWidth
+                  ? SizedBox(
+                      width: 10,
                     )
-                  : MediaQuery.of(context).size.width >
-                          AppDimensions.mobileScreenWidth
-                      ? SizedBox(
-                          width: 10,
+                  : hasBackButton!
+                      ? IconButton(
+                          padding: const EdgeInsets.all(0),
+                          icon: Icon(
+                            Icons.arrow_back_ios_new,
+                            size: _iconSize,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            if (Navigator.canPop(context)) {
+                              Navigator.pop(context);
+                            }
+                          },
                         )
                       : IconButton(
                           padding: const EdgeInsets.all(0),
