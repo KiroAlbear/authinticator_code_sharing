@@ -1,5 +1,5 @@
 class LoginPageArgs {
-  final IsLoggingAgain;
+  final isLoggingAgain;
 
-  LoginPageArgs({required this.IsLoggingAgain});
+  LoginPageArgs({required this.isLoggingAgain});
 }

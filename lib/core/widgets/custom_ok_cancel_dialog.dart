@@ -9,8 +9,15 @@ class CustomOkCancelDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(LocaleKeys.confirmation.tr()),
-      content: Text(LocaleKeys.are_you_sure.tr()),
+      backgroundColor: StaticColors.backgroundColor,
+      title: Text(
+        LocaleKeys.confirmation.tr(),
+        style: TextStyle(color: Colors.white),
+      ),
+      content: Text(
+        LocaleKeys.are_you_sure.tr(),
+        style: TextStyle(color: Colors.white),
+      ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -22,7 +29,6 @@ class CustomOkCancelDialog extends StatelessWidget {
           child: Text(LocaleKeys.cancel.tr()),
         ),
         CustomElevatedButton(
-          color: Theme.of(context).primaryColor,
           height: 40,
           onPressed: () {
             // Perform the action here

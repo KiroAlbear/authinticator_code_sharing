@@ -171,7 +171,7 @@ class DrawerWidget extends StatelessWidget {
                               onTap: () {
                                 Routes.navigateToScreen(Routes.loginScreen,
                                     NavigationType.pushNamed, context,
-                                    extra: LoginPageArgs(IsLoggingAgain: true));
+                                    extra: LoginPageArgs(isLoggingAgain: true));
                                 if (Navigator.canPop(context)) {
                                   Navigator.pop(context); // Closes the drawer
                                 }

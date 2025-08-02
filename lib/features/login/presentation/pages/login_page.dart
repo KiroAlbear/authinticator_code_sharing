@@ -21,12 +21,12 @@ class _LoginPagePageState extends BaseState<LoginPage> {
   bool containPadding() => false;
 
   @override
-  bool hasSideMenu() => widget.args?.IsLoggingAgain ?? false;
+  bool hasSideMenu() => widget.args?.isLoggingAgain ?? false;
 
   @override
   PreferredSizeWidget? appBar() => CustomAppbar(
         title: LocaleKeys.login.tr(),
-        hasBackButton: widget.args?.IsLoggingAgain,
+        hasBackButton: widget.args?.isLoggingAgain,
       );
 
   @override
