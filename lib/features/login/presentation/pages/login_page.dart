@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:key_bridge/features/register_admin/data/models/register_page_args.dart';
 import 'package:key_bridge/imports.dart';
 
 class LoginPage extends BaseStatefulPage {
@@ -116,6 +117,7 @@ class _LoginPagePageState extends BaseState<LoginPage> {
                       Routes.navigateToScreen(
                         Routes.adminHomeScreen,
                         NavigationType.pushReplacementNamed,
+                        extra: RegisterPageArgs(isLoggingAgain: widget.args?.isLoggingAgain??false),
                         context,
                       );
                     } else {
